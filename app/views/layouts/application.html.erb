@@ -10,14 +10,17 @@
 <body>
   
   <nav>
+    <a href="<%= page_path('home') %>"><div id="SHIPLogo"><h1>Strategic Healthcare<br>Investment Partners</h1><%= render "partials/brain_circuit" %></div></a>
     <ul>
-      <a href="<%= page_path('home') %>" class="internal-nav"><li class="sliding-u-l-r">Home/LOGO</li></a>
-      <a href="<%= page_path('team') %>" class="internal-nav"><li class="sliding-u-l-r">Team</li></a>
-      <a href="<%= page_path('portfolio') %>" class="internal-nav"><li class="sliding-u-l-r">Portfolio</li></a>
-      <a href="<%= page_path('library') %>" class="internal-nav"><li class="sliding-u-l-r">Library</li></a>
+      <a href="<%= page_path('team') %>"><li class="sliding-u-l-r">Team</li></a>
+      <a href="<%= page_path('portfolio') %>"><li class="sliding-u-l-r">Portfolio</li></a>
+      <a href="<%= page_path('library') %>"><li class="sliding-u-l-r">Library</li></a>
     </ul>
   </nav>
 
-<%= yield %>
+  <div id="content">
+    <%= yield %>
+  </div>
+
 </body>
 </html>

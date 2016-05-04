@@ -26,6 +26,18 @@ body{
   color: black;
   letter-spacing:2px;
 }
+div#SHIPLogo h1{
+  position:absolute;
+  font-size:1em;
+  height:40px;
+  margin:0px;
+  padding-top:20px;
+  margin-left:10px;
+  color:#0091b0;
+}
+#content{
+  margin-top:60px;
+}
 
 /* NAVIGATION */
 nav {
@@ -42,16 +54,22 @@ nav ul{
   font-size:1.5em;
   list-style-type:none;
   height:100%;
+  display:inline-block;
+  vertical-align:top;
 }
 nav ul li{
   display:inline-block;
   width:100px;
-  height:40px;
-  padding: 10px 0px 10px;
+  height:30px;
+  padding: 15px 0px 15px;
   text-align:center;
   letter-spacing: 1.3px;
   line-height:2em;
   font-weight: 700;
+}
+nav div{
+  height:100%;
+  display:inline;
 }
 nav ul li:hover{
   color:black;
@@ -77,6 +95,11 @@ nav ul a{
   margin-left:20%;
   width: 60%;
   background: black;
+}
+svg{
+  height:100%;
+  display:inline;
+  margin-left:30px;
 }
   
   

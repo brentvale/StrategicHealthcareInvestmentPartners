@@ -1,0 +1,33 @@
+$(function(){
+  $('.profile').hover(function(e){
+    let $image = $(e.currentTarget).find("img");
+    let srcString = $image.attr("src");
+    let targetName = srcString.match(/[a-z]+_[a-z]+/);
+    let assetPath = "<%= asset_path('/assets/" + targetName[0] + "_photo_web.jpg') %>";
+    
+    $image.attr("src", assetPath);
+    
+  }, function(e){
+    let $image = $(e.currentTarget).find("img");
+    let srcString = $image.attr("src");
+    let targetName = srcString.match(/[a-z]+_[a-z]+/);
+    let assetPath = "<%= asset_path('/assets/" + targetName[0] + "_photo_web_black_and_white.jpg') %>";
+    
+    $image.attr("src", assetPath);
+    
+  });
+  
+  //MOBILE
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    var $images = $(".profile div img:first-child");
+  
+    for(var i = 0; i < $images.length; i++){
+      let $image = $($images[i]);
+      let srcString = $image.attr("src");
+      let targetName = srcString.match(/[a-z]+_[a-z]+/);
+      let assetPath = "<%= asset_path('/assets/" + targetName[0] + "_photo_web.jpg') %>";
+      
+      $image.attr("src", assetPath);
+    }
+  }
+})

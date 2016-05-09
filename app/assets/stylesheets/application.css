@@ -34,22 +34,30 @@ div#SHIPLogo h1{
   padding-top:25px;
   margin-left:10px;
   color:#0091b0;
-  font-weight:100;
+  font-weight:700;
 }
 h2{
   color:#0091b0;
 }
-h2#ourStoryHeading{
+h2#ourStoryHeading, h2#teamHeading{
+  margin-top:150px;
+}
+h2#landingHeading{
   margin-top:220px;
+}
+h2#ourStoryHeading, h2#landingHeading, h2#teamHeading{
   font-size:3em;
-  font-weight:100;
+  font-weight:700;
   margin-left:10%;
 }
 h3{
   color:#0091b0;
   font-size:2em;
-  font-weight:100;
+  font-weight:400;
   margin-left:10%;
+}
+h3 span{
+  font-weight:100;
 }
 ul#keyDifferentiators{
   width:50%;
@@ -91,9 +99,69 @@ p{
   width: 50%;
   margin-left:10%;
 }
-p#ourStoryText{
-  margin-top: 50px;
+#landingText{
+  margin-top:50px;
 }
+
+/* TEAM */
+.profile{
+  width:80%;
+  margin-left:10%;
+  margin-top:100px;
+}
+.profile h3{
+  margin-left:0;
+  display:inline-block;
+  vertical-align:top;
+}
+.profile div{
+  width:50%;
+}
+.profile div div{
+  display:inline;
+}
+.profile div div a div.linked-in-logo{
+  background: url("/assets/linked_in_logo_sprite.gif");
+  background-size: 100% 200%;
+  background-position: 0 100%;
+  height: 20px;
+  width: 60px;
+  padding-top:0px;
+  border-radius: 2px;
+  display:inline-block;
+}
+.profile div div a div.linked-in-logo:hover{
+ background-position: 0 0;
+}
+img{
+  height: 200px;
+  width: 133px;
+  border: 4px solid white;
+  padding:2px;
+}
+.profile:hover div img{
+  -webkit-animation: border-show .2s forwards; /* Safari 4+ */
+  -moz-animation:    border-show .2s forwards; /* Fx 5+ */
+  -o-animation:      border-show .2s forwards; /* Opera 12+ */
+  animation:         border-show .2s forwards;
+}
+@-webkit-keyframes border-show {
+  0%   { border: 4px solid white; }
+  100% { border: 4px solid #0091b0; }
+}
+@-moz-keyframes border-show {
+  0%   { border: 4px solid white; }
+  100% { border: 4px solid #0091b0; }
+}
+@-o-keyframes border-show {
+  0%   { border: 4px solid white; }
+  100% { border: 4px solid #0091b0; }
+}
+@keyframes border-show {
+  0%   { border: 4px solid white; }
+  100% { border: 4px solid #0091b0; }
+}
+
 
 /* NAVIGATION */
 nav {

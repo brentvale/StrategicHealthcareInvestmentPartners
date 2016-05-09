@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SHIPwebsite</title>
+  <title>Strategic Healthcare Invstment Partners</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'favicon.ico' %>
   <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
@@ -12,15 +13,20 @@
   <nav>
     <a href="<%= page_path('home') %>"><div id="SHIPLogo"><h1>Strategic Healthcare<br>Investment Partners</h1><%= render "partials/brain_circuit" %></div></a>
     <ul>
-      <a href="<%= page_path('team') %>"><li class="sliding-u-l-r">Team</li></a>
-      <a href="<%= page_path('portfolio') %>"><li class="sliding-u-l-r">Portfolio</li></a>
-      <a href="<%= page_path('library') %>"><li class="sliding-u-l-r">Library</li></a>
+      <a href="<%= page_path('story') %>"><li class="sliding-u-l-r sliding-u-l-r-80">Our Story</li></a>
+      <a href="<%= page_path('team') %>"><li class="sliding-u-l-r sliding-u-l-r-50">Team</li></a>
+      <a href="<%= page_path('portfolio') %>"><li class="sliding-u-l-r sliding-u-l-r-70">Portfolio</li></a>
+      <a href="<%= page_path('library') %>"><li class="sliding-u-l-r sliding-u-l-r-60">Library</li></a>
     </ul>
   </nav>
 
   <div id="content">
     <%= yield %>
   </div>
+  
+  <footer>
+    <p>© Strategic Healthcare Investment Partners. All rights reserved.</p>
+  </footer>
 
 </body>
 </html>

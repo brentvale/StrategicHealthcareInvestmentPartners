@@ -22,7 +22,7 @@ $(function(){
     var $images = $(".profile div img:first-child");
   
     for(var i = 0; i < $images.length; i++){
-      let $image = $($images[i]);
+      var $image = $($images[i]);
       let srcString = $image.attr("src");
       let targetName = srcString.match(/[a-z]+_[a-z]+/);
       let assetPath = "<%= asset_path('/assets/" + targetName[0] + "_photo_web.jpg') %>";

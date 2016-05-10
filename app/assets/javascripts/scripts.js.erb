@@ -6,7 +6,6 @@ $(function(){
     var assetPath = "<%= asset_path('/assets/" + targetName[0] + "_photo_web.jpg') %>";
     
     $image.attr("src", assetPath);
-    
   }, function(e){
     var $image = $(e.currentTarget).find("img");
     var srcString = $image.attr("src");
@@ -14,7 +13,6 @@ $(function(){
     var assetPath = "<%= asset_path('/assets/" + targetName[0] + "_photo_web_black_and_white.jpg') %>";
     
     $image.attr("src", assetPath);
-    
   });
   
   //MOBILE

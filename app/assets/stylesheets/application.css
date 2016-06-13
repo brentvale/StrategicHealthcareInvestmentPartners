@@ -13,7 +13,6 @@
  *= require_tree .
  *= require_self
  */
-
 html{
   font-size: 16px;
   margin: 0px;
@@ -76,9 +75,6 @@ ul#keyDifferentiators li:before{
   content: "•  ";
   color:#0091b0;
 }
-#content{
-  margin-top:80px;
-}
 footer{
   margin-top:50px;
   height:150px;
@@ -104,6 +100,9 @@ p{
 }
 
 /* TEAM */
+.image-display-none{
+  display:none;
+}
 .profile{
   width:80%;
   margin-left:10%;
@@ -164,44 +163,12 @@ img{
 
 
 /* NAVIGATION */
-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 8em;
-  background-color:white;
-  z-index: 1;
-  border-bottom:1px solid #767676;
-}
-nav ul{
-  margin-top: 0;
-  font-size:1.5em;
-  list-style-type:none;
-  height:100%;
-  display:inline-block;
-  vertical-align:top;
-}
-nav ul li{
-  display:inline-block;
-  width:100px;
-  height:30px;
-  padding: 25px 0px 25px;
-  text-align:center;
-  letter-spacing: 1.3px;
-  line-height:2em;
-  font-weight: 700;
-}
-nav div{
-  height:100%;
-  display:inline;
+nav.navbar-default li a.sliding-u-l-r{
+  color:#0091b0;
+  font-size: 1.3em;
 }
 nav ul li:hover{
   color:black;
-}
-nav ul a{
-  text-decoration:none;
-  /* turquoise-ish */
-  color:#0091b0;
 }
 .sliding-u-l-r {
   display: inline-block;
@@ -239,7 +206,32 @@ svg{
   display:inline;
   margin-left:30px;
 }
-  
+
+/* IMAGES */
+.image-container{
+  width:133px;
+  height:200px;
+  display:inline-block;
+  position: relative;
+  overflow:hidden;
+}
+
+#edBrennanProfileImage{
+  position:absolute;
+  left: 0;
+  top: -100px;
+  width: 266px;
+}
+
+@media screen and (max-width: 768px){
+  .sliding-u-l-r:after {
+    display: none;
+  }
+  .block-text{
+    width: 90%;
+    margin-left:5%;
+  }
+}
   
   
   

@@ -2,8 +2,9 @@
 <html>
 <head>
   <title>Strategic Healthcare Invstment Partners</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <%= favicon_link_tag 'favicon.ico' %>
   <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,700' rel='stylesheet' type='text/css'>
@@ -20,18 +21,7 @@
 </head>
 <body>
   
-  <nav>
-    <a href="<%= page_path('home') %>"><div id="SHIPLogo"><h1>Strategic Healthcare<br>Investment Partners</h1><%= render "partials/brain_circuit" %></div></a>
-    <ul>
-      <a href="<%= page_path('story') %>"><li class="sliding-u-l-r sliding-u-l-r-80">Our Story</li></a>
-      <a href="<%= page_path('team') %>"><li class="sliding-u-l-r sliding-u-l-r-50">Team</li></a>
-      
-    </ul>
-  </nav>
-
-  <div id="content">
-    <%= yield %>
-  </div>
+  <%= yield %>
   
   <footer>
     <p>© Strategic Healthcare Investment Partners. All rights reserved.</p>

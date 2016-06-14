@@ -285,7 +285,13 @@ svg{
   }
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5){
-  
+  .profile div div.image-container{
+    border: 4px solid #0091b0;
+  }
+  .profile div div img{
+    clip: rect(0px 266px 200px 133px);
+    left: -133px;
+  }
 }
   
   

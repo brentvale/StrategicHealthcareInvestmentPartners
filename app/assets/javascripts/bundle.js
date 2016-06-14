@@ -25872,51 +25872,47 @@
 	        { className: 'navbar navbar-default' },
 	        React.createElement(
 	          'div',
-	          { className: 'container-fluid' },
+	          { className: 'navbar-header' },
 	          React.createElement(
-	            'div',
-	            { className: 'navbar-header' },
+	            'button',
+	            { type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'aria-expanded': 'false', 'data-target': '#navigationMenuDropdown' },
 	            React.createElement(
-	              'button',
-	              { type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'aria-expanded': 'false', 'data-target': '#navigationMenuDropdown' },
-	              React.createElement(
-	                'span',
-	                { className: 'sr-only' },
-	                'Toggle navigation'
-	              ),
-	              React.createElement('span', { className: 'icon-bar' }),
-	              React.createElement('span', { className: 'icon-bar' }),
-	              React.createElement('span', { className: 'icon-bar' })
+	              'span',
+	              { className: 'sr-only' },
+	              'Toggle navigation'
 	            ),
-	            React.createElement(
-	              'a',
-	              { className: 'navbar-brand', href: '#' },
-	              'SHIP'
-	            )
+	            React.createElement('span', { className: 'icon-bar' }),
+	            React.createElement('span', { className: 'icon-bar' }),
+	            React.createElement('span', { className: 'icon-bar' })
 	          ),
 	          React.createElement(
-	            'div',
-	            { className: 'collapse navbar-collapse', id: 'navigationMenuDropdown' },
+	            'a',
+	            { className: 'navbar-brand', href: '#' },
+	            'SHIP'
+	          )
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'collapse navbar-collapse', id: 'navigationMenuDropdown' },
+	          React.createElement(
+	            'ul',
+	            { className: 'nav navbar-nav' },
 	            React.createElement(
-	              'ul',
-	              { className: 'nav navbar-nav' },
+	              'li',
+	              null,
 	              React.createElement(
-	                'li',
-	                null,
-	                React.createElement(
-	                  NavLink,
-	                  { className: 'sliding-u-l-r sliding-u-l-r-80', to: '/our-story' },
-	                  'Our Story'
-	                )
-	              ),
+	                NavLink,
+	                { className: 'sliding-u-l-r sliding-u-l-r-80', to: '/our-story' },
+	                'Our Story'
+	              )
+	            ),
+	            React.createElement(
+	              'li',
+	              null,
 	              React.createElement(
-	                'li',
-	                null,
-	                React.createElement(
-	                  NavLink,
-	                  { className: 'sliding-u-l-r sliding-u-l-r-50', to: '/team' },
-	                  'Team'
-	                )
+	                NavLink,
+	                { className: 'sliding-u-l-r sliding-u-l-r-50', to: '/team' },
+	                'Team'
 	              )
 	            )
 	          )
@@ -26104,81 +26100,150 @@
 	      ),
 	      React.createElement(
 	        "div",
-	        { className: "profile" },
+	        { className: "row" },
 	        React.createElement(
 	          "div",
-	          null,
+	          { className: "profile" },
 	          React.createElement(
 	            "div",
-	            null,
+	            { className: "profile-block col-xs-12 col-sm-5 col-md-4" },
 	            React.createElement(
-	              "h3",
-	              null,
-	              "Brad Vale",
-	              React.createElement("br", null),
-	              "PhD, DVM",
-	              React.createElement("br", null),
-	              React.createElement(
-	                "span",
-	                null,
-	                "Managing Partner"
-	              )
+	              "div",
+	              { className: "image-container" },
+	              React.createElement("img", { id: "bradValeProfileImage", className: "pos-1", src: "/images/brad_vale_profile_sprite_low_res.jpg" })
 	            ),
 	            React.createElement(
-	              "a",
-	              { href: "https://www.linkedin.com/in/brad-vale-phd-dvm-0611181", alt: "Brad Vale LinkedIn Profile", target: "_blank" },
-	              React.createElement("div", { className: "linked-in-logo" })
+	              "div",
+	              { className: "title-container" },
+	              React.createElement(
+	                "h3",
+	                null,
+	                "Brad Vale",
+	                React.createElement("br", null),
+	                "PhD, DVM",
+	                React.createElement("br", null),
+	                React.createElement(
+	                  "span",
+	                  null,
+	                  "Managing Partner"
+	                )
+	              ),
+	              React.createElement(
+	                "div",
+	                { className: "linked-in-logo-container" },
+	                React.createElement(
+	                  "a",
+	                  { href: "https://www.linkedin.com/in/brad-vale-phd-dvm-0611181", alt: "Brad Vale LinkedIn Profile", target: "_blank" },
+	                  React.createElement("div", { className: "linked-in-logo" })
+	                )
+	              )
+	            )
+	          ),
+	          React.createElement(
+	            "div",
+	            { className: "profile-block-paragraph col-xs-12 col-sm-7 col-md-8" },
+	            React.createElement(
+	              "p",
+	              null,
+	              "Dr. Brad Vale has over thirty years of leadership experience in healthcare at Johnson & Johnson. He spent 22 years in JJDC, the oldest and largest corporate healthcare investment fund with over $1B in investments under management. Brad started out at JNJ at Ethicon, the leading company in wound closure, where he worked on surgical product development. He ran JJDC for the last 5 years and established JJDC offices globally, including Shanghai, London, Tel Aviv, Boston and Si-Valley. Brad completed a PhD in Biomedical Engineering at Iowa State University and his Doctor of Veterinary Medicine at Washington State University."
 	            )
 	          )
 	        )
 	      ),
 	      React.createElement(
 	        "div",
-	        { className: "profile" },
+	        { className: "row" },
 	        React.createElement(
 	          "div",
-	          null,
+	          { className: "profile" },
 	          React.createElement(
 	            "div",
-	            null,
+	            { className: "profile-block col-xs-12 col-sm-5 col-md-4" },
 	            React.createElement(
-	              "h3",
-	              null,
-	              "Mudit Jain",
-	              React.createElement("br", null),
-	              "PhD",
-	              React.createElement("br", null),
-	              React.createElement(
-	                "span",
-	                null,
-	                "Managing Partner"
-	              )
+	              "div",
+	              { className: "image-container" },
+	              React.createElement("img", { id: "muditJainProfileImage", className: "pos-1", src: "/images/mudit_jain_profile_sprite_low_res.jpg" })
 	            ),
 	            React.createElement(
-	              "a",
-	              { href: "https://www.linkedin.com/in/mudit-jain-phd-242637", alt: "Mudit Jain LinkedIn Profile", target: "_blank" },
-	              React.createElement("div", { className: "linked-in-logo" })
+	              "div",
+	              { className: "title-container" },
+	              React.createElement(
+	                "h3",
+	                null,
+	                "Mudit Jain",
+	                React.createElement("br", null),
+	                "PhD",
+	                React.createElement("br", null),
+	                React.createElement(
+	                  "span",
+	                  null,
+	                  "Managing Partner"
+	                )
+	              ),
+	              React.createElement(
+	                "div",
+	                { className: "linked-in-logo-container" },
+	                React.createElement(
+	                  "a",
+	                  { href: "https://www.linkedin.com/in/mudit-jain-phd-242637", alt: "Mudit Jain LinkedIn Profile", target: "_blank" },
+	                  React.createElement("div", { className: "linked-in-logo" })
+	                )
+	              )
+	            )
+	          ),
+	          React.createElement(
+	            "div",
+	            { className: "profile-block-paragraph col-xs-12 col-sm-7 col-md-8" },
+	            React.createElement(
+	              "p",
+	              null,
+	              "Dr. Mudit Jain has 18 years of operating, venture, and M&A experience at Guidant, Johnson & Johnson, and Synergy LifeScience Partners (A medical device and wearable medtech focused fund) . He has worked on projects in India, USA, and Ireland. Mudit has a PhD in Biomedical Engineering from Duke University, and a MBA in Healthcare from The Wharton School of Business."
 	            )
 	          )
 	        )
 	      ),
 	      React.createElement(
 	        "div",
-	        { className: "profile" },
+	        { className: "row" },
 	        React.createElement(
 	          "div",
-	          null,
+	          { className: "profile" },
 	          React.createElement(
-	            "h3",
-	            null,
-	            "Ed Brennan",
-	            React.createElement("br", null),
-	            "PhD",
-	            React.createElement("br", null),
+	            "div",
+	            { className: "profile-block col-xs-12 col-sm-5 col-md-4" },
 	            React.createElement(
-	              "span",
+	              "div",
+	              { className: "image-container" },
+	              React.createElement("img", { id: "edBrennanProfileImage", className: "pos-1", src: "/images/ed_brennan_profile_sprite_low_res.jpg" })
+	            ),
+	            React.createElement(
+	              "div",
+	              { className: "title-container" },
+	              React.createElement(
+	                "h3",
+	                null,
+	                "Ed Brennan",
+	                React.createElement("br", null),
+	                "PhD",
+	                React.createElement("br", null),
+	                React.createElement(
+	                  "span",
+	                  null,
+	                  "Founding Venture",
+	                  React.createElement("br", null),
+	                  "Partner"
+	                )
+	              ),
+	              React.createElement("div", { className: "linked-in-logo-container" })
+	            )
+	          ),
+	          React.createElement(
+	            "div",
+	            { className: "profile-block-paragraph col-xs-12 col-sm-7 col-md-8" },
+	            React.createElement(
+	              "p",
 	              null,
-	              "Founding Venture Partner"
+	              "Dr. Ed Brennan is a serial medical device entrepreneur and investor. He has been the Co-Founder and CEO of multiple device and diagnostic companies, raising over $400MM for those companies. He led multiple IPOs and strategic exits on those companies. Ed completed his PhD in Microbiology at UC Santa Cruz."
 	            )
 	          )
 	        )

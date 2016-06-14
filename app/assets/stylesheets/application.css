@@ -142,7 +142,7 @@ p{
   text-align:left;
 }
 .profile div div a div.linked-in-logo{
-  background: url("/assets/linked_in_logo_sprite.gif");
+  background: url("/images/linked_in_logo_sprite.gif");
   background-size: 100% 200%;
   background-position: 0 100%;
   padding-top:0px;
@@ -261,6 +261,7 @@ svg{
   }
   .profile-block{
     text-align:center;
+    margin-bottom:50px;
   }
   .profile-block-paragraph{
     padding-right:0px;

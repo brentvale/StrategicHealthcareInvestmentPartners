@@ -26,7 +26,7 @@ var Team = React.createClass({
             <div className="profile-block col-xs-12 col-sm-5 col-md-4">
     
               <div className="image-container">
-                <img onLoad={this.loadHighRes} id="bradValeProfileImage" className="pos-1" src="/images/brad_vale_profile_sprite_low_res.jpg"></img>
+                <img onLoad={this.loadHighRes} id="bradValeProfileImage" className="pos-1" src="/images/brad_vale_profile_sprite_low_res.jpg" alt="Brad Vale Profile Image"></img>
               </div>
     
               <div className="title-container">
@@ -52,7 +52,7 @@ var Team = React.createClass({
             <div className="profile-block col-xs-12 col-sm-5 col-md-4">
               
               <div className="image-container">
-                <img onLoad={this.loadHighRes} id="muditJainProfileImage" className="pos-1" src="/images/mudit_jain_profile_sprite_low_res.jpg"></img>
+                <img onLoad={this.loadHighRes} id="muditJainProfileImage" className="pos-1" src="/images/mudit_jain_profile_sprite_low_res.jpg" alt="Mudit Jain Profile Image"></img>
               </div>
             
               <div className="title-container">
@@ -79,7 +79,7 @@ var Team = React.createClass({
             <div className="profile-block col-xs-12 col-sm-5 col-md-4">
                 
               <div className="image-container">
-                <img onLoad={this.loadHighRes} id="edBrennanProfileImage" className="pos-1" src="/images/ed_brennan_profile_sprite_low_res.jpg"></img>
+                <img onLoad={this.loadHighRes} id="edBrennanProfileImage" className="pos-1" src="/images/ed_brennan_profile_sprite_low_res.jpg" alt="Ed Brennan Profile Image"></img>
               </div>
                 
               <div className="title-container">

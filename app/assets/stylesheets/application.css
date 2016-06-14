@@ -232,6 +232,7 @@ nav ul li:hover{
 }
 .sliding-u-l-r {
   display: inline-block;
+  cursor:pointer;
 }
 .sliding-u-l-r:after {
   content: '';

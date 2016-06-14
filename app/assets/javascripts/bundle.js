@@ -26084,6 +26084,12 @@
 	var Team = React.createClass({
 	  displayName: "Team",
 	
+	  loadHighRes: function (e) {
+	    if (e.target.src.slice(-11) == "low_res.jpg") {
+	      const newSrc = e.target.src.slice(0, -11) + "high_res.jpg";
+	      e.target.src = newSrc;
+	    }
+	  },
 	  render: function () {
 	    return React.createElement(
 	      "div",
@@ -26110,7 +26116,7 @@
 	            React.createElement(
 	              "div",
 	              { className: "image-container" },
-	              React.createElement("img", { id: "bradValeProfileImage", className: "pos-1", src: "/images/brad_vale_profile_sprite_low_res.jpg" })
+	              React.createElement("img", { onLoad: this.loadHighRes, id: "bradValeProfileImage", className: "pos-1", src: "/images/brad_vale_profile_sprite_low_res.jpg" })
 	            ),
 	            React.createElement(
 	              "div",
@@ -26162,7 +26168,7 @@
 	            React.createElement(
 	              "div",
 	              { className: "image-container" },
-	              React.createElement("img", { id: "muditJainProfileImage", className: "pos-1", src: "/images/mudit_jain_profile_sprite_low_res.jpg" })
+	              React.createElement("img", { onLoad: this.loadHighRes, id: "muditJainProfileImage", className: "pos-1", src: "/images/mudit_jain_profile_sprite_low_res.jpg" })
 	            ),
 	            React.createElement(
 	              "div",
@@ -26214,7 +26220,7 @@
 	            React.createElement(
 	              "div",
 	              { className: "image-container" },
-	              React.createElement("img", { id: "edBrennanProfileImage", className: "pos-1", src: "/images/ed_brennan_profile_sprite_low_res.jpg" })
+	              React.createElement("img", { onLoad: this.loadHighRes, id: "edBrennanProfileImage", className: "pos-1", src: "/images/ed_brennan_profile_sprite_low_res.jpg" })
 	            ),
 	            React.createElement(
 	              "div",

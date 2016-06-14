@@ -25887,7 +25887,7 @@
 	          ),
 	          React.createElement(
 	            'a',
-	            { className: 'navbar-brand', href: '#' },
+	            { className: 'navbar-brand navbar-logo', href: '#' },
 	            'SHIP'
 	          )
 	        ),
@@ -25901,8 +25901,8 @@
 	              'li',
 	              null,
 	              React.createElement(
-	                NavLink,
-	                { className: 'sliding-u-l-r sliding-u-l-r-80', to: '/our-story' },
+	                'a',
+	                { className: 'sliding-u-l-r', href: '#/our-story' },
 	                'Our Story'
 	              )
 	            ),
@@ -25910,8 +25910,8 @@
 	              'li',
 	              null,
 	              React.createElement(
-	                NavLink,
-	                { className: 'sliding-u-l-r sliding-u-l-r-50', to: '/team' },
+	                'a',
+	                { className: 'sliding-u-l-r', href: '#/team' },
 	                'Team'
 	              )
 	            )

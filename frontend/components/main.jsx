@@ -16,14 +16,14 @@ var Main = React.createClass({
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a className="navbar-brand" href="#">SHIP</a>
+            <a className="navbar-brand navbar-logo" href="#">SHIP</a>
           </div>
 
     
           <div className="collapse navbar-collapse" id="navigationMenuDropdown">
             <ul className="nav navbar-nav">
-              <li><NavLink className="sliding-u-l-r sliding-u-l-r-80" to="/our-story">Our Story</NavLink></li>
-              <li><NavLink className="sliding-u-l-r sliding-u-l-r-50" to="/team">Team</NavLink></li>
+              <li><a className="sliding-u-l-r" href="#/our-story">Our Story</a></li>
+              <li><a className="sliding-u-l-r" href="#/team">Team</a></li>
             </ul>
           </div>
       

@@ -285,9 +285,7 @@ svg{
   }
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5){
-  .sliding-u-l-r:after {
-    transition: none;
-  }
+ 
 }
   
   

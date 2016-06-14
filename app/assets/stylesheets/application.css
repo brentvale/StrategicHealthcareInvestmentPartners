@@ -47,14 +47,25 @@ h2#ourStoryHeading, h2#teamHeading{
 h2#landingHeading{
   margin-top:220px;
 }
+h2#landingHeading + h3{
+  margin-top:50px;
+}
 h2#ourStoryHeading, h2#landingHeading, h2#teamHeading{
   font-size:3em;
   font-weight:700;
   margin-left:10%;
 }
 h3{
-  color:#0091b0;
   font-size:2em;
+}
+h4{
+  font-size:1.5em;
+}
+#collectiveExperienceTitle{
+  margin-top:30px;
+}
+h3, h4{
+  color:#0091b0;
   font-weight:400;
   margin-left:10%;
   text-align:left;
@@ -63,7 +74,7 @@ h3 span{
   font-weight:100;
   font-size:0.75em;
 }
-ul#keyDifferentiators{
+ul#keyDifferentiators, ul#collectiveExperience{
   width:50%;
   margin-left:10%;
   text-align:left;
@@ -71,12 +82,12 @@ ul#keyDifferentiators{
   line-height:1.5em;
   list-style:none;
 }
-ul#keyDifferentiators li{
+ul#keyDifferentiators li, ul#collectiveExperience li{
   padding-left: 1em; 
   text-indent: -1.4em;
   margin-bottom:10px;
 }
-ul#keyDifferentiators li:before{
+ul#keyDifferentiators li:before, ul#collectiveExperience li:before{
   content: "•  ";
   color:#0091b0;
 }
@@ -101,9 +112,6 @@ p{
 .block-text{
   width: 50%;
   margin-left:10%;
-}
-#landingText{
-  margin-top:50px;
 }
 
 /* TEAM */
@@ -280,7 +288,7 @@ svg{
     margin-left:auto;
     margin-right:auto;
   }
-  ul#keyDifferentiators{
+  ul#keyDifferentiators, ul#collectiveExperience{
     width:80%;
     margin-left:10%;
   }

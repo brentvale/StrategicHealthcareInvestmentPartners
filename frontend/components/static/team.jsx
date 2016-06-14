@@ -11,8 +11,15 @@ var Team = React.createClass({
     return(
       <div>
         <h2 id="teamHeading">Team</h2>
-        <p className="block-text">The Strategic Health Care Partners  team has known each other and worked together in Healthcare investments for over fifteen years. Brad has known Ed and Mudit and worked on deals with them for over 15 years.  The team has come together  to work on the Strategic Healthcare Investment Partners strategy and with candidate limited partners over the last few months to refine the story and is aiming for a first close in Q3 2016.</p>
+        <p className="block-text">The Strategic Health Care Partners team has known each other and worked together on multiple healthcare investments over the last 20 years.</p>
 
+        <h4 id="collectiveExperienceTitle">Our Collective Experience Includes:</h4>
+        <ul id="collectiveExperience">
+          <li>&nbsp;Sourcing innovation</li>
+          <li>&nbsp;Leading and mentoring early stage companies</li>
+          <li>&nbsp;Taking companies public</li>
+          <li>&nbsp;Product development in both small and multinational corporations.</li>
+        </ul>
 
         <div className="row">
           <div className="profile">

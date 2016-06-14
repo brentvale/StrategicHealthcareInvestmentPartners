@@ -25968,24 +25968,31 @@
 	        "Investment Partners"
 	      ),
 	      React.createElement(
-	        "p",
-	        { id: "landingText", className: "block-text" },
-	        "In light of global demographic trends, we  believe that the opportunity for innovation in healthcare is currently large both for bringing new technologies to existing markets and for the development of new markets and business models with new technology.  Many opportunities are international in scope and some are likely to disrupt current approaches to diagnosis and therapy, increase the role of the consumer, and depend on collaboration among health care providers throughout the episode of care, and in some cases, all of this will begin with tools to facilitate disease prevention."
-	      ),
-	      React.createElement(
 	        "h3",
 	        null,
-	        "Approach"
+	        "Unique Approach"
 	      ),
 	      React.createElement(
 	        "p",
 	        { className: "block-text" },
-	        "We believe that collaboration with limited partners seeking both a strategic and financial result can improve the success of venture-backed companies. Strategic players can provide critical insights on preclinical models, clinical trial design and execution, regulatory issues, reimbursement strategies, manufacturing, and international distribution, sales, and marketing.  We are assembling  a limited partner pool of strategic investors that includes corporation, foundations, medical centers, and family offices.   We will work closely with selected regional sources of innovation."
+	        "We are assembling a pool of investors that includes corporations, foundations, medical centers, and family offices that have recognized the role of equity investing in innovation to deliver both financial returns and innovative products to improve outcomes for patients. We will also work closely with selected regional sources of innovation and development organizations focused in those areas."
 	      ),
 	      React.createElement(
 	        "h3",
 	        null,
-	        "Key Differentiators"
+	        "Healthcare Innovation and ",
+	        React.createElement("br", null),
+	        "Investment Opportunities"
+	      ),
+	      React.createElement(
+	        "p",
+	        { className: "block-text" },
+	        "The opportunity for innovation in healthcare is large both for developing new technologies for existing markets and for the creation of new markets and business models with new technology. Many opportunities are international in scope and some are likely to disrupt current approaches to diagnosis and therapy, increase the role of the consumer, and depend on collaboration among health care providers throughout the episode of care."
+	      ),
+	      React.createElement(
+	        "h3",
+	        null,
+	        "What’s Different About Us?"
 	      ),
 	      React.createElement(
 	        "ul",
@@ -25993,22 +26000,22 @@
 	        React.createElement(
 	          "li",
 	          null,
-	          " Our limited partners have strategic objectives that can be pursued with equity investing as a complement to their other business development strategies."
+	          " We work with partners that have strategic objectives that can be pursued with equity investing and we’ll work with them to refine focus areas for the fund."
 	        ),
 	        React.createElement(
 	          "li",
 	          null,
-	          " We will leverage our deep relationships in industry to engage medtech, biotech, diagnostic, and digital health industry luminaries known to us as venture partners, entrepreneurs-in-residence, and executive chairman roles."
+	          " We engage medtech, biotech, diagnostic, and digital health industry luminaries from our network as venture partners, entrepreneurs-in- residence, and in executive chairman roles."
 	        ),
 	        React.createElement(
 	          "li",
 	          null,
-	          " We will balance new technology (Box 3) investments with new market, new business model, new technology (Box 4) investments."
+	          " We’ll balance new technology investments for existing markets with investments that combine new market, new business model, and new technology elements."
 	        ),
 	        React.createElement(
 	          "li",
 	          null,
-	          " We will use our novel accelerator approach in selected regions and focus areas to source, seed-fund, develop, and Series A-fund deals."
+	          " We’ll use our unique accelerator approach in selected regions and focus areas to source, seed-fund, develop, and Series A-fund deals."
 	        )
 	      )
 	    );
@@ -26045,17 +26052,17 @@
 	      React.createElement(
 	        "p",
 	        { className: "block-text" },
-	        "Strategic Healthcare Investment Partners will balance deal stage to be approximately 50% early stage with our unique accelerator model and approximately 50% later stage where we will invest with conventional venture funds.  We will focus on medical devices, diagnostics, and digital health opportunities that facilitate the success of our medical device investments in an accountable care model."
+	        "Strategic Healthcare Investment Partners will balance deal stage to be approximately 50% early stage with our unique accelerator models and approximately 50% later stage where we will invest with conventional venture funds. We will focus on medical devices, diagnostics, and digital health opportunities that facilitate the success of our medical device investments in an accountable care world."
 	      ),
 	      React.createElement(
 	        "h3",
 	        null,
-	        "Early Stage Deal Ecosystem"
+	        "Early Stage Methods"
 	      ),
 	      React.createElement(
 	        "p",
 	        { className: "block-text" },
-	        "We believe that collaboration among strategic players, development organizations, sources of innovation, and a focused accelerator organization can improve the sourcing, seed-funding, development, and Series A-funding of deals with a higher success rate of getting to Series B funding.  Approximately half of our focus will be on these earlier stage deals and the rest on later deals and unique opportunities that we find."
+	        "We believe that collaboration among strategic players, development organizations, sources of innovation, and a focused accelerator organization can improve the path from sourcing, seed-funding, development, through the Series A-funding of deals with a higher success rate of getting to Series B funding."
 	      ),
 	      React.createElement(
 	        "h3",
@@ -26065,7 +26072,17 @@
 	      React.createElement(
 	        "p",
 	        { className: "block-text" },
-	        "We will support investment in new technologies that advance our individual strategic partner immediate interests (Box 3).  We will also invest in new markets, technologies, and business models that are likely to be of interest to all of our limited partners in the 3 to 5 year time frame (Box 4)."
+	        "We will support investment in new technologies that advance our individual strategic partner immediate interests in their existing markets with their current customers. We will also invest in new markets, technologies, and business models that are likely to be of future interest to all of our limited partners in the 3 to 5 year time frame. We will leverage our specific experiences and relationships in neuromodulation, next generation robotics, digital health, sensors and smart devices, active-implantables, and less invasive alternatives to today’s surgical devices."
+	      ),
+	      React.createElement(
+	        "h3",
+	        null,
+	        "The Fund"
+	      ),
+	      React.createElement(
+	        "p",
+	        { className: "block-text" },
+	        "Strategic Healthcare Investment Partners will raise $150 to 200MM with two founding general partners (Brad and Mudit) and one Founding Venture Partner (Ed). We are seeking a first close in Q3 2016."
 	      )
 	    );
 	  }
@@ -26102,7 +26119,36 @@
 	      React.createElement(
 	        "p",
 	        { className: "block-text" },
-	        "The Strategic Health Care Partners  team has known each other and worked together in Healthcare investments for over fifteen years. Brad has known Ed and Mudit and worked on deals with them for over 15 years.  The team has come together  to work on the Strategic Healthcare Investment Partners strategy and with candidate limited partners over the last few months to refine the story and is aiming for a first close in Q3 2016."
+	        "The Strategic Health Care Partners team has known each other and worked together on multiple healthcare investments over the last 20 years."
+	      ),
+	      React.createElement(
+	        "h4",
+	        { id: "collectiveExperienceTitle" },
+	        "Our Collective Experience Includes:"
+	      ),
+	      React.createElement(
+	        "ul",
+	        { id: "collectiveExperience" },
+	        React.createElement(
+	          "li",
+	          null,
+	          " Sourcing innovation"
+	        ),
+	        React.createElement(
+	          "li",
+	          null,
+	          " Leading and mentoring early stage companies"
+	        ),
+	        React.createElement(
+	          "li",
+	          null,
+	          " Taking companies public"
+	        ),
+	        React.createElement(
+	          "li",
+	          null,
+	          " Product development in both small and multinational corporations."
+	        )
 	      ),
 	      React.createElement(
 	        "div",

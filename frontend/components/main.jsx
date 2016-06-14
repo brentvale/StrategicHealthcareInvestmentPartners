@@ -7,7 +7,7 @@ var Main = React.createClass({
     return(
       <div>
       <nav className="navbar navbar-default">
-        <div className="container-fluid">
+       
       
           <div className="navbar-header">
             <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" aria-expanded="false" data-target="#navigationMenuDropdown">
@@ -27,7 +27,7 @@ var Main = React.createClass({
             </ul>
           </div>
       
-        </div>
+        
       </nav>
       {this.props.children}
       </div>

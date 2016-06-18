@@ -113,6 +113,10 @@ p{
   width: 50%;
   margin-left:10%;
 }
+.landingBackground{
+  background: url("/images/full_background_low_res.jpg");
+  
+}
 
 /* TEAM */
 .image-display-none{

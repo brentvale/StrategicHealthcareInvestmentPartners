@@ -3,7 +3,7 @@ var React = require('react');
 var Home = React.createClass({
   render: function(){
     return(
-      <div>
+      <div className="landingBackground">
         <h2 id="landingHeading">Strategic&nbsp;Healthcare<br/>Investment&nbsp;Partners</h2>
 
         <h3>Unique Approach</h3>

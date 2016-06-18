@@ -25959,7 +25959,7 @@
 	  render: function () {
 	    return React.createElement(
 	      "div",
-	      null,
+	      { className: "landingBackground" },
 	      React.createElement(
 	        "h2",
 	        { id: "landingHeading" },

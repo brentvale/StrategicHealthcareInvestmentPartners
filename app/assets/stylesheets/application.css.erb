@@ -28,6 +28,9 @@ body{
 .container-fluid{
   padding:0;
 }
+nav.navbar{
+  margin-bottom: 0px;
+}
 div#SHIPLogo h1{
   position:absolute;
   font-size:1.25em;
@@ -44,16 +47,13 @@ h2{
 h2#ourStoryHeading, h2#teamHeading{
   margin-top:150px;
 }
-h2#landingHeading{
-  margin-top:220px;
-}
 h2#landingHeading + h3{
   margin-top:50px;
 }
 h2#ourStoryHeading, h2#landingHeading, h2#teamHeading{
   font-size:3em;
   font-weight:700;
-  margin-left:10%;
+  margin-left:5%;
 }
 h3{
   font-size:2em;
@@ -67,15 +67,28 @@ h4{
 h3, h4{
   color:#0091b0;
   font-weight:400;
-  margin-left:10%;
+  margin-left:5%;
   text-align:left;
 }
 h3 span{
   font-weight:100;
   font-size:0.75em;
 }
+.landing-container{
+  /*background-image: url("<%= asset_path('full_background_high_res.jpg') %>");
+  background-repeat: no-repeat;
+  background-size: cover;*/
+  padding-top:100px;
+  padding-bottom: 100px;
+}
+.landing-background{
+  background-color: rgba(255,255,255,0.9);
+  width: 60%;
+  margin-left: 10%;
+  padding-top: 100px;
+}
 ul#keyDifferentiators, ul#collectiveExperience{
-  width:50%;
+  width:80%;
   margin-left:10%;
   text-align:left;
   font-size:1.5em;
@@ -110,8 +123,8 @@ p{
   line-height:1.5em;
 }
 .block-text{
-  width: 50%;
-  margin-left:10%;
+  width: 90%;
+  margin-left: 5%;
 }
 
 /* TEAM */
@@ -150,7 +163,7 @@ p{
   text-align:left;
 }
 .profile div div a div.linked-in-logo{
-  background: url("/images/linked_in_logo_sprite.gif");
+  background-image: url("<%= asset_path('linked_in_logo_sprite.gif') %>");
   background-size: 100% 200%;
   background-position: 0 100%;
   padding-top:0px;
@@ -291,6 +304,16 @@ svg{
   ul#keyDifferentiators, ul#collectiveExperience{
     width:80%;
     margin-left:10%;
+  }
+  .landing-background{
+    width: 90%;
+    margin-left: 5%;
+  }
+  h2#ourStoryHeading, h2#landingHeading, h2#teamHeading{
+    margin-left:5%;
+  }
+  h3, h4{
+    margin-left:5%;
   }
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5){

@@ -25859,6 +25859,7 @@
 	var React = __webpack_require__(1);
 	var IndexLink = __webpack_require__(168).IndexLink;
 	var NavLink = __webpack_require__(230).NavLink;
+	var Footer = __webpack_require__(234).Footer;
 	
 	var Main = React.createClass({
 	  displayName: 'Main',
@@ -25918,7 +25919,8 @@
 	          )
 	        )
 	      ),
-	      this.props.children
+	      this.props.children,
+	      React.createElement(Footer, null)
 	    );
 	  }
 	});
@@ -26310,6 +26312,32 @@
 	
 	module.exports = {
 	  Team: Team
+	};
+
+/***/ },
+/* 234 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	
+	var Footer = React.createClass({
+	  displayName: 'Footer',
+	
+	  render: function () {
+	    return React.createElement(
+	      'footer',
+	      null,
+	      React.createElement(
+	        'p',
+	        null,
+	        '© Strategic Healthcare Investment Partners. All rights reserved.'
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = {
+	  Footer: Footer
 	};
 
 /***/ }

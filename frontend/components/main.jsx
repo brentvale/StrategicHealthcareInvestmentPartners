@@ -16,7 +16,7 @@ var Main = React.createClass({
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
-              <a className="navbar-brand navbar-logo" href="#">SHIP</a>
+              <a id="navLogo" className="navbar-brand navbar-logo" href="#">SHIP</a>
             </div>
 
             <div className="collapse navbar-collapse" id="navigationMenuDropdown">

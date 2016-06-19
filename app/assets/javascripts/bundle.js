@@ -25888,7 +25888,7 @@
 	          ),
 	          React.createElement(
 	            'a',
-	            { className: 'navbar-brand navbar-logo', href: '#' },
+	            { id: 'navLogo', className: 'navbar-brand navbar-logo', href: '#' },
 	            'SHIP'
 	          )
 	        ),

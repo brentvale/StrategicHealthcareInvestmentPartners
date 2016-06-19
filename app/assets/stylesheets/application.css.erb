@@ -20,8 +20,6 @@
 /* #009bbf */
 /* 00657f */
 /* darkest 003340 */
-
-
 :root {
   --headings-color: #009bbf;
   --dark-blue: #003340;
@@ -45,6 +43,86 @@ body{
 nav.navbar{
   margin-bottom: 0px;
 }
+canvas{
+  display:inline;
+  position:absolute;
+  z-index: -1;
+  right:0;
+}
+
+
+/*parallax*/
+/* ============================================================
+  PRIMARY STRUCTURE
+============================================================ */
+.container {
+  margin: 0 auto;
+  padding: 0;
+  width:100%;
+}
+/* ============================================================
+  SECTIONS
+============================================================ */
+div.module:last-child {
+  margin-bottom: 0;
+}
+div.module h2 {
+  margin-bottom: 40px;
+}
+div.module p {
+  margin-bottom: 40px;
+  font-size: 16px;
+  font-weight: 300;
+}
+div.module p:last-child {
+  margin-bottom: 0;
+}
+div.module.content {
+  padding: 40px 0;
+}
+div.module.parallax {
+  height: 600px;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+div.module.parallax h1 {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 48px;
+  line-height: 600px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+div.module.parallax-1 {
+    background-image: url("<%= asset_path('full_background_high_res.jpg') %>");
+}
+.fixed-position{
+  position:fixed;
+  top: 0;
+}
+@media all and (min-width: 600px) {
+  div.module h2 {
+    font-size: 42px;
+  }
+  div.module p {
+    font-size: 20px;
+  }
+  div.module.parallax h1 {
+    font-size: 96px;
+  }
+}
+@media all and (min-width: 960px) {
+  div.module.parallax h1 {
+    font-size: 160px;
+  }
+}
+/*end parallax*/
+
+
+/* Headings */
 #SHIPLogo h1{
   position:absolute;
   font-size:1.25em;
@@ -64,13 +142,28 @@ h2{
 h2#ourStoryHeading, h2#teamHeading{
   margin-top:150px;
 }
-h2#landingHeading + h3{
-  margin-top:50px;
-}
-h2#ourStoryHeading, h2#landingHeading, h2#teamHeading{
+h2#ourStoryHeading, h2#teamHeading{
   font-size:3em;
   font-weight:700;
   margin-left:5%;
+}
+h2#landingHeadingOne, h2#landingHeadingTwo{
+  display:inline-block;
+  width: 70%;
+  font-size:5em;
+  font-weight:400;
+  background-color: rgba(255,255,255,0.9);
+  text-align:center;
+}
+h2#landingHeadingOne{
+  margin-bottom: 0;
+  padding-bottom: 10px;
+}
+h2#landingHeadingTwo{
+  margin-top: 0;
+  padding-top: 10px;
+  position: relative;
+  float:right;
 }
 h3{
   font-size:2em;
@@ -91,18 +184,33 @@ h3 span{
   font-weight:100;
   font-size:0.75em;
 }
+.landing-background-container{
+  width:100%;
+  background-color: rgba(255,255,255,0.8);
+  padding-bottom:100px;
+}
 .landing-container{
   /*background-image: url("<%= asset_path('full_background_high_res.jpg') %>");
   background-repeat: no-repeat;
   background-size: cover;*/
   padding-top:100px;
-  padding-bottom: 100px;
 }
 .landing-background{
-  background-color: rgba(255,255,255,0.9);
+  background-color: rgba(255,255,255,1.0);
   width: 60%;
   margin-left: 10%;
-  padding-top: 100px;
+  padding: 20px;
+}
+.landing-background.heading-background{
+  background-color: rgba(255,255,255,0);
+  padding-top: 10px;
+  width: 80%;
+}
+.landing-background:not(.heading-background){
+  padding: 20px;
+  margin-top:200px;
+  position:relative;
+  /*canvas height is 700px*/
 }
 ul#keyDifferentiators, ul#collectiveExperience{
   width:80%;
@@ -124,7 +232,6 @@ ul#keyDifferentiators li:before, ul#collectiveExperience li:before{
 footer{
   position:relative;
   display:block;
-  margin-top:50px;
   height:150px;
   border-top:1px solid #767676;
   background-color: #00CAFF;
@@ -329,11 +436,20 @@ svg{
     width: 90%;
     margin-left: 5%;
   }
-  h2#ourStoryHeading, h2#landingHeading, h2#teamHeading{
+  h2#ourStoryHeading, h2#teamHeading{
     margin-left:5%;
   }
   h3, h4{
     margin-left:5%;
+  }
+  h2#landingHeadingOne, h2#landingHeadingTwo{
+    width: 90%;
+    margin-left: 5%;
+    font-size: 3em;
+  }
+  
+  h2#landingHeadingTwo{
+    float:none;
   }
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5){
@@ -343,6 +459,22 @@ svg{
   .profile div div img{
     clip: rect(0px 266px 200px 133px);
     left: -133px;
+  }
+  h2#landingHeadingTwo{
+    float:none;
+  }
+  h2#landingHeadingOne, h2#landingHeadingTwo{
+    width: 80%;
+    margin-left: 10%;
+    font-size: 2.4em;
+  }
+  .landing-background.heading-background{
+    margin-left: 0;
+    padding-left: 0;
+  }
+  ul#keyDifferentiators, ul#collectiveExperience{
+    margin: 0 0 0 0;
+    width:80%;
   }
 }
   

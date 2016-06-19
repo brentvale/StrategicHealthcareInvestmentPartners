@@ -25870,7 +25870,7 @@
 	      null,
 	      React.createElement(
 	        'nav',
-	        { className: 'navbar navbar-default' },
+	        { className: 'navbar navbar-default navbar-fixed-top' },
 	        React.createElement(
 	          'div',
 	          { className: 'navbar-header' },
@@ -25956,71 +25956,103 @@
 	var React = __webpack_require__(1);
 	
 	var Home = React.createClass({
-	  displayName: "Home",
+	  displayName: 'Home',
 	
+	  componentDidMount: function () {
+	    var windowWidth = window.innerWidth;
+	    var windowHeight = window.innerHeight;
+	
+	    var canvas = document.getElementById('neurons');
+	    canvas.width = windowWidth;
+	    canvas.height = windowHeight;
+	
+	    var c = canvas.getContext('2d');
+	
+	    new NeuralNetwork({ context: c, width: windowWidth, height: windowHeight });
+	  },
 	  render: function () {
 	    return React.createElement(
-	      "div",
-	      { className: "landing-container" },
+	      'div',
+	      null,
+	      React.createElement('canvas', { id: 'neurons', className: 'fixed-position' }),
 	      React.createElement(
-	        "div",
-	        { className: "landing-background" },
+	        'div',
+	        { className: 'landing-container' },
 	        React.createElement(
-	          "h2",
-	          { id: "landingHeading" },
-	          "Strategic Healthcare",
-	          React.createElement("br", null),
-	          "Investment Partners"
-	        ),
-	        React.createElement(
-	          "h3",
-	          null,
-	          "Unique Approach"
-	        ),
-	        React.createElement(
-	          "p",
-	          { className: "block-text" },
-	          "We are assembling a pool of investors that includes corporations, foundations, medical centers, and family offices that have recognized the role of equity investing in innovation to deliver both financial returns and innovative products to improve outcomes for patients. We will also work closely with selected regional sources of innovation and development organizations focused in those areas."
-	        ),
-	        React.createElement(
-	          "h3",
-	          null,
-	          "Healthcare Innovation and ",
-	          React.createElement("br", null),
-	          "Investment Opportunities"
-	        ),
-	        React.createElement(
-	          "p",
-	          { className: "block-text" },
-	          "The opportunity for innovation in healthcare is large both for developing new technologies for existing markets and for the creation of new markets and business models with new technology. Many opportunities are international in scope and some are likely to disrupt current approaches to diagnosis and therapy, increase the role of the consumer, and depend on collaboration among health care providers throughout the episode of care."
-	        ),
-	        React.createElement(
-	          "h3",
-	          null,
-	          "What’s Different About Us?"
-	        ),
-	        React.createElement(
-	          "ul",
-	          { id: "keyDifferentiators" },
+	          'div',
+	          { className: 'landing-background heading-background' },
 	          React.createElement(
-	            "li",
-	            null,
-	            " We work with partners that have strategic objectives that can be pursued with equity investing and we’ll work with them to refine focus areas for the fund."
-	          ),
+	            'div',
+	            { className: 'container' },
+	            React.createElement(
+	              'h2',
+	              { id: 'landingHeadingOne' },
+	              'Strategic Healthcare'
+	            ),
+	            React.createElement(
+	              'h2',
+	              { id: 'landingHeadingTwo' },
+	              'Investment Partners'
+	            )
+	          )
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'landing-background-container' },
 	          React.createElement(
-	            "li",
-	            null,
-	            " We engage medtech, biotech, diagnostic, and digital health industry luminaries from our network as venture partners, entrepreneurs-in- residence, and in executive chairman roles."
-	          ),
-	          React.createElement(
-	            "li",
-	            null,
-	            " We’ll balance new technology investments for existing markets with investments that combine new market, new business model, and new technology elements."
-	          ),
-	          React.createElement(
-	            "li",
-	            null,
-	            " We’ll use our unique accelerator approach in selected regions and focus areas to source, seed-fund, develop, and Series A-fund deals."
+	            'div',
+	            { className: 'landing-background' },
+	            React.createElement(
+	              'h3',
+	              null,
+	              'Unique Approach'
+	            ),
+	            React.createElement(
+	              'p',
+	              { className: 'block-text' },
+	              'We are assembling a pool of investors that includes corporations, foundations, medical centers, and family offices that have recognized the role of equity investing in innovation to deliver both financial returns and innovative products to improve outcomes for patients. We will also work closely with selected regional sources of innovation and development organizations focused in those areas.'
+	            ),
+	            React.createElement(
+	              'h3',
+	              null,
+	              'Healthcare Innovation and ',
+	              React.createElement('br', null),
+	              'Investment Opportunities'
+	            ),
+	            React.createElement(
+	              'p',
+	              { className: 'block-text' },
+	              'The opportunity for innovation in healthcare is large both for developing new technologies for existing markets and for the creation of new markets and business models with new technology. Many opportunities are international in scope and some are likely to disrupt current approaches to diagnosis and therapy, increase the role of the consumer, and depend on collaboration among health care providers throughout the episode of care.'
+	            ),
+	            React.createElement(
+	              'h3',
+	              null,
+	              'What’s Different About Us?'
+	            ),
+	            React.createElement(
+	              'ul',
+	              { id: 'keyDifferentiators' },
+	              React.createElement(
+	                'li',
+	                null,
+	                ' We work with partners that have strategic objectives that can be pursued with equity investing and we’ll work with them to refine focus areas for the fund.'
+	              ),
+	              React.createElement(
+	                'li',
+	                null,
+	                ' We engage medtech, biotech, diagnostic, and digital health industry luminaries from our network as venture partners, entrepreneurs-in- residence, and in executive chairman roles.'
+	              ),
+	              React.createElement(
+	                'li',
+	                null,
+	                ' We’ll balance new technology investments for existing markets with investments that combine new market, new business model, and new technology elements.'
+	              ),
+	              React.createElement(
+	                'li',
+	                null,
+	                ' We’ll use our unique accelerator approach in selected regions and focus areas to source, seed-fund, develop, and Series A-fund deals.'
+	              )
+	            )
 	          )
 	        )
 	      )

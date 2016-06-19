@@ -1,5 +1,6 @@
 var DELTAS = [[-1,0], [-1,1], [0,1], [1,1], [1,0], [1,-1], [0,-1], [-1,-1]];
 function Neural(options){
+  this.delayCount = 0;
   this.thisX = options.thisX;
   this.thisY = options.thisY;
   this.color = options.color;
@@ -96,17 +97,19 @@ Neural.prototype = {
   },
   propogateActionPotential: function(){
     this.currentActionPotentialNode.color = this.color;
-    
+  
     var nextChildIndex = Math.floor(Math.random() * this.currentActionPotentialNode.childNeurons.length);
     var nextChild = this.currentActionPotentialNode.childNeurons[nextChildIndex];
 
     nextChild.color = "#00CAFF";
-    
+  
     if(nextChild.childNeurons.length == 0){
       this.currentActionPotentialNode = this.originNeuron;
+      this.delayCount = 0;
     } else {
       this.currentActionPotentialNode = nextChild;
     }  
+    
   },
   
 };

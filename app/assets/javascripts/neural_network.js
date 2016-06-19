@@ -35,8 +35,12 @@ NeuralNetwork.prototype = {
     this.tickInterval = setInterval(function(){
       that.clearScreen();
       for(var i = 0; i < that.neurals.length; i++){
+        that.neurals[i].delayCount += 1;
         that.neurals[i].drawParentNeurons();
-        that.neurals[i].propogateActionPotential();
+        
+        if(that.neurals[i].delayCount > 50){
+          that.neurals[i].propogateActionPotential();
+        }
       }
     }, 20)
   }

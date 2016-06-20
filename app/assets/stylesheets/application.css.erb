@@ -263,6 +263,7 @@ footer p {
   font-size: 1.4em;
   line-height:1.5em;
   color: #00CAFF;
+  margin-bottom: 0px;
 }
 p{
   text-align:left;
@@ -464,7 +465,7 @@ svg{
     margin-left:5%;
   }
   h2#landingHeadingOne, h2#landingHeadingTwo{
-    width: 90%;
+    width: 100%;
     margin-left: 5%;
     font-size: 3em;
   }
@@ -475,6 +476,14 @@ svg{
   .our-story-container{
     width:100%;
     margin-bottom: 100px;
+  }
+  .container{
+    width: 90%;
+  }
+  .landing-background.heading-background{
+    width: 100%;
+    padding-left: 0;
+    margin-left: 0;
   }
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5){
@@ -488,18 +497,27 @@ svg{
   h2#landingHeadingTwo{
     float:none;
   }
+  h2#landingHeadingOne{
+    padding-bottom:10px;
+  }
   h2#landingHeadingOne, h2#landingHeadingTwo{
-    width: 80%;
-    margin-left: 10%;
+    width: 90%;
+    margin-left: 5%;
     font-size: 2.4em;
+    padding-right: 20px;
+    padding-left: 20px;
   }
   .landing-background.heading-background{
     margin-left: 0;
     padding-left: 0;
+    width: 100%;
   }
   ul#keyDifferentiators, ul#collectiveExperience{
     margin: 0 0 0 0;
     width:80%;
+  }
+  .container{
+    width: 100%;
   }
 }
   

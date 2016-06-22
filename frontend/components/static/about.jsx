@@ -18,12 +18,32 @@ var About = React.createClass({
         <h3>The Fund</h3>
         <p className="block-text">Strategic Healthcare Investment Partners will raise $150 to 200MM with two founding general partners (Brad and Mudit) and one Founding Venture Partner (Ed). We are seeking a first close in Q3 2016.</p>  
       
-        <div className="chart-container">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
+        <div className="chart-section">
+          <h3>Innovation Framework</h3>
+          <div className="chart-container">
+            <div>
+              <p>Box 1</p>
+              <p>Description for box 1 innovation with some possible examples from the founders on investments
+                made in those areas. </p>
+            </div>
+            <div>
+              <p>Box 2</p>
+              <p>Description for box 2 innovation with some possible examples from the founders on investments
+                made in those areas. </p>
+            </div>
+            <div>
+              <p>Box 3</p>
+              <p>Description for box 3 innovation with some possible examples from the founders on investments
+                made in those areas. </p>
+            </div>
+            <div>
+              <p>Box 4</p>
+              <p>Description for box 4 innovation with some possible examples from the founders on investments
+                made in those areas. </p>
+            </div>
+          </div>
         </div>
+        
       </div>
     )
   }

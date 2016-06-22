@@ -53,9 +53,9 @@
 	var HashHistory = __webpack_require__(168).hashHistory;
 	
 	var Main = __webpack_require__(229).Main;
-	var Home = __webpack_require__(231).Home;
-	var About = __webpack_require__(232).About;
-	var Team = __webpack_require__(233).Team;
+	var Home = __webpack_require__(232).Home;
+	var About = __webpack_require__(233).About;
+	var Team = __webpack_require__(234).Team;
 	
 	var routes = React.createElement(
 	  Route,
@@ -25859,7 +25859,7 @@
 	var React = __webpack_require__(1);
 	var IndexLink = __webpack_require__(168).IndexLink;
 	var NavLink = __webpack_require__(230).NavLink;
-	var Footer = __webpack_require__(234).Footer;
+	var Footer = __webpack_require__(231).Footer;
 	
 	var Main = React.createClass({
 	  displayName: 'Main',
@@ -25951,6 +25951,32 @@
 
 /***/ },
 /* 231 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	
+	var Footer = React.createClass({
+	  displayName: 'Footer',
+	
+	  render: function () {
+	    return React.createElement(
+	      'footer',
+	      null,
+	      React.createElement(
+	        'p',
+	        null,
+	        '© Strategic Healthcare Investment Partners. All rights reserved.'
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = {
+	  Footer: Footer
+	};
+
+/***/ },
+/* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
@@ -26065,7 +26091,7 @@
 	};
 
 /***/ },
-/* 232 */
+/* 233 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
@@ -26124,11 +26150,72 @@
 	      ),
 	      React.createElement(
 	        "div",
-	        { className: "chart-container" },
-	        React.createElement("div", null),
-	        React.createElement("div", null),
-	        React.createElement("div", null),
-	        React.createElement("div", null)
+	        { className: "chart-section" },
+	        React.createElement(
+	          "h3",
+	          null,
+	          "Innovation Framework"
+	        ),
+	        React.createElement(
+	          "div",
+	          { className: "chart-container" },
+	          React.createElement(
+	            "div",
+	            null,
+	            React.createElement(
+	              "p",
+	              null,
+	              "Box 1"
+	            ),
+	            React.createElement(
+	              "p",
+	              null,
+	              "Description for box 1 innovation with some possible examples from the founders on investments made in those areas. "
+	            )
+	          ),
+	          React.createElement(
+	            "div",
+	            null,
+	            React.createElement(
+	              "p",
+	              null,
+	              "Box 2"
+	            ),
+	            React.createElement(
+	              "p",
+	              null,
+	              "Description for box 2 innovation with some possible examples from the founders on investments made in those areas. "
+	            )
+	          ),
+	          React.createElement(
+	            "div",
+	            null,
+	            React.createElement(
+	              "p",
+	              null,
+	              "Box 3"
+	            ),
+	            React.createElement(
+	              "p",
+	              null,
+	              "Description for box 3 innovation with some possible examples from the founders on investments made in those areas. "
+	            )
+	          ),
+	          React.createElement(
+	            "div",
+	            null,
+	            React.createElement(
+	              "p",
+	              null,
+	              "Box 4"
+	            ),
+	            React.createElement(
+	              "p",
+	              null,
+	              "Description for box 4 innovation with some possible examples from the founders on investments made in those areas. "
+	            )
+	          )
+	        )
 	      )
 	    );
 	  }
@@ -26139,7 +26226,7 @@
 	};
 
 /***/ },
-/* 233 */
+/* 234 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
@@ -26352,32 +26439,6 @@
 	
 	module.exports = {
 	  Team: Team
-	};
-
-/***/ },
-/* 234 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(1);
-	
-	var Footer = React.createClass({
-	  displayName: 'Footer',
-	
-	  render: function () {
-	    return React.createElement(
-	      'footer',
-	      null,
-	      React.createElement(
-	        'p',
-	        null,
-	        '© Strategic Healthcare Investment Partners. All rights reserved.'
-	      )
-	    );
-	  }
-	});
-	
-	module.exports = {
-	  Footer: Footer
 	};
 
 /***/ }

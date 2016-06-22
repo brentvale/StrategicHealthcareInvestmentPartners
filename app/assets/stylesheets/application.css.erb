@@ -23,6 +23,7 @@
 :root {
   --headings-color: #009bbf;
   --dark-blue: #003340;
+  --light-blue: #00CAFF;
 }
 
 html{
@@ -134,7 +135,7 @@ div.module.parallax-1 {
   font-weight:700;
 }
 #navLogo:hover{
-  color: #00CAFF;
+  color: var(--light-blue);
 }
 h2{
   color:var(--headings-color);
@@ -218,20 +219,56 @@ h3 span{
   margin-bottom: 100px;
   display:inline-block;
 }
-.chart-container{
+.chart-section{
   width: 45%;
   height: 400px;
-  position: absolute;
+  position: fixed;
   top: 100px;
   right: 2%;
+  padding:2%;
+  border-left: 1px solid #003340;
+  border-bottom: 1px solid #003340;
+}
+.chart-section h3{
+  text-align:center;
+}
+.chart-container{
+  height: 100%;
 }
 .chart-container div{
   display: inline-block;
   width: 44%;
-  height: 44%;
+  height: 38%;
   margin: 2%;
-  border: 1px solid #003340;
+  border: 1px solid #00CAFF;
   border-radius: 5px;
+  background-color: #003340;
+  color: var(--light-blue);
+  position:relative;
+  overflow:scroll;
+}
+.chart-container div:hover{
+  border: 1px solid #003340;
+  background-color: var(--light-blue);
+  color: var(--dark-blue);
+}
+.chart-container div p {
+  text-align:center;
+  position:absolute;
+  left:40%;
+  top: 45%;
+}
+.chart-container div p:nth-child(2) {
+  display:none; 
+}
+.chart-container div:hover p:nth-child(1){
+  display: none;
+}
+.chart-container div:hover p:nth-child(2){
+  font-size: 1.2em;
+  display: inline;
+  top: 5%;
+  left:5%;
 }
 ul#keyDifferentiators, ul#collectiveExperience{
   width:80%;
@@ -262,7 +299,7 @@ footer p {
   text-align:center;
   font-size: 1.4em;
   line-height:1.5em;
-  color: #00CAFF;
+  color: var(--light-blue);
   margin-bottom: 0px;
 }
 p{
@@ -485,6 +522,14 @@ svg{
     padding-left: 0;
     margin-left: 0;
   }
+  .chart-section{
+    width: 80%;
+    margin-left: 10%;
+    height: 500px;
+    position: relative;
+    display:block;
+    top: 0;
+  }
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5){
   .profile div div.image-container{
@@ -518,6 +563,15 @@ svg{
   }
   .container{
     width: 100%;
+  }
+  .chart-container div p:nth-child(1) {
+    display:none;
+  }
+  .chart-container div p:nth-child(2){
+    font-size: 1.2em;
+    display: inline;
+    top: 5%;
+    left:5%;
   }
 }
   

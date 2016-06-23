@@ -22,10 +22,7 @@ var Home = React.createClass({
         <div className="landing-container">
         
           <div className="landing-background heading-background">
-            <div className="container">
-              <h2 id="landingHeadingOne">Strategic&nbsp;Healthcare</h2>
-              <h2 id="landingHeadingTwo">Investment&nbsp;Partners</h2>
-            </div>
+              <h2>S<span>TRATEGIC</span><br/>H<span>EALTHCARE</span><br/>I<span>NVESTMENT</span><br/>P<span>ARTNERS</span></h2>
           </div>
         
           <div className="landing-background-container">

@@ -53,9 +53,9 @@
 	var HashHistory = __webpack_require__(168).hashHistory;
 	
 	var Main = __webpack_require__(229).Main;
-	var Home = __webpack_require__(231).Home;
-	var About = __webpack_require__(232).About;
-	var Team = __webpack_require__(233).Team;
+	var Home = __webpack_require__(232).Home;
+	var About = __webpack_require__(233).About;
+	var Team = __webpack_require__(234).Team;
 	
 	var routes = React.createElement(
 	  Route,
@@ -25859,7 +25859,7 @@
 	var React = __webpack_require__(1);
 	var IndexLink = __webpack_require__(168).IndexLink;
 	var NavLink = __webpack_require__(230).NavLink;
-	var Footer = __webpack_require__(234).Footer;
+	var Footer = __webpack_require__(231).Footer;
 	
 	var Main = React.createClass({
 	  displayName: 'Main',
@@ -25955,6 +25955,32 @@
 
 	var React = __webpack_require__(1);
 	
+	var Footer = React.createClass({
+	  displayName: 'Footer',
+	
+	  render: function () {
+	    return React.createElement(
+	      'footer',
+	      null,
+	      React.createElement(
+	        'p',
+	        null,
+	        '© Strategic Healthcare Investment Partners. All rights reserved.'
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = {
+	  Footer: Footer
+	};
+
+/***/ },
+/* 232 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	
 	var Home = React.createClass({
 	  displayName: 'Home',
 	
@@ -25982,17 +26008,34 @@
 	          'div',
 	          { className: 'landing-background heading-background' },
 	          React.createElement(
-	            'div',
-	            { className: 'container' },
+	            'h2',
+	            null,
+	            'S',
 	            React.createElement(
-	              'h2',
-	              { id: 'landingHeadingOne' },
-	              'Strategic Healthcare'
+	              'span',
+	              null,
+	              'TRATEGIC'
 	            ),
+	            React.createElement('br', null),
+	            'H',
 	            React.createElement(
-	              'h2',
-	              { id: 'landingHeadingTwo' },
-	              'Investment Partners'
+	              'span',
+	              null,
+	              'EALTHCARE'
+	            ),
+	            React.createElement('br', null),
+	            'I',
+	            React.createElement(
+	              'span',
+	              null,
+	              'NVESTMENT'
+	            ),
+	            React.createElement('br', null),
+	            'P',
+	            React.createElement(
+	              'span',
+	              null,
+	              'ARTNERS'
 	            )
 	          )
 	        ),
@@ -26065,7 +26108,7 @@
 	};
 
 /***/ },
-/* 232 */
+/* 233 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
@@ -26139,7 +26182,7 @@
 	};
 
 /***/ },
-/* 233 */
+/* 234 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
@@ -26352,32 +26395,6 @@
 	
 	module.exports = {
 	  Team: Team
-	};
-
-/***/ },
-/* 234 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(1);
-	
-	var Footer = React.createClass({
-	  displayName: 'Footer',
-	
-	  render: function () {
-	    return React.createElement(
-	      'footer',
-	      null,
-	      React.createElement(
-	        'p',
-	        null,
-	        '© Strategic Healthcare Investment Partners. All rights reserved.'
-	      )
-	    );
-	  }
-	});
-	
-	module.exports = {
-	  Footer: Footer
 	};
 
 /***/ }

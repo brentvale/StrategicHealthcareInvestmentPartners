@@ -137,7 +137,7 @@ div.module.parallax-1 {
   color: #00CAFF;
 }
 h2{
-  color:var(--headings-color);
+  color: var(--headings-color);
 }
 h2#ourStoryHeading, h2#teamHeading{
   margin-top:150px;
@@ -145,26 +145,7 @@ h2#ourStoryHeading, h2#teamHeading{
 h2#ourStoryHeading, h2#teamHeading{
   font-size:3em;
   font-weight:700;
-  margin-left:5%;
-}
-h2#landingHeadingOne, h2#landingHeadingTwo{
-  display:inline-block;
-  width: 80%;
-  font-size:5em;
-  font-weight:400;
-  background-color: rgba(255,255,255,1.0);
-  text-align:center;
-}
-h2#landingHeadingOne{
-  margin-bottom: 0;
-  padding-top: 20px;
-}
-h2#landingHeadingTwo{
-  margin-top: 0;
-  padding-bottom: 20px;
-  padding-top: 10px;
-  position: relative;
-  float:right;
+  margin-left: 5%;
 }
 h3{
   font-size:2em;
@@ -191,9 +172,6 @@ h3 span{
   padding-bottom:100px;
 }
 .landing-container{
-  /*background-image: url("<%= asset_path('full_background_high_res.jpg') %>");
-  background-repeat: no-repeat;
-  background-size: cover;*/
   padding-top:100px;
 }
 .landing-background{
@@ -204,8 +182,18 @@ h3 span{
 }
 .landing-background.heading-background{
   background-color: rgba(255,255,255,0);
-  padding-top: 10px;
-  width: 80%;
+  max-width: 80%;
+  width:350px;
+  border-radius: 2px;
+}
+.landing-background.heading-background h2{
+  padding: 10px;
+  font-size: 5em;
+  background-color: var(--dark-blue);
+  color:white;
+}
+.landing-background.heading-background h2 span{
+  font-size: .8em;
 }
 .landing-background:not(.heading-background){
   padding: 20px;
@@ -464,15 +452,6 @@ svg{
   h3, h4{
     margin-left:5%;
   }
-  h2#landingHeadingOne, h2#landingHeadingTwo{
-    width: 100%;
-    margin-left: 5%;
-    font-size: 3em;
-  }
-  
-  h2#landingHeadingTwo{
-    float:none;
-  }
   .our-story-container{
     width:100%;
     margin-bottom: 100px;
@@ -493,19 +472,6 @@ svg{
   .profile div div img{
     clip: rect(0px 266px 200px 133px);
     left: -133px;
-  }
-  h2#landingHeadingTwo{
-    float:none;
-  }
-  h2#landingHeadingOne{
-    padding-bottom:10px;
-  }
-  h2#landingHeadingOne, h2#landingHeadingTwo{
-    width: 90%;
-    margin-left: 5%;
-    font-size: 2.4em;
-    padding-right: 20px;
-    padding-left: 20px;
   }
   .landing-background.heading-background{
     margin-left: 0;

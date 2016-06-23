@@ -1,5 +1,5 @@
 function Neuron(options){
-  this.color = options.color || "#003340";
+  this.color = options.color || NEURON_COLOR;
   this.radius = options.radius || 2;
   this.level = options.level;
   this.childNeurons = [];

@@ -1,7 +1,9 @@
-var NEURAL_BODY_IMAGE;
+var BACKGROUND = "#003340";
+var NEURON_COLOR = "#009BBF";
+var ACTION_POTENTIAL_COLOR = "#00CAFF"
+
 function NeuralNetwork(options){
   this.ctx = options.context;
-  this.color = "#003340";
   this.neurals = [];
   WINDOW_WIDTH = options.width;
   WINDOW_HEIGHT = options.height;
@@ -13,7 +15,7 @@ NeuralNetwork.prototype = {
   clearScreen: function(){
     this.ctx.beginPath();
     this.ctx.rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
-    this.ctx.fillStyle = "white";
+    this.ctx.fillStyle = BACKGROUND;
     this.ctx.fill();
   },
   createNeurals: function(){

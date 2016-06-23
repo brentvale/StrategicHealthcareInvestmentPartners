@@ -3,7 +3,6 @@ function Neural(options){
   this.delayCount = 0;
   this.thisX = options.thisX;
   this.thisY = options.thisY;
-  this.color = options.color;
   this.ctx = options.context;
   this.neuronsArray = [];
   this.createNeurons();
@@ -64,11 +63,11 @@ Neural.prototype = {
       this.ctx.stroke();
     }
   },
-  drawNeuralHead:function(temp, color, radius){
+  drawNeuralHead:function(node){
     
     
     //*****draw Neural Head with background neuron image*****
-    // this.ctx.drawImage(NEURAL_BODY_IMAGE, temp.x, temp.y, 10, 10);
+    // this.ctx.drawImage(NEURAL_BODY_IMAGE, node.x, node.y, 10, 10);
     
     //*****draw Neural Head with radial gradient*****
     
@@ -78,21 +77,20 @@ Neural.prototype = {
 //         // Radius of the entire circle.
 //         radius = 8;
 //
-//     var gradient = this.ctx.createRadialGradient(temp.x, temp.y, innerRadius, temp.x, temp.y, outerRadius);
+//     var gradient = this.ctx.createRadialGradient(node.x, node.y, innerRadius, node.x, node.y, outerRadius);
 //     gradient.addColorStop(0, 'white');
 //*****/     gradient.addColorStop(1, 'blue');
 //
-//     this.ctx.arc(temp.x, temp.y, radius, 0, 2 * Math.PI);
+//     this.ctx.arc(node.x, node.y, radius, 0, 2 * Math.PI);
 //
 //     this.ctx.fillStyle = "black";
 //     this.ctx.fill();
     
     //*****draw Neural Head with simple circles*****
-    var tempRadius = radius || temp.radius;
     this.ctx.beginPath();
-    this.ctx.arc(temp.x,temp.y, tempRadius, 0, Math.PI*2);
+    this.ctx.arc(node.x,node.y, node.radius, 0, Math.PI*2);
     this.ctx.closePath();
-    this.ctx.fillStyle = color || this.color;
+    this.ctx.fillStyle = NEURON_COLOR;
     this.ctx.fill();
   },
   propogateActionPotential: function(){
@@ -101,7 +99,7 @@ Neural.prototype = {
     var nextChildIndex = Math.floor(Math.random() * this.currentActionPotentialNode.childNeurons.length);
     var nextChild = this.currentActionPotentialNode.childNeurons[nextChildIndex];
 
-    nextChild.color = "#00CAFF";
+    nextChild.color = ACTION_POTENTIAL_COLOR;
   
     if(nextChild.childNeurons.length == 0){
       this.currentActionPotentialNode = this.originNeuron;

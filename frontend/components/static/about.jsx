@@ -17,13 +17,7 @@ var About = React.createClass({
     
         <h3>The Fund</h3>
         <p className="block-text">Strategic Healthcare Investment Partners will raise $150 to 200MM with two founding general partners (Brad and Mudit) and one Founding Venture Partner (Ed). We are seeking a first close in Q3 2016.</p>  
-      
-        <div className="chart-container">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
+    
       </div>
     )
   }

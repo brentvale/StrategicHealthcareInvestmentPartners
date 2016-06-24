@@ -26164,14 +26164,6 @@
 	        "p",
 	        { className: "block-text" },
 	        "Strategic Healthcare Investment Partners will raise $150 to 200MM with two founding general partners (Brad and Mudit) and one Founding Venture Partner (Ed). We are seeking a first close in Q3 2016."
-	      ),
-	      React.createElement(
-	        "div",
-	        { className: "chart-container" },
-	        React.createElement("div", null),
-	        React.createElement("div", null),
-	        React.createElement("div", null),
-	        React.createElement("div", null)
 	      )
 	    );
 	  }

@@ -2,6 +2,7 @@ var React = require('react');
 var IndexLink = require('react-router').IndexLink;
 var NavLink = require('./links/nav_link.jsx').NavLink;
 var Footer = require('./static/footer.jsx').Footer;
+var LoginButton = require('./static/login_button.jsx').LoginButton;
 
 var Main = React.createClass({
   render: function(){
@@ -23,6 +24,7 @@ var Main = React.createClass({
               <ul className="nav navbar-nav">
                 <li><a className="sliding-u-l-r" href="#/our-story">Our Story</a></li>
                 <li><a className="sliding-u-l-r" href="#/team">Team</a></li>
+                <LoginButton />
               </ul>
             </div>
       

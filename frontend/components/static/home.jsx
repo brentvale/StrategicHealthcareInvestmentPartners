@@ -12,6 +12,9 @@ var Home = React.createClass({
     this.contentListener = ContentStore.addListener(this._onChange);
     ClientActions.fetchPages();
   },
+  handleEditText: function(){
+    ClientActions.fetchPages();
+  },
   componentWillUnmount: function(){
     this.contentListener.remove();
   },
@@ -32,6 +35,8 @@ var Home = React.createClass({
       }
     }
     
+    var that = this;
+    
     return(
       <div>
         <CanvasNeurons />
@@ -48,7 +53,8 @@ var Home = React.createClass({
                 return <ContentSection key={idx} 
                                        sectionId={sectionObj.id}
                                        heading={sectionObj.heading}
-                                       paragraph={sectionObj.paragraphs[0]} />
+                                       paragraph={sectionObj.paragraphs[0]} 
+                                       handleEditText={that.handleEditText}/>
               })}
               <h3>What’s Different About Us?</h3>
               <ul id="keyDifferentiators">

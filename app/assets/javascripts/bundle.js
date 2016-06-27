@@ -26002,7 +26002,11 @@
 	    this.userListener.remove();
 	  },
 	  handleSignOut: function () {
-	    ClientActions.signOutCurrentUser();
+	    var that = this;
+	    ClientActions.signOutCurrentUser(function () {
+	      that.setState({ currentUser: false });
+	    });
+	    //once signed out, update current user to false
 	  },
 	  render: function () {
 	    var signInOutButton;
@@ -26061,6 +26065,11 @@
 	  } else {
 	    return _currentUser;
 	  }
+	};
+	
+	UserStore.signOutUser = function () {
+	  _currentUser = {};
+	  return false;
 	};
 	
 	UserStore.__onDispatch = function (payload) {
@@ -32860,6 +32869,12 @@
 	  },
 	  fetchPages: function () {
 	    ApiUtil.fetchPages();
+	  },
+	  updateHeading: function (headingId, headingValue) {
+	    ApiUtil.updateHeading(headingId, headingValue);
+	  },
+	  updateParagraph: function (paragraphId, paragraphValue) {
+	    ApiUtil.updateParagraph(paragraphId, paragraphValue);
 	  }
 	
 	};
@@ -32915,6 +32930,40 @@
 	        console.log("errored out in fetchPages");
 	      }
 	    });
+	  },
+	  updateParagraph: function (paragraphId, paragraphValue) {
+	    $.ajax({
+	      url: "api/paragraphs/" + paragraphId,
+	      method: "PATCH",
+	      data: {
+	        paragraph: {
+	          body: paragraphValue
+	        }
+	      },
+	      success: function (obj) {
+	        console.log("need to handle success in updateParagraph");
+	      },
+	      error: function (resp) {
+	        console.log("errored out in updateParagraph");
+	      }
+	    });
+	  },
+	  updateHeading: function (headingId, headingValue) {
+	    $.ajax({
+	      url: "api/sections/" + headingId,
+	      method: "PATCH",
+	      data: {
+	        section: {
+	          heading: headingValue
+	        }
+	      },
+	      success: function (obj) {
+	        console.log("need to handle success in updateHeading");
+	      },
+	      error: function (resp) {
+	        console.log("errored out in updateHeading");
+	      }
+	    });
 	  }
 	
 	};
@@ -32968,6 +33017,9 @@
 	    this.contentListener = ContentStore.addListener(this._onChange);
 	    ClientActions.fetchPages();
 	  },
+	  handleEditText: function () {
+	    ClientActions.fetchPages();
+	  },
 	  componentWillUnmount: function () {
 	    this.contentListener.remove();
 	  },
@@ -32987,6 +33039,8 @@
 	        contentArray.push(this.state.pageContent[i]);
 	      }
 	    }
+	
+	    var that = this;
 	
 	    return React.createElement(
 	      'div',
@@ -33040,7 +33094,8 @@
 	              return React.createElement(ContentSection, { key: idx,
 	                sectionId: sectionObj.id,
 	                heading: sectionObj.heading,
-	                paragraph: sectionObj.paragraphs[0] });
+	                paragraph: sectionObj.paragraphs[0],
+	                handleEditText: that.handleEditText });
 	            }),
 	            React.createElement(
 	              'h3',
@@ -33413,17 +33468,30 @@
 	var React = __webpack_require__(1);
 	var UserStore = __webpack_require__(233);
 	var ParagraphForm = __webpack_require__(267).ParagraphForm;
+	var ClientActions = __webpack_require__(256);
 	
 	var ContentSection = React.createClass({
 	  displayName: 'ContentSection',
 	
 	  getInitialState: function () {
-	    return { editing: true };
+	    return { editing: true, currentUser: UserStore.currentUser() };
+	  },
+	  _onChange: function () {
+	    this.setState({ currentUser: UserStore.currentUser() });
+	  },
+	  componentDidMount: function () {
+	    this.userListener = UserStore.addListener(this._onChange);
+	    ClientActions.fetchCurrentUser();
+	  },
+	  componentWillUnmount: function () {
+	    this.userListener.remove();
 	  },
 	  render: function () {
-	    //RETURNS                  
-	    if (UserStore.currentUser()) {
-	      return React.createElement(ParagraphForm, { sectionId: this.props.sectionId, heading: this.props.heading, paragraph: this.props.paragraph });
+	    if (this.state.currentUser) {
+	      return React.createElement(ParagraphForm, { handleEditText: this.props.handleEditText,
+	        sectionId: this.props.sectionId,
+	        heading: this.props.heading,
+	        paragraph: this.props.paragraph });
 	    } else {
 	      return React.createElement(
 	        'div',
@@ -33446,12 +33514,6 @@
 	module.exports = {
 	  ContentSection: ContentSection
 	};
-	
-	// <h3>Unique Approach</h3>
-	//        <p className="block-text">We are assembling a pool of investors that includes corporations, foundations, medical centers, and family offices that have recognized the role of equity investing in innovation to deliver both financial returns and innovative products to improve outcomes for patients. We will also work closely with selected regional sources of innovation and development organizations focused in those areas.</p>
-	//
-	//        <h3>Healthcare Innovation and <br/>Investment Opportunities</h3>
-	//        <p className="block-text">The opportunity for innovation in healthcare is large both for developing new technologies for existing markets and for the creation of new markets and business models with new technology. Many opportunities are international in scope and some are likely to disrupt current approaches to diagnosis and therapy, increase the role of the consumer, and depend on collaboration among health care providers throughout the episode of care.</p>
 
 /***/ },
 /* 266 */
@@ -33488,12 +33550,20 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
+	var ClientActions = __webpack_require__(256);
+	var ContentStore = __webpack_require__(262);
 	
 	var ParagraphForm = React.createClass({
-	  displayName: "ParagraphForm",
+	  displayName: 'ParagraphForm',
 	
 	  getInitialState: function () {
 	    return { editing: false };
+	  },
+	  componentDidMount: function () {
+	    this.paragraphListener = ContentStore.addListener(this._onChange);
+	  },
+	  componentWillUnmount: function () {
+	    this.paragraphListener.remove();
 	  },
 	  handleSave: function (event) {
 	    event.preventDefault();
@@ -33505,14 +33575,10 @@
 	    var paragraphValue = $(event.currentTarget).find("p textarea").val();
 	    var paragraphId = parseInt($(event.currentTarget).attr("data-paragraph-id"));
 	
-	    console.log("heading Value is: " + headingValue);
-	    console.log("heading Id is: " + headingId);
-	    console.log("paragraph Value is: " + paragraphValue);
-	    console.log("paragraph Id is: " + paragraphId);
+	    ClientActions.updateHeading(headingId, headingValue);
+	    ClientActions.updateParagraph(paragraphId, paragraphValue);
 	
-	    //save paragraph value
-	
-	    //save heading value
+	    this.props.handleEditText();
 	  },
 	  toggleEdit: function () {
 	    this.setState({ editing: !this.state.editing });
@@ -33520,41 +33586,41 @@
 	  render: function () {
 	    if (this.state.editing) {
 	      return React.createElement(
-	        "div",
+	        'div',
 	        null,
 	        React.createElement(
-	          "form",
-	          { "data-section-id": this.props.sectionId, "data-paragraph-id": this.props.paragraph.id, onSubmit: this.handleSave },
+	          'form',
+	          { 'data-section-id': this.props.sectionId, 'data-paragraph-id': this.props.paragraph.id, onSubmit: this.handleSave },
 	          React.createElement(
-	            "h3",
+	            'h3',
 	            null,
-	            React.createElement("input", { defaultValue: this.props.heading })
+	            React.createElement('input', { defaultValue: this.props.heading })
 	          ),
 	          React.createElement(
-	            "p",
-	            { "data-id": this.props.paragraph.id, className: "block-text" },
-	            React.createElement("textarea", { defaultValue: this.props.paragraph.body })
+	            'p',
+	            { 'data-id': this.props.paragraph.id, className: 'block-text' },
+	            React.createElement('textarea', { defaultValue: this.props.paragraph.body })
 	          ),
-	          React.createElement("input", { type: "submit", id: "saveParagraph", value: "Save" })
+	          React.createElement('input', { type: 'submit', id: 'saveParagraph', value: 'Save' })
 	        )
 	      );
 	    } else {
 	      return React.createElement(
-	        "div",
+	        'div',
 	        null,
 	        React.createElement(
-	          "button",
-	          { id: "editParagraph", onClick: this.toggleEdit },
-	          "Edit Section"
+	          'button',
+	          { id: 'editParagraph', onClick: this.toggleEdit },
+	          'Edit Section'
 	        ),
 	        React.createElement(
-	          "h3",
+	          'h3',
 	          null,
 	          this.props.heading
 	        ),
 	        React.createElement(
-	          "p",
-	          { "data-id": this.props.paragraph.id, className: "block-text" },
+	          'p',
+	          { 'data-id': this.props.paragraph.id, className: 'block-text' },
 	          this.props.paragraph.body
 	        )
 	      );

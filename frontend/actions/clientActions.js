@@ -9,6 +9,12 @@ module.exports = {
   },
   fetchPages: function(){
     ApiUtil.fetchPages();
+  },
+  updateHeading: function(headingId, headingValue){
+    ApiUtil.updateHeading(headingId, headingValue);
+  },
+  updateParagraph: function(paragraphId, paragraphValue){
+    ApiUtil.updateParagraph(paragraphId, paragraphValue);
   }
 
 }

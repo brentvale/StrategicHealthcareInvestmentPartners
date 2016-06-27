@@ -1,8 +1,16 @@
 var React = require('react');
+var ClientActions = require('../../actions/clientActions.js');
+var ContentStore = require('../../stores/content.js');
 
 var ParagraphForm = React.createClass({
   getInitialState: function(){
     return {editing: false}
+  },
+  componentDidMount: function(){
+    this.paragraphListener = ContentStore.addListener(this._onChange);
+  },
+  componentWillUnmount: function(){
+    this.paragraphListener.remove();
   },
   handleSave: function(event){
     event.preventDefault();
@@ -14,14 +22,10 @@ var ParagraphForm = React.createClass({
     var paragraphValue = $(event.currentTarget).find("p textarea").val();
     var paragraphId = parseInt($(event.currentTarget).attr("data-paragraph-id"));
     
-    console.log("heading Value is: " + headingValue);
-    console.log("heading Id is: " + headingId);
-    console.log("paragraph Value is: " + paragraphValue);
-    console.log("paragraph Id is: " + paragraphId);
+    ClientActions.updateHeading(headingId, headingValue);
+    ClientActions.updateParagraph(paragraphId, paragraphValue);
     
-    //save paragraph value
-    
-    //save heading value
+    this.props.handleEditText();
   },
   toggleEdit: function(){
     this.setState({editing: !this.state.editing});

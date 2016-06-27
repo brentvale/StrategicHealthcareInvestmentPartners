@@ -1,24 +1,40 @@
 var React = require('react');
+var ContentStore = require('../../stores/content.js');
+var ClientActions = require("../../actions/clientActions.js");
+var ContentSection = require("./content_section.jsx").ContentSection;
+var CanvasNeurons = require("./canvas_neurons.jsx").CanvasNeurons;
 
 var Home = React.createClass({
+  getInitialState: function(){
+    return {pageContent: ContentStore.pageContent("home")}
+  },
   componentDidMount: function(){
-    var windowWidth = window.innerWidth;
-    var windowHeight = window.innerHeight;
-    
-    var canvas = document.getElementById('neurons'); 
-    canvas.width = windowWidth;
-    canvas.height = windowHeight;
-    
-    var c = canvas.getContext('2d'); 
-    
-    new NeuralNetwork({context:c, width:windowWidth, height:windowHeight});
-    
+    this.contentListener = ContentStore.addListener(this._onChange);
+    ClientActions.fetchPages();
+  },
+  componentWillUnmount: function(){
+    this.contentListener.remove();
+  },
+  _onChange: function(){
+    this.setState({pageContent: ContentStore.pageContent("home")});
   },
   render: function(){
+    var stateLength = Object.keys(this.state.pageContent).length;
+    
+    if(stateLength == 0){
+      return <div></div>;
+    } else {
+      var contentArray = [];
+      
+      //only going to stateLength, should go to stateLength + 1 when text added for <ul> section
+      for(var i = 1; i < stateLength; i++){
+        contentArray.push(this.state.pageContent[i]);
+      }
+    }
+    
     return(
       <div>
-         
-        <canvas id="neurons" className="fixed-position"></canvas>
+        <CanvasNeurons />
         <div className="landing-container">
         
           <div className="landing-background heading-background">
@@ -27,12 +43,13 @@ var Home = React.createClass({
         
           <div className="landing-background-container">
             <div className="landing-background">
-              <h3>Unique Approach</h3>
-              <p className="block-text">We are assembling a pool of investors that includes corporations, foundations, medical centers, and family offices that have recognized the role of equity investing in innovation to deliver both financial returns and innovative products to improve outcomes for patients. We will also work closely with selected regional sources of innovation and development organizations focused in those areas.</p>
-        
-              <h3>Healthcare Innovation and <br/>Investment Opportunities</h3>
-              <p className="block-text">The opportunity for innovation in healthcare is large both for developing new technologies for existing markets and for the creation of new markets and business models with new technology. Many opportunities are international in scope and some are likely to disrupt current approaches to diagnosis and therapy, increase the role of the consumer, and depend on collaboration among health care providers throughout the episode of care.</p>
-
+              
+              {contentArray.map(function(sectionObj, idx){
+                return <ContentSection key={idx} 
+                                       sectionId={sectionObj.id}
+                                       heading={sectionObj.heading}
+                                       paragraph={sectionObj.paragraphs[0]} />
+              })}
               <h3>What’s Different About Us?</h3>
               <ul id="keyDifferentiators">
                 <li>&nbsp;We work with partners that have strategic objectives that can be pursued with equity investing and we’ll work with them to refine focus areas for the fund.</li>

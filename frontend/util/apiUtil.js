@@ -34,4 +34,17 @@ module.exports = {
     })
   },
   
+  fetchPages: function(){
+    $.ajax({
+      url: "api/pages",
+      method: "GET",
+      success: function(obj){
+        ServerActions.pageContentReceived(obj);
+      },
+      error: function(resp){
+        console.log("errored out in fetchPages");
+      }
+    })
+  }
+  
 }

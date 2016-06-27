@@ -1,0 +1,4 @@
+module.exports = {
+  PAGE_CONTENT_RECEIVED: "PAGE_CONTENT_RECEIVED"
+};
+

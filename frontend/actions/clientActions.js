@@ -7,5 +7,8 @@ module.exports = {
   signOutCurrentUser: function(callback) {
     ApiUtil.signOutCurrentUser(callback);
   },
+  fetchPages: function(){
+    ApiUtil.fetchPages();
+  }
 
 }

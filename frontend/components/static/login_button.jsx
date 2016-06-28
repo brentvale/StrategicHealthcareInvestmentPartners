@@ -17,7 +17,11 @@ var LoginButton = React.createClass({
     this.userListener.remove();
   },
   handleSignOut: function(){
-    ClientActions.signOutCurrentUser();
+    var that = this;
+    ClientActions.signOutCurrentUser(function(){
+      that.setState({currentUser: false});
+    });
+    //once signed out, update current user to false
   },
   render: function(){
     var signInOutButton;

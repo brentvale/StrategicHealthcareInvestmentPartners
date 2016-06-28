@@ -53,9 +53,9 @@
 	var HashHistory = __webpack_require__(168).hashHistory;
 	
 	var Main = __webpack_require__(229).Main;
-	var Home = __webpack_require__(256).Home;
-	var About = __webpack_require__(257).About;
-	var Team = __webpack_require__(258).Team;
+	var Home = __webpack_require__(259).Home;
+	var About = __webpack_require__(260).About;
+	var Team = __webpack_require__(261).Team;
 	
 	var routes = React.createElement(
 	  Route,
@@ -25983,7 +25983,7 @@
 
 	var React = __webpack_require__(1);
 	var UserStore = __webpack_require__(233);
-	var ClientActions = __webpack_require__(260);
+	var ClientActions = __webpack_require__(256);
 	
 	var LoginButton = React.createClass({
 	  displayName: 'LoginButton',
@@ -26002,7 +26002,11 @@
 	    this.userListener.remove();
 	  },
 	  handleSignOut: function () {
-	    ClientActions.signOutCurrentUser();
+	    var that = this;
+	    ClientActions.signOutCurrentUser(function () {
+	      that.setState({ currentUser: false });
+	    });
+	    //once signed out, update current user to false
 	  },
 	  render: function () {
 	    var signInOutButton;
@@ -26061,6 +26065,11 @@
 	  } else {
 	    return _currentUser;
 	  }
+	};
+	
+	UserStore.signOutUser = function () {
+	  _currentUser = {};
+	  return false;
 	};
 	
 	UserStore.__onDispatch = function (payload) {
@@ -32849,28 +32858,194 @@
 /* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var ApiUtil = __webpack_require__(257);
+	
+	module.exports = {
+	  fetchCurrentUser: function () {
+	    ApiUtil.fetchCurrentUser();
+	  },
+	  signOutCurrentUser: function (callback) {
+	    ApiUtil.signOutCurrentUser(callback);
+	  },
+	  fetchPages: function () {
+	    ApiUtil.fetchPages();
+	  },
+	  updateHeading: function (headingId, headingValue) {
+	    ApiUtil.updateHeading(headingId, headingValue);
+	  },
+	  updateParagraph: function (paragraphId, paragraphValue) {
+	    ApiUtil.updateParagraph(paragraphId, paragraphValue);
+	  }
+	
+	};
+
+/***/ },
+/* 257 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var ServerActions = __webpack_require__(258);
+	
+	module.exports = {
+	
+	  fetchCurrentUser: function () {
+	    $.ajax({
+	      url: "api/users/fetch_current_user",
+	      method: "GET",
+	      success: function (userObj) {
+	        //return message if no current user
+	        if (userObj.message) {
+	          console.log(userObj.message);
+	          ServerActions.receiveCurrentUser({ currentUser: false });
+	        } else {
+	          ServerActions.receiveCurrentUser({ currentUser: userObj.current_user });
+	        }
+	      },
+	      error: function () {
+	        console.log("errored out in fetchCurrentUser");
+	      }
+	    });
+	  },
+	
+	  signOutCurrentUser: function (callback) {
+	    $.ajax({
+	      url: "api/users/sign_out",
+	      method: "GET",
+	      success: function (message) {
+	        ServerActions.signOutSuccess({ message: message });
+	      },
+	      error: function (resp) {
+	        console.log("errored out in signOutCurrentUser");
+	      }
+	    });
+	  },
+	
+	  fetchPages: function () {
+	    $.ajax({
+	      url: "api/pages",
+	      method: "GET",
+	      success: function (obj) {
+	        ServerActions.pageContentReceived(obj);
+	      },
+	      error: function (resp) {
+	        console.log("errored out in fetchPages");
+	      }
+	    });
+	  },
+	  updateParagraph: function (paragraphId, paragraphValue) {
+	    $.ajax({
+	      url: "api/paragraphs/" + paragraphId,
+	      method: "PATCH",
+	      data: {
+	        paragraph: {
+	          body: paragraphValue
+	        }
+	      },
+	      success: function (obj) {
+	        console.log("need to handle success in updateParagraph");
+	      },
+	      error: function (resp) {
+	        console.log("errored out in updateParagraph");
+	      }
+	    });
+	  },
+	  updateHeading: function (headingId, headingValue) {
+	    $.ajax({
+	      url: "api/sections/" + headingId,
+	      method: "PATCH",
+	      data: {
+	        section: {
+	          heading: headingValue
+	        }
+	      },
+	      success: function (obj) {
+	        console.log("need to handle success in updateHeading");
+	      },
+	      error: function (resp) {
+	        console.log("errored out in updateHeading");
+	      }
+	    });
+	  }
+	
+	};
+
+/***/ },
+/* 258 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Dispatcher = __webpack_require__(252);
+	var UserConstants = __webpack_require__(255);
+	var ContentConstants = __webpack_require__(263);
+	
+	module.exports = {
+	  receiveCurrentUser: function (options) {
+	    Dispatcher.dispatch({
+	      actionType: UserConstants.CURRENT_USER_RECEIVED,
+	      currentUser: options.currentUser
+	    });
+	  },
+	  signOutSuccess: function (message) {
+	    Dispatcher.dispatch({
+	      actionType: UserConstants.SIGN_OUT_SUCCESSFUL,
+	      message: message
+	    });
+	  },
+	  pageContentReceived: function (pages) {
+	    Dispatcher.dispatch({
+	      actionType: ContentConstants.PAGE_CONTENT_RECEIVED,
+	      pages: pages
+	    });
+	  }
+	};
+
+/***/ },
+/* 259 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var React = __webpack_require__(1);
+	var ContentStore = __webpack_require__(262);
+	var ClientActions = __webpack_require__(256);
+	var ContentSection = __webpack_require__(265).ContentSection;
+	var CanvasNeurons = __webpack_require__(266).CanvasNeurons;
 	
 	var Home = React.createClass({
 	  displayName: 'Home',
 	
+	  getInitialState: function () {
+	    return { pageContent: ContentStore.pageContent("home") };
+	  },
 	  componentDidMount: function () {
-	    var windowWidth = window.innerWidth;
-	    var windowHeight = window.innerHeight;
-	
-	    var canvas = document.getElementById('neurons');
-	    canvas.width = windowWidth;
-	    canvas.height = windowHeight;
-	
-	    var c = canvas.getContext('2d');
-	
-	    new NeuralNetwork({ context: c, width: windowWidth, height: windowHeight });
+	    this.contentListener = ContentStore.addListener(this._onChange);
+	    ClientActions.fetchPages();
+	  },
+	  handleEditText: function () {
+	    ClientActions.fetchPages();
+	  },
+	  componentWillUnmount: function () {
+	    this.contentListener.remove();
+	  },
+	  _onChange: function () {
+	    this.setState({ pageContent: ContentStore.pageContent("home") });
 	  },
 	  render: function () {
+	    var stateLength = Object.keys(this.state.pageContent).length;
+	
+	    if (stateLength == 0) {
+	      return React.createElement('div', null);
+	    } else {
+	      var contentArray = [];
+	
+	      //only going to stateLength, should go to stateLength + 1 when text added for <ul> section
+	      for (var i = 1; i < stateLength; i++) {
+	        contentArray.push(this.state.pageContent[i]);
+	      }
+	    }
+	
+	    var that = this;
+	
 	    return React.createElement(
 	      'div',
 	      null,
-	      React.createElement('canvas', { id: 'neurons', className: 'fixed-position' }),
+	      React.createElement(CanvasNeurons, null),
 	      React.createElement(
 	        'div',
 	        { className: 'landing-container' },
@@ -32915,28 +33090,13 @@
 	          React.createElement(
 	            'div',
 	            { className: 'landing-background' },
-	            React.createElement(
-	              'h3',
-	              null,
-	              'Unique Approach'
-	            ),
-	            React.createElement(
-	              'p',
-	              { className: 'block-text' },
-	              'We are assembling a pool of investors that includes corporations, foundations, medical centers, and family offices that have recognized the role of equity investing in innovation to deliver both financial returns and innovative products to improve outcomes for patients. We will also work closely with selected regional sources of innovation and development organizations focused in those areas.'
-	            ),
-	            React.createElement(
-	              'h3',
-	              null,
-	              'Healthcare Innovation and ',
-	              React.createElement('br', null),
-	              'Investment Opportunities'
-	            ),
-	            React.createElement(
-	              'p',
-	              { className: 'block-text' },
-	              'The opportunity for innovation in healthcare is large both for developing new technologies for existing markets and for the creation of new markets and business models with new technology. Many opportunities are international in scope and some are likely to disrupt current approaches to diagnosis and therapy, increase the role of the consumer, and depend on collaboration among health care providers throughout the episode of care.'
-	            ),
+	            contentArray.map(function (sectionObj, idx) {
+	              return React.createElement(ContentSection, { key: idx,
+	                sectionId: sectionObj.id,
+	                heading: sectionObj.heading,
+	                paragraph: sectionObj.paragraphs[0],
+	                handleEditText: that.handleEditText });
+	            }),
 	            React.createElement(
 	              'h3',
 	              null,
@@ -32978,13 +33138,14 @@
 	};
 
 /***/ },
-/* 257 */
+/* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	
 	var About = React.createClass({
 	  displayName: "About",
+	
 	
 	  render: function () {
 	    return React.createElement(
@@ -33044,7 +33205,7 @@
 	};
 
 /***/ },
-/* 258 */
+/* 261 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
@@ -33260,84 +33421,215 @@
 	};
 
 /***/ },
-/* 259 */,
-/* 260 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var ApiUtil = __webpack_require__(261);
-	
-	module.exports = {
-	  fetchCurrentUser: function () {
-	    ApiUtil.fetchCurrentUser();
-	  },
-	  signOutCurrentUser: function (callback) {
-	    ApiUtil.signOutCurrentUser(callback);
-	  }
-	
-	};
-
-/***/ },
-/* 261 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var ServerActions = __webpack_require__(262);
-	
-	module.exports = {
-	
-	  fetchCurrentUser: function () {
-	    $.ajax({
-	      url: "api/users/fetch_current_user",
-	      method: "GET",
-	      success: function (userObj) {
-	        //return message if no current user
-	        if (userObj.message) {
-	          console.log(userObj.message);
-	          ServerActions.receiveCurrentUser({ currentUser: false });
-	        } else {
-	          ServerActions.receiveCurrentUser({ currentUser: userObj.current_user });
-	        }
-	      },
-	      error: function () {
-	        console.log("errored out in fetchCurrentUser");
-	      }
-	    });
-	  },
-	
-	  signOutCurrentUser: function (callback) {
-	    $.ajax({
-	      url: "api/users/sign_out",
-	      method: "GET",
-	      success: function (message) {
-	        ServerActions.signOutSuccess({ message: message });
-	      },
-	      error: function (resp) {
-	        console.log("errored out in signOutCurrentUser");
-	      }
-	    });
-	  }
-	
-	};
-
-/***/ },
 /* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Dispatcher = __webpack_require__(252);
-	var UserConstants = __webpack_require__(255);
+	var Store = __webpack_require__(234).Store;
+	var AppDispatcher = __webpack_require__(252);
+	var ContentConstants = __webpack_require__(263);
+	//
+	var ContentStore = new Store(AppDispatcher);
+	
+	//{"home": {}, "about":{}, "team":{}}
+	var _pages = { "home": {}, "about": {}, "team": {} };
+	
+	var addPages = function (pages) {
+	  return _pages = pages;
+	};
+	
+	ContentStore.pageContent = function (page) {
+	  return _pages[page];
+	};
+	
+	ContentStore.__onDispatch = function (payload) {
+	  switch (payload.actionType) {
+	    case ContentConstants.PAGE_CONTENT_RECEIVED:
+	      addPages(payload.pages);
+	      ContentStore.__emitChange();
+	      break;
+	  }
+	};
+	
+	module.exports = ContentStore;
+
+/***/ },
+/* 263 */
+/***/ function(module, exports) {
+
+	module.exports = {
+	  PAGE_CONTENT_RECEIVED: "PAGE_CONTENT_RECEIVED"
+	};
+
+/***/ },
+/* 264 */,
+/* 265 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	var UserStore = __webpack_require__(233);
+	var ParagraphForm = __webpack_require__(267).ParagraphForm;
+	var ClientActions = __webpack_require__(256);
+	
+	var ContentSection = React.createClass({
+	  displayName: 'ContentSection',
+	
+	  getInitialState: function () {
+	    return { editing: true, currentUser: UserStore.currentUser() };
+	  },
+	  _onChange: function () {
+	    this.setState({ currentUser: UserStore.currentUser() });
+	  },
+	  componentDidMount: function () {
+	    this.userListener = UserStore.addListener(this._onChange);
+	    ClientActions.fetchCurrentUser();
+	  },
+	  componentWillUnmount: function () {
+	    this.userListener.remove();
+	  },
+	  render: function () {
+	    if (this.state.currentUser) {
+	      return React.createElement(ParagraphForm, { handleEditText: this.props.handleEditText,
+	        sectionId: this.props.sectionId,
+	        heading: this.props.heading,
+	        paragraph: this.props.paragraph });
+	    } else {
+	      return React.createElement(
+	        'div',
+	        null,
+	        React.createElement(
+	          'h3',
+	          null,
+	          this.props.heading
+	        ),
+	        React.createElement(
+	          'p',
+	          { 'data-id': this.props.paragraph.id, className: 'block-text' },
+	          this.props.paragraph.body
+	        )
+	      );
+	    }
+	  }
+	});
 	
 	module.exports = {
-	  receiveCurrentUser: function (options) {
-	    Dispatcher.dispatch({
-	      actionType: UserConstants.CURRENT_USER_RECEIVED,
-	      currentUser: options.currentUser
-	    });
+	  ContentSection: ContentSection
+	};
+
+/***/ },
+/* 266 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	
+	var CanvasNeurons = React.createClass({
+	  displayName: 'CanvasNeurons',
+	
+	  componentDidMount: function () {
+	    var windowWidth = window.innerWidth;
+	    var windowHeight = window.innerHeight;
+	
+	    var canvas = document.getElementById('neurons');
+	    canvas.width = windowWidth;
+	    canvas.height = windowHeight;
+	
+	    var c = canvas.getContext('2d');
+	
+	    new NeuralNetwork({ context: c, width: windowWidth, height: windowHeight });
 	  },
-	  signOutSuccess: function (message) {
-	    Dispatcher.dispatch({
-	      actionType: UserConstants.SIGN_OUT_SUCCESSFUL,
-	      message: message
-	    });
+	  render: function () {
+	    return React.createElement('canvas', { id: 'neurons', className: 'fixed-position' });
 	  }
+	});
+	
+	module.exports = {
+	  CanvasNeurons: CanvasNeurons
+	};
+
+/***/ },
+/* 267 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	var ClientActions = __webpack_require__(256);
+	var ContentStore = __webpack_require__(262);
+	
+	var ParagraphForm = React.createClass({
+	  displayName: 'ParagraphForm',
+	
+	  getInitialState: function () {
+	    return { editing: false };
+	  },
+	  componentDidMount: function () {
+	    this.paragraphListener = ContentStore.addListener(this._onChange);
+	  },
+	  componentWillUnmount: function () {
+	    this.paragraphListener.remove();
+	  },
+	  handleSave: function (event) {
+	    event.preventDefault();
+	    this.toggleEdit();
+	
+	    var headingValue = $(event.currentTarget).find("h3 input").val();
+	    var headingId = parseInt($(event.currentTarget).attr("data-section-id"));
+	
+	    var paragraphValue = $(event.currentTarget).find("p textarea").val();
+	    var paragraphId = parseInt($(event.currentTarget).attr("data-paragraph-id"));
+	
+	    ClientActions.updateHeading(headingId, headingValue);
+	    ClientActions.updateParagraph(paragraphId, paragraphValue);
+	
+	    this.props.handleEditText();
+	  },
+	  toggleEdit: function () {
+	    this.setState({ editing: !this.state.editing });
+	  },
+	  render: function () {
+	    if (this.state.editing) {
+	      return React.createElement(
+	        'div',
+	        null,
+	        React.createElement(
+	          'form',
+	          { 'data-section-id': this.props.sectionId, 'data-paragraph-id': this.props.paragraph.id, onSubmit: this.handleSave },
+	          React.createElement(
+	            'h3',
+	            null,
+	            React.createElement('input', { defaultValue: this.props.heading })
+	          ),
+	          React.createElement(
+	            'p',
+	            { 'data-id': this.props.paragraph.id, className: 'block-text' },
+	            React.createElement('textarea', { defaultValue: this.props.paragraph.body })
+	          ),
+	          React.createElement('input', { type: 'submit', id: 'saveParagraph', value: 'Save' })
+	        )
+	      );
+	    } else {
+	      return React.createElement(
+	        'div',
+	        null,
+	        React.createElement(
+	          'button',
+	          { id: 'editParagraph', onClick: this.toggleEdit },
+	          'Edit Section'
+	        ),
+	        React.createElement(
+	          'h3',
+	          null,
+	          this.props.heading
+	        ),
+	        React.createElement(
+	          'p',
+	          { 'data-id': this.props.paragraph.id, className: 'block-text' },
+	          this.props.paragraph.body
+	        )
+	      );
+	    }
+	  }
+	});
+	
+	module.exports = {
+	  ParagraphForm: ParagraphForm
 	};
 
 /***/ }

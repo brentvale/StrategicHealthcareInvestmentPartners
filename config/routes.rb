@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :api do
+    resources :pages, only: [:show, :index]
+    resources :sections, only: [:update, :show]
+    resources :paragraphs, only: [:index, :update]
+  end
+
   get 'users/create'
 
   devise_for :users

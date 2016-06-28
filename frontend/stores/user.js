@@ -25,6 +25,11 @@ UserStore.currentUser = function(){
   }
 };
 
+UserStore.signOutUser = function(){
+  _currentUser = {};
+  return false;
+};
+
 UserStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
     case UserConstants.CURRENT_USER_RECEIVED:

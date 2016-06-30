@@ -53,9 +53,9 @@
 	var HashHistory = __webpack_require__(168).hashHistory;
 	
 	var Main = __webpack_require__(229).Main;
-	var Home = __webpack_require__(259).Home;
-	var About = __webpack_require__(260).About;
-	var Team = __webpack_require__(261).Team;
+	var Home = __webpack_require__(260).Home;
+	var About = __webpack_require__(265).About;
+	var Team = __webpack_require__(266).Team;
 	
 	var routes = React.createElement(
 	  Route,
@@ -32974,7 +32974,7 @@
 
 	var Dispatcher = __webpack_require__(252);
 	var UserConstants = __webpack_require__(255);
-	var ContentConstants = __webpack_require__(263);
+	var ContentConstants = __webpack_require__(259);
 	
 	module.exports = {
 	  receiveCurrentUser: function (options) {
@@ -32999,13 +32999,21 @@
 
 /***/ },
 /* 259 */
+/***/ function(module, exports) {
+
+	module.exports = {
+	  PAGE_CONTENT_RECEIVED: "PAGE_CONTENT_RECEIVED"
+	};
+
+/***/ },
+/* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-	var ContentStore = __webpack_require__(262);
+	var ContentStore = __webpack_require__(261);
 	var ClientActions = __webpack_require__(256);
-	var ContentSection = __webpack_require__(265).ContentSection;
-	var CanvasNeurons = __webpack_require__(266).CanvasNeurons;
+	var ContentSection = __webpack_require__(262).ContentSection;
+	var CanvasNeurons = __webpack_require__(264).CanvasNeurons;
 	
 	var Home = React.createClass({
 	  displayName: 'Home',
@@ -33138,7 +33146,210 @@
 	};
 
 /***/ },
-/* 260 */
+/* 261 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Store = __webpack_require__(234).Store;
+	var AppDispatcher = __webpack_require__(252);
+	var ContentConstants = __webpack_require__(259);
+	//
+	var ContentStore = new Store(AppDispatcher);
+	
+	//{"home": {}, "about":{}, "team":{}}
+	var _pages = { "home": {}, "about": {}, "team": {} };
+	
+	var addPages = function (pages) {
+	  return _pages = pages;
+	};
+	
+	ContentStore.pageContent = function (page) {
+	  return _pages[page];
+	};
+	
+	ContentStore.__onDispatch = function (payload) {
+	  switch (payload.actionType) {
+	    case ContentConstants.PAGE_CONTENT_RECEIVED:
+	      addPages(payload.pages);
+	      ContentStore.__emitChange();
+	      break;
+	  }
+	};
+	
+	module.exports = ContentStore;
+
+/***/ },
+/* 262 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	var UserStore = __webpack_require__(233);
+	var ParagraphForm = __webpack_require__(263).ParagraphForm;
+	var ClientActions = __webpack_require__(256);
+	
+	var ContentSection = React.createClass({
+	  displayName: 'ContentSection',
+	
+	  getInitialState: function () {
+	    return { editing: true, currentUser: UserStore.currentUser() };
+	  },
+	  _onChange: function () {
+	    this.setState({ currentUser: UserStore.currentUser() });
+	  },
+	  componentDidMount: function () {
+	    this.userListener = UserStore.addListener(this._onChange);
+	    ClientActions.fetchCurrentUser();
+	  },
+	  componentWillUnmount: function () {
+	    this.userListener.remove();
+	  },
+	  render: function () {
+	    if (this.state.currentUser) {
+	      return React.createElement(ParagraphForm, { handleEditText: this.props.handleEditText,
+	        sectionId: this.props.sectionId,
+	        heading: this.props.heading,
+	        paragraph: this.props.paragraph });
+	    } else {
+	      return React.createElement(
+	        'div',
+	        null,
+	        React.createElement(
+	          'h3',
+	          null,
+	          this.props.heading
+	        ),
+	        React.createElement(
+	          'p',
+	          { 'data-id': this.props.paragraph.id, className: 'block-text' },
+	          this.props.paragraph.body
+	        )
+	      );
+	    }
+	  }
+	});
+	
+	module.exports = {
+	  ContentSection: ContentSection
+	};
+
+/***/ },
+/* 263 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	var ClientActions = __webpack_require__(256);
+	var ContentStore = __webpack_require__(261);
+	
+	var ParagraphForm = React.createClass({
+	  displayName: 'ParagraphForm',
+	
+	  getInitialState: function () {
+	    return { editing: false };
+	  },
+	  componentDidMount: function () {
+	    this.paragraphListener = ContentStore.addListener(this._onChange);
+	  },
+	  componentWillUnmount: function () {
+	    this.paragraphListener.remove();
+	  },
+	  handleSave: function (event) {
+	    event.preventDefault();
+	    this.toggleEdit();
+	
+	    var headingValue = $(event.currentTarget).find("h3 input").val();
+	    var headingId = parseInt($(event.currentTarget).attr("data-section-id"));
+	
+	    var paragraphValue = $(event.currentTarget).find("p textarea").val();
+	    var paragraphId = parseInt($(event.currentTarget).attr("data-paragraph-id"));
+	
+	    ClientActions.updateHeading(headingId, headingValue);
+	    ClientActions.updateParagraph(paragraphId, paragraphValue);
+	
+	    this.props.handleEditText();
+	  },
+	  toggleEdit: function () {
+	    this.setState({ editing: !this.state.editing });
+	  },
+	  render: function () {
+	    if (this.state.editing) {
+	      return React.createElement(
+	        'div',
+	        null,
+	        React.createElement(
+	          'form',
+	          { 'data-section-id': this.props.sectionId, 'data-paragraph-id': this.props.paragraph.id, onSubmit: this.handleSave },
+	          React.createElement(
+	            'h3',
+	            null,
+	            React.createElement('input', { defaultValue: this.props.heading })
+	          ),
+	          React.createElement(
+	            'p',
+	            { 'data-id': this.props.paragraph.id, className: 'block-text' },
+	            React.createElement('textarea', { defaultValue: this.props.paragraph.body })
+	          ),
+	          React.createElement('input', { type: 'submit', id: 'saveParagraph', value: 'Save' })
+	        )
+	      );
+	    } else {
+	      return React.createElement(
+	        'div',
+	        null,
+	        React.createElement(
+	          'button',
+	          { id: 'editParagraph', onClick: this.toggleEdit },
+	          'Edit Section'
+	        ),
+	        React.createElement(
+	          'h3',
+	          null,
+	          this.props.heading
+	        ),
+	        React.createElement(
+	          'p',
+	          { 'data-id': this.props.paragraph.id, className: 'block-text' },
+	          this.props.paragraph.body
+	        )
+	      );
+	    }
+	  }
+	});
+	
+	module.exports = {
+	  ParagraphForm: ParagraphForm
+	};
+
+/***/ },
+/* 264 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	
+	var CanvasNeurons = React.createClass({
+	  displayName: 'CanvasNeurons',
+	
+	  componentDidMount: function () {
+	    var windowWidth = window.innerWidth;
+	    var windowHeight = window.innerHeight;
+	
+	    var canvas = document.getElementById('neurons');
+	    canvas.width = windowWidth;
+	    canvas.height = windowHeight;
+	
+	    var c = canvas.getContext('2d');
+	
+	    new NeuralNetwork({ context: c, width: windowWidth, height: windowHeight });
+	  },
+	  render: function () {
+	    return React.createElement('canvas', { id: 'neurons', className: 'fixed-position' });
+	  }
+	});
+	
+	module.exports = {
+	  CanvasNeurons: CanvasNeurons
+	};
+
+/***/ },
+/* 265 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
@@ -33149,52 +33360,56 @@
 	
 	  render: function () {
 	    return React.createElement(
-	      "div",
-	      { className: "our-story-container" },
+	      "section",
+	      { id: "ourStory", className: "landing-background-container" },
 	      React.createElement(
-	        "h2",
-	        { id: "ourStoryHeading" },
-	        "Our Story"
-	      ),
-	      React.createElement(
-	        "h3",
-	        null,
-	        "Balanced Deal Selection"
-	      ),
-	      React.createElement(
-	        "p",
-	        { className: "block-text" },
-	        "Strategic Healthcare Investment Partners will balance deal stage to be approximately 50% early stage with our unique accelerator models and approximately 50% later stage where we will invest with conventional venture funds. We will focus on medical devices, diagnostics, and digital health opportunities that facilitate the success of our medical device investments in an accountable care world."
-	      ),
-	      React.createElement(
-	        "h3",
-	        null,
-	        "Early Stage Methods"
-	      ),
-	      React.createElement(
-	        "p",
-	        { className: "block-text" },
-	        "We believe that collaboration among strategic players, development organizations, sources of innovation, and a focused accelerator organization can improve the path from sourcing, seed-funding, development, through the Series A-funding of deals with a higher success rate of getting to Series B funding."
-	      ),
-	      React.createElement(
-	        "h3",
-	        null,
-	        "Focus Areas"
-	      ),
-	      React.createElement(
-	        "p",
-	        { className: "block-text" },
-	        "We will support investment in new technologies that advance our individual strategic partner immediate interests in their existing markets with their current customers. We will also invest in new markets, technologies, and business models that are likely to be of future interest to all of our limited partners in the 3 to 5 year time frame. We will leverage our specific experiences and relationships in neuromodulation, next generation robotics, digital health, sensors and smart devices, active-implantables, and less invasive alternatives to today’s surgical devices."
-	      ),
-	      React.createElement(
-	        "h3",
-	        null,
-	        "The Fund"
-	      ),
-	      React.createElement(
-	        "p",
-	        { className: "block-text" },
-	        "Strategic Healthcare Investment Partners will raise $150 to 200MM with two founding general partners (Brad and Mudit) and one Founding Venture Partner (Ed). We are seeking a first close in Q3 2016."
+	        "div",
+	        { className: "our-story-container landing-background" },
+	        React.createElement(
+	          "h2",
+	          { id: "ourStoryHeading" },
+	          "Our Story"
+	        ),
+	        React.createElement(
+	          "h3",
+	          null,
+	          "Balanced Deal Selection"
+	        ),
+	        React.createElement(
+	          "p",
+	          { className: "block-text" },
+	          "Strategic Healthcare Investment Partners will balance deal stage to be approximately 50% early stage with our unique accelerator models and approximately 50% later stage where we will invest with conventional venture funds. We will focus on medical devices, diagnostics, and digital health opportunities that facilitate the success of our medical device investments in an accountable care world."
+	        ),
+	        React.createElement(
+	          "h3",
+	          null,
+	          "Early Stage Methods"
+	        ),
+	        React.createElement(
+	          "p",
+	          { className: "block-text" },
+	          "We believe that collaboration among strategic players, development organizations, sources of innovation, and a focused accelerator organization can improve the path from sourcing, seed-funding, development, through the Series A-funding of deals with a higher success rate of getting to Series B funding."
+	        ),
+	        React.createElement(
+	          "h3",
+	          null,
+	          "Focus Areas"
+	        ),
+	        React.createElement(
+	          "p",
+	          { className: "block-text" },
+	          "We will support investment in new technologies that advance our individual strategic partner immediate interests in their existing markets with their current customers. We will also invest in new markets, technologies, and business models that are likely to be of future interest to all of our limited partners in the 3 to 5 year time frame. We will leverage our specific experiences and relationships in neuromodulation, next generation robotics, digital health, sensors and smart devices, active-implantables, and less invasive alternatives to today’s surgical devices."
+	        ),
+	        React.createElement(
+	          "h3",
+	          null,
+	          "The Fund"
+	        ),
+	        React.createElement(
+	          "p",
+	          { className: "block-text" },
+	          "Strategic Healthcare Investment Partners will raise $150 to 200MM with two founding general partners (Brad and Mudit) and one Founding Venture Partner (Ed). We are seeking a first close in Q3 2016."
+	        )
 	      )
 	    );
 	  }
@@ -33205,7 +33420,7 @@
 	};
 
 /***/ },
-/* 261 */
+/* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
@@ -33221,45 +33436,49 @@
 	  },
 	  render: function () {
 	    return React.createElement(
-	      "div",
-	      null,
+	      "section",
+	      { id: "team" },
 	      React.createElement(
-	        "h2",
-	        { id: "teamHeading" },
-	        "Team"
-	      ),
-	      React.createElement(
-	        "p",
-	        { className: "block-text" },
-	        "The Strategic Health Care Partners team has known each other and worked together on multiple healthcare investments over the last 20 years."
-	      ),
-	      React.createElement(
-	        "h4",
-	        { id: "collectiveExperienceTitle" },
-	        "Our Collective Experience Includes:"
-	      ),
-	      React.createElement(
-	        "ul",
-	        { id: "collectiveExperience" },
+	        "div",
+	        { className: "row" },
 	        React.createElement(
-	          "li",
-	          null,
-	          " Sourcing innovation"
+	          "h2",
+	          { id: "teamHeading" },
+	          "Team"
 	        ),
 	        React.createElement(
-	          "li",
-	          null,
-	          " Leading and mentoring early stage companies"
+	          "p",
+	          { className: "block-text" },
+	          "The Strategic Health Care Partners team has known each other and worked together on multiple healthcare investments over the last 20 years."
 	        ),
 	        React.createElement(
-	          "li",
-	          null,
-	          " Taking companies public"
+	          "h4",
+	          { id: "collectiveExperienceTitle" },
+	          "Our Collective Experience Includes:"
 	        ),
 	        React.createElement(
-	          "li",
-	          null,
-	          " Product development in both small and multinational corporations."
+	          "ul",
+	          { id: "collectiveExperience" },
+	          React.createElement(
+	            "li",
+	            null,
+	            " Sourcing innovation"
+	          ),
+	          React.createElement(
+	            "li",
+	            null,
+	            " Leading and mentoring early stage companies"
+	          ),
+	          React.createElement(
+	            "li",
+	            null,
+	            " Taking companies public"
+	          ),
+	          React.createElement(
+	            "li",
+	            null,
+	            " Product development in both small and multinational corporations."
+	          )
 	        )
 	      ),
 	      React.createElement(
@@ -33418,218 +33637,6 @@
 	
 	module.exports = {
 	  Team: Team
-	};
-
-/***/ },
-/* 262 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var Store = __webpack_require__(234).Store;
-	var AppDispatcher = __webpack_require__(252);
-	var ContentConstants = __webpack_require__(263);
-	//
-	var ContentStore = new Store(AppDispatcher);
-	
-	//{"home": {}, "about":{}, "team":{}}
-	var _pages = { "home": {}, "about": {}, "team": {} };
-	
-	var addPages = function (pages) {
-	  return _pages = pages;
-	};
-	
-	ContentStore.pageContent = function (page) {
-	  return _pages[page];
-	};
-	
-	ContentStore.__onDispatch = function (payload) {
-	  switch (payload.actionType) {
-	    case ContentConstants.PAGE_CONTENT_RECEIVED:
-	      addPages(payload.pages);
-	      ContentStore.__emitChange();
-	      break;
-	  }
-	};
-	
-	module.exports = ContentStore;
-
-/***/ },
-/* 263 */
-/***/ function(module, exports) {
-
-	module.exports = {
-	  PAGE_CONTENT_RECEIVED: "PAGE_CONTENT_RECEIVED"
-	};
-
-/***/ },
-/* 264 */,
-/* 265 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(1);
-	var UserStore = __webpack_require__(233);
-	var ParagraphForm = __webpack_require__(267).ParagraphForm;
-	var ClientActions = __webpack_require__(256);
-	
-	var ContentSection = React.createClass({
-	  displayName: 'ContentSection',
-	
-	  getInitialState: function () {
-	    return { editing: true, currentUser: UserStore.currentUser() };
-	  },
-	  _onChange: function () {
-	    this.setState({ currentUser: UserStore.currentUser() });
-	  },
-	  componentDidMount: function () {
-	    this.userListener = UserStore.addListener(this._onChange);
-	    ClientActions.fetchCurrentUser();
-	  },
-	  componentWillUnmount: function () {
-	    this.userListener.remove();
-	  },
-	  render: function () {
-	    if (this.state.currentUser) {
-	      return React.createElement(ParagraphForm, { handleEditText: this.props.handleEditText,
-	        sectionId: this.props.sectionId,
-	        heading: this.props.heading,
-	        paragraph: this.props.paragraph });
-	    } else {
-	      return React.createElement(
-	        'div',
-	        null,
-	        React.createElement(
-	          'h3',
-	          null,
-	          this.props.heading
-	        ),
-	        React.createElement(
-	          'p',
-	          { 'data-id': this.props.paragraph.id, className: 'block-text' },
-	          this.props.paragraph.body
-	        )
-	      );
-	    }
-	  }
-	});
-	
-	module.exports = {
-	  ContentSection: ContentSection
-	};
-
-/***/ },
-/* 266 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(1);
-	
-	var CanvasNeurons = React.createClass({
-	  displayName: 'CanvasNeurons',
-	
-	  componentDidMount: function () {
-	    var windowWidth = window.innerWidth;
-	    var windowHeight = window.innerHeight;
-	
-	    var canvas = document.getElementById('neurons');
-	    canvas.width = windowWidth;
-	    canvas.height = windowHeight;
-	
-	    var c = canvas.getContext('2d');
-	
-	    new NeuralNetwork({ context: c, width: windowWidth, height: windowHeight });
-	  },
-	  render: function () {
-	    return React.createElement('canvas', { id: 'neurons', className: 'fixed-position' });
-	  }
-	});
-	
-	module.exports = {
-	  CanvasNeurons: CanvasNeurons
-	};
-
-/***/ },
-/* 267 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(1);
-	var ClientActions = __webpack_require__(256);
-	var ContentStore = __webpack_require__(262);
-	
-	var ParagraphForm = React.createClass({
-	  displayName: 'ParagraphForm',
-	
-	  getInitialState: function () {
-	    return { editing: false };
-	  },
-	  componentDidMount: function () {
-	    this.paragraphListener = ContentStore.addListener(this._onChange);
-	  },
-	  componentWillUnmount: function () {
-	    this.paragraphListener.remove();
-	  },
-	  handleSave: function (event) {
-	    event.preventDefault();
-	    this.toggleEdit();
-	
-	    var headingValue = $(event.currentTarget).find("h3 input").val();
-	    var headingId = parseInt($(event.currentTarget).attr("data-section-id"));
-	
-	    var paragraphValue = $(event.currentTarget).find("p textarea").val();
-	    var paragraphId = parseInt($(event.currentTarget).attr("data-paragraph-id"));
-	
-	    ClientActions.updateHeading(headingId, headingValue);
-	    ClientActions.updateParagraph(paragraphId, paragraphValue);
-	
-	    this.props.handleEditText();
-	  },
-	  toggleEdit: function () {
-	    this.setState({ editing: !this.state.editing });
-	  },
-	  render: function () {
-	    if (this.state.editing) {
-	      return React.createElement(
-	        'div',
-	        null,
-	        React.createElement(
-	          'form',
-	          { 'data-section-id': this.props.sectionId, 'data-paragraph-id': this.props.paragraph.id, onSubmit: this.handleSave },
-	          React.createElement(
-	            'h3',
-	            null,
-	            React.createElement('input', { defaultValue: this.props.heading })
-	          ),
-	          React.createElement(
-	            'p',
-	            { 'data-id': this.props.paragraph.id, className: 'block-text' },
-	            React.createElement('textarea', { defaultValue: this.props.paragraph.body })
-	          ),
-	          React.createElement('input', { type: 'submit', id: 'saveParagraph', value: 'Save' })
-	        )
-	      );
-	    } else {
-	      return React.createElement(
-	        'div',
-	        null,
-	        React.createElement(
-	          'button',
-	          { id: 'editParagraph', onClick: this.toggleEdit },
-	          'Edit Section'
-	        ),
-	        React.createElement(
-	          'h3',
-	          null,
-	          this.props.heading
-	        ),
-	        React.createElement(
-	          'p',
-	          { 'data-id': this.props.paragraph.id, className: 'block-text' },
-	          this.props.paragraph.body
-	        )
-	      );
-	    }
-	  }
-	});
-	
-	module.exports = {
-	  ParagraphForm: ParagraphForm
 	};
 
 /***/ }

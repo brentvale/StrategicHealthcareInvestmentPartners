@@ -27,8 +27,8 @@ var ContentSection = React.createClass({
       )
     } else {
       return(
-        <div>
-          <h3>{this.props.heading}</h3>
+        <div className="center-block block-80">
+          <h2>{this.props.heading}</h2>
           <p data-id={this.props.paragraph.id} className="block-text">{this.props.paragraph.body}</p>
         </div>
       )

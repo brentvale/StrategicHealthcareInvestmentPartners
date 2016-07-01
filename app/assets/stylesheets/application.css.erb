@@ -31,39 +31,59 @@ html{
 }
 body{
   background-color:white;
-  font-size: 62.5%;
-  font-family: 'Roboto', arial;
-  margin:0;
   color: var(--dark-blue);
+  font-family: 'Roboto', arial;
+  font-size: 62.5%;
   letter-spacing:2px;
+  margin:0;
 }
 .container-fluid{
   padding:0;
 }
 nav.navbar{
   margin-bottom: 0px;
+  padding-bottom: 10px;
+  padding-top:10px;
 }
 canvas{
   display:inline;
   position:absolute;
+  right:0;
   z-index: -1;
+}
+#home .heading-bg{
+  min-height:500px;
+}
+.section-bg{
+  
+}
+h1{
+  font-size:5em;
+  padding-top:150px;
+  margin-left:10px;
+  color:var(--headings-color);
+  font-weight:400;
+}
+h2{
+  text-align:center;
+}
+.react-parallax-content{
+  padding: 50px 20px 50px 20px;
+}
+.block-80{
+  width:80%;
+}
+.center-block{
+  margin-left:auto;
+  margin-right:auto;
+  left:0;
   right:0;
 }
 
-
-/*parallax*/
-/* ============================================================
-  PRIMARY STRUCTURE
-============================================================ */
-.container {
-  margin: 0 auto;
-  padding: 0;
-  width:100%;
-}
 /* ============================================================
   SECTIONS
 ============================================================ */
-div.module:last-child {
+/*div.module:last-child {
   margin-bottom: 0;
 }
 div.module h2 {
@@ -118,7 +138,7 @@ div.module.parallax-1 {
   div.module.parallax h1 {
     font-size: 160px;
   }
-}
+}*/
 /*end parallax*/
 
 /*DEVISE FORMS*/
@@ -133,7 +153,7 @@ div.module.parallax-1 {
   list-style-type:none;
 }
 /* Headings */
-#SHIPLogo h1{
+/*#SHIPLogo h1{
   position:absolute;
   font-size:1.25em;
   height:50px;
@@ -142,11 +162,11 @@ div.module.parallax-1 {
   margin-left:10px;
   color:var(--headings-color);
   font-weight:700;
-}
+}*/
 #navLogo:hover{
   color: #00CAFF;
 }
-h2{
+/*h2{
   color: var(--headings-color);
 }
 h2#teamHeading{
@@ -209,30 +229,54 @@ h3 span{
   padding: 20px;
   margin-top:200px;
   position:relative;
-  /*canvas height is 700px*/
-}
-.our-story-container{
+}*/
+
+
+
+/*.our-story-container{
   width:50%;
   margin-bottom: 100px;
   display:inline-block;
 }
-ul#keyDifferentiators, ul#collectiveExperience{
-  width:80%;
-  margin-left:10%;
-  text-align:left;
+*/
+
+ul#keyDifferentiators{
   font-size:1.5em;
   line-height:1.5em;
   list-style:none;
+  margin-left:10%;
+  padding-left:0;
+  text-align:left;
+  width:80%;
 }
-ul#keyDifferentiators li, ul#collectiveExperience li{
-  padding-left: 1em; 
-  text-indent: -1.4em;
-  margin-bottom:10px;
+ul#keyDifferentiators li{
+  display: inline-block;
+  position:relative;
+  vertical-align:top;
+  width:49%;
 }
-ul#keyDifferentiators li:before, ul#collectiveExperience li:before{
+ul#keyDifferentiators li div{
+  background-color: rgba(255,255,255,0.9);
+  border-radius: 3px;
+  display: table;
+  height:250px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  position:relative;
+  width:250px;
+}
+span.list-item{
+  display:table-cell;
+  font-size:1em;
+  height:100%;
+  position:absolute;
+  text-align:center;
+  vertical-align:middle;
+}
+/*ul#keyDifferentiators li:before{
   content: "•  ";
   color:var(--headings-color);
-}
+}*/
 footer{
   position:relative;
   display:block;

@@ -1,4 +1,5 @@
 var React = require('react');
+var Parallax = require('react-parallax').Parallax;
 var ContentStore = require('../../stores/content.js');
 var ClientActions = require("../../actions/clientActions.js");
 var ContentSection = require("./content_section.jsx").ContentSection;
@@ -38,35 +39,28 @@ var Home = React.createClass({
     var that = this;
     
     return(
-      <div>
-        <CanvasNeurons />
-        <div className="landing-container">
+      <div id="home">
+        <Parallax className="heading-bg background-bg" bgImage="assets/dna_helix_silver_high_res.jpg" strength={400}>
+          <h1>S<span>TRATEGIC </span>H<span>EALTHCARE<br /></span>I<span>NVESTMENT </span>P<span>ARTNERS</span></h1>
+        </Parallax>
+        {contentArray.map(function(sectionObj, idx){
+          return <ContentSection key={idx} 
+                                 sectionId={sectionObj.id}
+                                 heading={sectionObj.heading}
+                                 paragraph={sectionObj.paragraphs[0]} 
+                                 handleEditText={that.handleEditText}/>
+        })}
+        <Parallax className="section-bg" bgImage="assets/blue_molecules_high_res.jpg" strength={400}>
+          <h2>How We Innovate</h2>
+          <ul id="keyDifferentiators">
+            <li className=""><div className="center-block"><span className="list-item">&nbsp;We work with partners that have strategic objectives that can be pursued with equity investing and we’ll work with them to refine focus areas for the fund.</span></div></li>
+            <li className=""><div className="center-block"><span className="list-item">&nbsp;We engage medtech, biotech, diagnostic, and digital health industry luminaries from our network as venture partners, entrepreneurs-in- residence, and in executive chairman roles.</span></div></li>
+            <li className=""><div className="center-block"><span className="list-item">&nbsp;We’ll balance new technology investments for existing markets with investments that combine new market, new business model, and new technology elements.</span></div></li>
+            <li className=""><div className="center-block"><span className="list-item">&nbsp;We’ll use our unique accelerator approach in selected regions and focus areas to source, seed-fund, develop, and Series A-fund deals.</span></div></li>
+          </ul>
+        </Parallax>
         
-          <div className="landing-background heading-background">
-              <h2>S<span>TRATEGIC</span><br/>H<span>EALTHCARE</span><br/>I<span>NVESTMENT</span><br/>P<span>ARTNERS</span></h2>
-          </div>
         
-          <div className="landing-background-container">
-            <div className="landing-background">
-              
-              {contentArray.map(function(sectionObj, idx){
-                return <ContentSection key={idx} 
-                                       sectionId={sectionObj.id}
-                                       heading={sectionObj.heading}
-                                       paragraph={sectionObj.paragraphs[0]} 
-                                       handleEditText={that.handleEditText}/>
-              })}
-              <h3>What’s Different About Us?</h3>
-              <ul id="keyDifferentiators">
-                <li>&nbsp;We work with partners that have strategic objectives that can be pursued with equity investing and we’ll work with them to refine focus areas for the fund.</li>
-                <li>&nbsp;We engage medtech, biotech, diagnostic, and digital health industry luminaries from our network as venture partners, entrepreneurs-in- residence, and in executive chairman roles.</li>
-                <li>&nbsp;We’ll balance new technology investments for existing markets with investments that combine new market, new business model, and new technology elements.</li>
-                <li>&nbsp;We’ll use our unique accelerator approach in selected regions and focus areas to source, seed-fund, develop, and Series A-fund deals.</li>
-              </ul>
-            </div>
-          </div>
-          
-        </div>
       </div>
     )
   }

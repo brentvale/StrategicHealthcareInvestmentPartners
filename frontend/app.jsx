@@ -16,7 +16,7 @@ var routes = (
   
         <IndexRoute component={Home}/>
         
-        <Route path="/our-story" component={About} />
+        <Route path="/about" component={About} />
         <Route path="/team" component={Team} />
   
     </Route>

@@ -1,4 +1,5 @@
 var React = require('react');
+var Parallax = require('react-parallax').Parallax;
 var ContentStore = require('../../stores/content.js');
 var ClientActions = require("../../actions/clientActions.js");
 var ContentSection = require("./content_section.jsx").ContentSection;
@@ -38,36 +39,59 @@ var Home = React.createClass({
     var that = this;
     
     return(
-      <div>
-        <CanvasNeurons />
-        <div className="landing-container">
+      
         
-          <div className="landing-background heading-background">
-              <h2>S<span>TRATEGIC</span><br/>H<span>EALTHCARE</span><br/>I<span>NVESTMENT</span><br/>P<span>ARTNERS</span></h2>
+    <div id="home">
+      <div className="parallax">
+        <div id="group1" className="parallax__group">
+          
+          <div className="parallax__layer parallax__layer--base heading-content">
+            <h1>S<span>TRATEGIC </span>H<span>EALTHCARE<br /></span>I<span>NVESTMENT </span>P<span>ARTNERS</span></h1>
           </div>
-        
-          <div className="landing-background-container">
-            <div className="landing-background">
-              
-              {contentArray.map(function(sectionObj, idx){
-                return <ContentSection key={idx} 
-                                       sectionId={sectionObj.id}
-                                       heading={sectionObj.heading}
-                                       paragraph={sectionObj.paragraphs[0]} 
-                                       handleEditText={that.handleEditText}/>
-              })}
-              <h3>What’s Different About Us?</h3>
-              <ul id="keyDifferentiators">
-                <li>&nbsp;We work with partners that have strategic objectives that can be pursued with equity investing and we’ll work with them to refine focus areas for the fund.</li>
-                <li>&nbsp;We engage medtech, biotech, diagnostic, and digital health industry luminaries from our network as venture partners, entrepreneurs-in- residence, and in executive chairman roles.</li>
-                <li>&nbsp;We’ll balance new technology investments for existing markets with investments that combine new market, new business model, and new technology elements.</li>
-                <li>&nbsp;We’ll use our unique accelerator approach in selected regions and focus areas to source, seed-fund, develop, and Series A-fund deals.</li>
-              </ul>
-            </div>
+          <div className="parallax__layer parallax__layer--back heading-background">
+          </div>
+        </div>
+      
+        <div id="group2" className="parallax__group">
+          
+          <div className="parallax__layer parallax__layer--base section-one-background" >
+            {contentArray.map(function(sectionObj, idx){
+              return <ContentSection key={idx} 
+                                     propId={idx}
+                                     sectionId={sectionObj.id}
+                                     heading={sectionObj.heading}
+                                     paragraph={sectionObj.paragraphs[0]} 
+                                     handleEditText={that.handleEditText}/>
+            })}
           </div>
           
         </div>
+            
+        <div id="group3" className="parallax__group">
+          
+          <div className="parallax__layer parallax__layer--base">
+            <h2>How We Innovate</h2>
+            <ul id="keyDifferentiators">
+              <li><div><span>&nbsp;We work with partners that have strategic objectives that can be pursued with equity investing and we’ll work with them to refine focus areas for the fund.</span></div></li>
+              <li><div><span>&nbsp;We engage medtech, biotech, diagnostic, and digital health industry luminaries from our network as venture partners, entrepreneurs-in-residence, and in executive chairman roles.</span></div></li>
+              <li><div><span>&nbsp;We’ll balance new technology investments for existing markets with investments that combine new market, new business model, and new technology elements.</span></div></li>
+              <li><div><span>&nbsp;We’ll use our unique accelerator approach in selected regions and focus areas to source, seed-fund, develop, and Series A-fund deals.</span></div></li>
+            </ul>
+          </div>
+          <div className="parallax__layer parallax__layer--back section-two-background">
+          </div>
+        </div>
+            
+        <div id="group4" className="parallax__group">
+          <div className="parallax__layer parallax__layer--base">
+          </div>
+        </div>
+            
       </div>
+    </div>
+      
+        
+        
     )
   }
 });

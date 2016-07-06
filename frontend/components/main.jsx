@@ -22,7 +22,7 @@ var Main = React.createClass({
 
             <div className="collapse navbar-collapse" id="navigationMenuDropdown">
               <ul className="nav navbar-nav">
-                <li><a className="sliding-u-l-r" href="#/our-story">Our Story</a></li>
+                <li><a className="sliding-u-l-r" href="#/about">About</a></li>
                 <li><a className="sliding-u-l-r" href="#/team">Team</a></li>
                 <LoginButton />
               </ul>

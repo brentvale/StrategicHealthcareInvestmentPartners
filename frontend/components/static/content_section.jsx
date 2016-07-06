@@ -17,7 +17,9 @@ var ContentSection = React.createClass({
   componentWillUnmount: function () {
     this.userListener.remove();
   },
-  render: function(){                     
+  render: function(){
+    var classIfFirst = (this.props.propId == 0) ? "first-section-heading" : "";
+                   
     if(this.state.currentUser){
       return(
         <ParagraphForm  handleEditText={this.props.handleEditText} 
@@ -27,8 +29,8 @@ var ContentSection = React.createClass({
       )
     } else {
       return(
-        <div className="center-block block-80">
-          <h2>{this.props.heading}</h2>
+        <div className="center-block">
+          <h2 className={classIfFirst}>{this.props.heading}</h2>
           <p data-id={this.props.paragraph.id} className="block-text">{this.props.paragraph.body}</p>
         </div>
       )

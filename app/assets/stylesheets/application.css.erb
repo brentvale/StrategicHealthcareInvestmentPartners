@@ -22,6 +22,7 @@
 /* darkest 003340 */
 :root {
   --headings-color: #009bbf;
+  --lightest-blue: #00CAFF;
   --dark-blue: #003340;
 }
 
@@ -34,6 +35,7 @@ body{
   color: var(--dark-blue);
   font-family: 'Roboto', arial;
   font-size: 62.5%;
+  font-weight:100;
   letter-spacing:2px;
   margin:0;
 }
@@ -45,30 +47,20 @@ nav.navbar{
   padding-bottom: 10px;
   padding-top:10px;
 }
-canvas{
-  display:inline;
-  position:absolute;
-  right:0;
-  z-index: -1;
-}
-#home .heading-bg{
-  min-height:500px;
-}
-.section-bg{
-  
-}
 h1{
+  margin-left:50px;
   font-size:5em;
-  padding-top:150px;
-  margin-left:10px;
   color:var(--headings-color);
   font-weight:400;
+  border-radius:3px;
+  -webkit-text-stroke: 0.5px white;
 }
-h2{
+h2, h3{
   text-align:center;
-}
-.react-parallax-content{
-  padding: 50px 20px 50px 20px;
+  font-weight:100;
+  max-width:500px;
+  margin-left:auto;
+  margin-right:auto;
 }
 .block-80{
   width:80%;
@@ -79,67 +71,109 @@ h2{
   left:0;
   right:0;
 }
-
-/* ============================================================
-  SECTIONS
-============================================================ */
-/*div.module:last-child {
-  margin-bottom: 0;
+.block-text{
+  max-width:500px;
+  width:70%;
+  margin-left:auto;
+  margin-right:auto;
 }
-div.module h2 {
-  margin-bottom: 40px;
+/* PARALLAX */
+.parallax {
+  height: 500px; /* fallback for older browsers */
+  height:100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin-top:-10px;
+  perspective-origin-x: 100%;
+  -webkit-perspective: 300px;
+  perspective: 100px;
 }
-div.module p {
-  margin-bottom: 40px;
-  font-size: 16px;
-  font-weight: 300;
+.parallax__group {
+  position: relative;
+  height:100vh;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
 }
-div.module p:last-child {
-  margin-bottom: 0;
+.parallax__layer {
+/*  transform-origin-x: 100%;*/
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
-div.module.content {
-  padding: 40px 0;
+.parallax__layer--base {
+  transform: translateZ(0);
+  z-index:4;
 }
-div.module.parallax {
-  height: 600px;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+.parallax__layer--back {
+  transform: translateZ(-50px) scale(2);
+  z-index: 3;
+}
+#group2 .parallax__layer--back{
+  z-index: 5;
+}
+#group1{
+  z-index: 4;
+}
+#group2{
+  z-index: 5;
+}
+#group3{
+  z-index: 3;
+  height:500px;
+}
+#group4{
+  height:200px;
+}
+#group4 .parallax__layer--base{
+  background-color: var(--dark-blue);
+}
+/* HOME */
+.heading-background{
+  background-image: url("<%= asset_path('dna_helix_silver_high_res.jpg')%>");
   background-size: cover;
 }
-div.module.parallax h1 {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 48px;
-  line-height: 600px;
-  font-weight: 700;
-  text-align: center;
-  text-transform: uppercase;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+.heading-content{
+  margin-top:200px;
 }
-div.module.parallax-1 {
-    background-image: url("<%= asset_path('full_background_low_res.jpg') %>");
+.section-one-background{
+  background-color:white;
+  height:600px;
+  /*background-image: url("<%= asset_path('building_elevator_shaft_high_res.jpg')%>");
+  background-size: cover;*/
 }
-.fixed-position{
-  position:fixed;
-  top: 0;
+.section-two-background{
+  background-image: url("<%= asset_path('blue_molecules_high_res.jpg')%>");
+  background-size: cover;
 }
-@media all and (min-width: 600px) {
-  div.module h2 {
-    font-size: 42px;
-  }
-  div.module p {
-    font-size: 20px;
-  }
-  div.module.parallax h1 {
-    font-size: 96px;
-  }
+
+.first-section-heading{
+  margin-top:50px;
 }
-@media all and (min-width: 960px) {
-  div.module.parallax h1 {
-    font-size: 160px;
-  }
-}*/
-/*end parallax*/
+#keyDifferentiators li{
+  display:inline-block;
+  margin: 3%;
+  text-align:center;
+  width:43%;
+}
+#keyDifferentiators li div{
+  background-color: rgba(255,255,255, 0.9);
+  border:1px solid;
+  border-radius: 3px;
+  display: inline-block;
+  height:200px;
+  max-width:400px;
+  position:relative;
+  vertical-align:top;
+  width:100%;
+}
+#keyDifferentiators span{
+  display:inline-block;
+  padding:20px;
+  position:relative;
+  font-size:1.5em;
+}
 
 /*DEVISE FORMS*/
 .devise-forms{
@@ -152,154 +186,31 @@ div.module.parallax-1 {
   font-size: 1.5em;
   list-style-type:none;
 }
-/* Headings */
-/*#SHIPLogo h1{
-  position:absolute;
-  font-size:1.25em;
-  height:50px;
-  margin:0px;
-  padding-top:25px;
-  margin-left:10px;
-  color:var(--headings-color);
-  font-weight:700;
-}*/
 #navLogo:hover{
   color: #00CAFF;
 }
-/*h2{
-  color: var(--headings-color);
-}
-h2#teamHeading{
-  padding-top:150px;
-}
-h2#ourStoryHeading, h2#teamHeading{
-  font-size:3em;
-  font-weight:700;
-  margin-left: 5%;
-}
-h3{
-  font-size:2em;
-}
-h4{
-  font-size:1.5em;
-}
-#collectiveExperienceTitle{
-  margin-top:30px;
-}
-h3, h4{
-  color:var(--headings-color);
-  font-weight:400;
-  margin-left:5%;
-  text-align:left;
-}
-h3 span{
-  font-weight:100;
-  font-size:0.75em;
-}
-.landing-background-container{
-  width:100%;
-  background-color: rgba(255,255,255,0.8);
-  padding-bottom:100px;
-}
-.landing-container{
-  padding-top:100px;
-}
-.landing-background{
-  background-color: rgba(255,255,255,1.0);
-  width: 60%;
-  margin-left: 10%;
-  padding: 20px;
-}
-.landing-background.heading-background{
-  background-color: rgba(255,255,255,0);
-  max-width: 80%;
-  width:350px;
-  border-radius: 2px;
-}
-.landing-background.heading-background h2{
-  padding: 10px;
-  font-size: 5em;
-  background-color: var(--dark-blue);
-  color:white;
-}
-.landing-background.heading-background h2 span{
-  font-size: .8em;
-}
-.landing-background:not(.heading-background){
-  padding: 20px;
-  margin-top:200px;
-  position:relative;
-}*/
 
-
-
-/*.our-story-container{
-  width:50%;
-  margin-bottom: 100px;
-  display:inline-block;
-}
-*/
-
-ul#keyDifferentiators{
-  font-size:1.5em;
-  line-height:1.5em;
-  list-style:none;
-  margin-left:10%;
-  padding-left:0;
-  text-align:left;
-  width:80%;
-}
-ul#keyDifferentiators li{
-  display: inline-block;
-  position:relative;
-  vertical-align:top;
-  width:49%;
-}
-ul#keyDifferentiators li div{
-  background-color: rgba(255,255,255,0.9);
-  border-radius: 3px;
-  display: table;
-  height:250px;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  position:relative;
-  width:250px;
-}
-span.list-item{
-  display:table-cell;
-  font-size:1em;
-  height:100%;
-  position:absolute;
-  text-align:center;
-  vertical-align:middle;
-}
-/*ul#keyDifferentiators li:before{
-  content: "•  ";
-  color:var(--headings-color);
-}*/
+/* FOOTER */
 footer{
-  position:relative;
-  display:block;
-  height:150px;
-  border-top:1px solid #767676;
   background-color: var(--dark-blue);
+  bottom: 0;
+  display:block;
+  height:50px;
+  position:fixed;
+  width:100%;
 }
 footer p {
-  padding-top:100px;
-  text-align:center;
+  color: #00CAFF;
   font-size: 1.4em;
   line-height:1.5em;
-  color: #00CAFF;
   margin-bottom: 0px;
+  text-align:center;
 }
 p{
-  text-align:left;
+  text-align:center;
   font-size:1.5em;
   line-height:1.5em;
-}
-.block-text{
-  width: 90%;
-  margin-left: 5%;
+  padding-top: 15px;
 }
 
 /*FORMS*/
@@ -320,29 +231,54 @@ textarea{
 }
 
 /* ABOUT */
-#ourStory{
-  margin-top:-20px;
-  width: 100%;
-  height: 100%;
-  background-image: url("<%= asset_path('dna_helix_silver_high_res.jpg')%>");
+#aboutGroup1 .heading-background{
+  background-image: url("<%= asset_path('biotech_abstract_visionary_background_high_res.jpg')%>");
   background-size: cover;
   background-position: center center;
+  height:100vh;
 }
-.our-story-container.landing-background{
-  background-color: rgba(255,255,255,0.9);
+#aboutGroup1 h1{
+  margin-left:50px;
+}
+#aboutGroup2 .section-one-background{
+  height:1000px;
 }
 
 /* TEAM */
-#team{
-  margin-top:-20px;
-  width: 100%;
-  height: 100%;
-  background-image: url("<%= asset_path('blue_molecules_high_res.jpg')%>");
+#teamGroup1 .heading-background{
+  background-image: url("<%= asset_path('golden_gate_high_res.jpg')%>");
   background-size: cover;
-  background-position: center right;
+  background-position: center center;
+  height:100vh;
 }
-#team .row{
-  background-color: rgba(255,255,255,0.9);
+#teamGroup2 .section-one-background{
+  /*background-color: rgba(255,255,255,0.0);*/
+  background-color: white;
+  /*background-image: url("<%= asset_path('clouds_blue_white_background.png')%>");
+  background-size: cover;*/
+  height:400px;
+}
+#teamGroup3 .parallax__layer--back{
+  background-image: url("<%= asset_path('abstract_neural_background_high_res.jpg')%>");
+  background-size: cover;
+  height:130vh;
+}
+/*first h2 on team page*/
+#teamHeading{
+  /*margin-top:300px;*/
+}
+#teamGroup1 h1{
+/*  #003340 is var(--dark-blue)*/
+  -webkit-text-stroke: 0.5px #003340;
+  border-radius:3px;
+  /*color:var(--lightest-blue);*/
+  color:white;
+  display:inline-block;
+  font-size:7em;
+  font-weight:400;
+  margin-left:50px;
+  text-align:left;
+  width:50%;
 }
 #team .row:nth-child(4){
   padding-bottom: 200px;
@@ -352,6 +288,25 @@ textarea{
   padding:10px;
   border-radius:4px;
 }
+#team h3{
+  text-align:center;
+}
+#teamGroup3 h3{
+  text-align:left;
+}
+#team ul{
+  text-align:center;
+  font-size:1.5em;
+}
+#teamGroup1{
+  z-index: 4;
+}
+#teamGroup2{
+  z-index: 5;
+}
+#teamGroup3{
+  z-index: 3;
+}
 .image-display-none{
   display:none;
 }
@@ -360,13 +315,16 @@ textarea{
   margin-top:100px;
 }
 .profile h3{
-  margin-left:0;
+  margin-top:0px;
+  margin-left:0px;
   display:inline-block;
   vertical-align:top;
 }
+.profile h3 span{
+  font-size:.8em;
+}
 .profile-block{
-  padding-left:50px;
-  text-align:left;
+  text-align:center;
 }
 .profile-block-paragraph{
   padding-right:100px;
@@ -380,9 +338,12 @@ textarea{
   display:block;
 }
 .profile .title-container{
+  background-color:white;
+  border-radius: 3px;
+  padding:15px;
   width: 160px;
   vertical-align:top;
-  margin:25px 0px 0px 15px;
+  margin:0px 0px 0px 30px;
   display:inline-block;
   text-align:left;
 }
@@ -505,54 +466,132 @@ svg{
   .sliding-u-l-r:after {
     display: none;
   }
-  .profile-block{
+  h1{
+    font-size:4.5em;
     text-align:center;
-    margin-bottom:50px;
+    background-color:rgba(255,255,255,0.6);
+    margin-left: 15%;
+    margin-right:15%;
   }
-  .profile-block-paragraph{
-    padding-right:0px;
+  .heading-background{
+    background-position: top right;
   }
-  .profile-block-paragraph p{
-    width: 90%;
-    left:0;
-    right:0;
-    margin-left:auto;
-    margin-right:auto;
+  .heading-content{
+    margin-top:100px;
   }
-  p.block-text{
-    width:90%;
-    left:0;
-    right:0;
-    margin-left:auto;
-    margin-right:auto;
+  footer{
+    height:75px;
   }
-  ul#keyDifferentiators, ul#collectiveExperience{
-    width:80%;
-    margin-left:10%;
-  }
-  .landing-background{
-    width: 90%;
+  .block-text{
     margin-left: 5%;
-  }
-  h2#ourStoryHeading, h2#teamHeading{
-    margin-left:5%;
-  }
-  h3, h4{
-    margin-left:5%;
-  }
-  .our-story-container{
-    width:90%;
-    margin-bottom: 100px;
-  }
-  .container{
+    max-width:700px;
     width: 90%;
   }
-  .landing-background.heading-background{
-    width: 100%;
-    padding-left: 0;
-    margin-left: 0;
+  .parallax__group {
+    height: 500px; /* fallback for older browsers */
+    height:100vh;
+  }
+  .section-one-background{
+    height:550px;
+  }
+  .section-two-background{
+    height:1000px;
+  }
+  #group3 h2{
+    margin-top:0px;
+  }
+  #teamGroup1 h1{
+    font-size:4em;
+    width:40%;
+  }
+  #teamGroup1 .heading-background{
+    height:500px;
+  }
+  #keyDifferentiators li{
+    display:inline-block;
+    margin: 10%;
+    text-align:center;
+    width:80%;
+  }
+  #aboutGroup1 h1{
+    width:30%;
+    margin-left:50px;
   }
 }
+@media screen and (max-width: 700px){
+  #aboutGroup2 .section-one-background{
+    height:950px;
+  }
+}
+@media screen and (max-width: 650px){
+  #aboutGroup2 .section-one-background{
+    height:1000px;
+  }
+}
+@media screen and (max-width: 580px){
+  h1{
+    font-size:3.5em;
+  }
+  .parallax__group {
+    height: 500px; /* fallback for older browsers */
+    height:100vh;
+  }
+  .section-one-background{
+    height:600px;
+  }
+  #group3 h2{
+    margin-top:50px;
+  }
+  .block-text{
+    width:90%;
+    margin-left:5%;
+  }
+  #teamGroup1 h1{
+    width:60%;
+  }
+  #teamGroup1 .heading-background{
+    height:400px;
+  }
+  #aboutGroup2 .section-one-background{
+    height:1100px;
+  }
+}
+@media screen and (max-width: 480px){
+  h1{
+    font-size:3.5em;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  #teamGroup1 h1{
+    width:60%;
+  }
+  .parallax__group {
+    height: 500px; /* fallback for older browsers */
+    height:100vh;
+  }
+  .section-one-background{
+    height:730px;
+  }
+  #group3 h2{
+    margin-top:180px;
+  }
+  .block-text{
+    width:90%;
+    margin-left:5%;
+  }
+  #teamGroup1 .heading-background{
+    height:300px;
+  }
+  #aboutGroup2 .section-one-background{
+    height:1300px;
+  }
+  #aboutGroup1 h1{
+    width:40%;
+    margin-left:50px;
+  }
+}
+
+
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5){
   .profile div div.image-container{
     border: 4px solid var(--headings-color);
@@ -561,18 +600,93 @@ svg{
     clip: rect(0px 266px 200px 133px);
     left: -133px;
   }
-  .landing-background.heading-background{
-    margin-left: 0;
-    padding-left: 10%;
-    width: 70%;
-  }
   ul#keyDifferentiators, ul#collectiveExperience{
     margin: 0 0 0 10%;
     width:70%;
   }
-  .container{
-    width: 100%;
+  .heading-background{
+    background-position: center right;
+  }
+  .section-one-background{
+    height:760px;
   }
 }
   
+/* iPad in portrait and Landscape */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px)  { 
+  .parallax__group {
+    height: 500px; /* fallback for older browsers */
+    height:50vh;
+  }
+  .section-one-background{
+    height:550px;
+  }
+  #group3 h2{
+    margin-top:75px;
+  }
+  .block-text{
+    width:70%;
+    margin-left:15%;
+  }
+}
+/* iPhone 5 & 5S in portrait & landscape */
+@media only screen and (min-device-width : 320px) and (max-device-width : 568px) { 
+  .parallax__group {
+    height: 600px; /* fallback for older browsers */
+    height:110vh;
+  }
+  .section-one-background{
+    height:670px;
+  }
+  p {
+    font-size: 1.3em;
+  }
+  h1{
+    font-size:3.0em;
+  }
+  h2{
+    font-size:2em;
+  }
+  #group3 h2{
+    margin-top:75px;
+  }
+}
+/* iPhone 6 in portrait & landscape */
+@media only screen and (min-device-width : 375px) and (max-device-width : 667px) {
+  .parallax__group {
+    height: 550px; /* fallback for older browsers */
+    height:100vh;
+  }
+  .section-one-background{
+    height:580px;
+  }
+  h1{
+    font-size:3.0em;
+  }
+  h2{
+    font-size:2em;
+  }
+  #group3 h2{
+    margin-top:0px;
+  }
+}
+/* iPhone 6 PLUS in portrait & landscape */
+@media only screen and (min-device-width : 414px) and (max-device-width : 736px) { 
+  .parallax__group {
+    height: 650px; /* fallback for older browsers */
+    height:100vh;
+  }
+  .section-one-background{
+    height:580px;
+  }
+  h1{
+    font-size:4.0em;
+  }
+  h2{
+    font-size:2.5em;
+  }
+  #group3 h2{
+    margin-top:0px;
+  }
+}
   

@@ -61,7 +61,7 @@
 	  Route,
 	  { path: '/', component: Main },
 	  React.createElement(IndexRoute, { component: Home }),
-	  React.createElement(Route, { path: '/our-story', component: About }),
+	  React.createElement(Route, { path: '/about', component: About }),
 	  React.createElement(Route, { path: '/team', component: Team })
 	);
 	
@@ -25904,8 +25904,8 @@
 	              null,
 	              React.createElement(
 	                'a',
-	                { className: 'sliding-u-l-r', href: '#/our-story' },
-	                'Our Story'
+	                { className: 'sliding-u-l-r', href: '#/about' },
+	                'About'
 	              )
 	            ),
 	            React.createElement(
@@ -33055,108 +33055,136 @@
 	      'div',
 	      { id: 'home' },
 	      React.createElement(
-	        Parallax,
-	        { className: 'heading-bg background-bg', bgImage: 'assets/dna_helix_silver_high_res.jpg', strength: 400 },
+	        'div',
+	        { className: 'parallax' },
 	        React.createElement(
-	          'h1',
-	          null,
-	          'S',
+	          'div',
+	          { id: 'group1', className: 'parallax__group' },
 	          React.createElement(
-	            'span',
-	            null,
-	            'TRATEGIC '
+	            'div',
+	            { className: 'parallax__layer parallax__layer--base heading-content' },
+	            React.createElement(
+	              'h1',
+	              null,
+	              'S',
+	              React.createElement(
+	                'span',
+	                null,
+	                'TRATEGIC '
+	              ),
+	              'H',
+	              React.createElement(
+	                'span',
+	                null,
+	                'EALTHCARE',
+	                React.createElement('br', null)
+	              ),
+	              'I',
+	              React.createElement(
+	                'span',
+	                null,
+	                'NVESTMENT '
+	              ),
+	              'P',
+	              React.createElement(
+	                'span',
+	                null,
+	                'ARTNERS'
+	              )
+	            )
 	          ),
-	          'H',
-	          React.createElement(
-	            'span',
-	            null,
-	            'EALTHCARE',
-	            React.createElement('br', null)
-	          ),
-	          'I',
-	          React.createElement(
-	            'span',
-	            null,
-	            'NVESTMENT '
-	          ),
-	          'P',
-	          React.createElement(
-	            'span',
-	            null,
-	            'ARTNERS'
-	          )
-	        )
-	      ),
-	      contentArray.map(function (sectionObj, idx) {
-	        return React.createElement(ContentSection, { key: idx,
-	          sectionId: sectionObj.id,
-	          heading: sectionObj.heading,
-	          paragraph: sectionObj.paragraphs[0],
-	          handleEditText: that.handleEditText });
-	      }),
-	      React.createElement(
-	        Parallax,
-	        { className: 'section-bg', bgImage: 'assets/blue_molecules_high_res.jpg', strength: 400 },
-	        React.createElement(
-	          'h2',
-	          null,
-	          'How We Innovate'
+	          React.createElement('div', { className: 'parallax__layer parallax__layer--back heading-background' })
 	        ),
 	        React.createElement(
-	          'ul',
-	          { id: 'keyDifferentiators' },
+	          'div',
+	          { id: 'group2', className: 'parallax__group' },
 	          React.createElement(
-	            'li',
-	            { className: '' },
-	            React.createElement(
-	              'div',
-	              { className: 'center-block' },
-	              React.createElement(
-	                'span',
-	                { className: 'list-item' },
-	                ' We work with partners that have strategic objectives that can be pursued with equity investing and we’ll work with them to refine focus areas for the fund.'
-	              )
-	            )
-	          ),
-	          React.createElement(
-	            'li',
-	            { className: '' },
-	            React.createElement(
-	              'div',
-	              { className: 'center-block' },
-	              React.createElement(
-	                'span',
-	                { className: 'list-item' },
-	                ' We engage medtech, biotech, diagnostic, and digital health industry luminaries from our network as venture partners, entrepreneurs-in- residence, and in executive chairman roles.'
-	              )
-	            )
-	          ),
-	          React.createElement(
-	            'li',
-	            { className: '' },
-	            React.createElement(
-	              'div',
-	              { className: 'center-block' },
-	              React.createElement(
-	                'span',
-	                { className: 'list-item' },
-	                ' We’ll balance new technology investments for existing markets with investments that combine new market, new business model, and new technology elements.'
-	              )
-	            )
-	          ),
-	          React.createElement(
-	            'li',
-	            { className: '' },
-	            React.createElement(
-	              'div',
-	              { className: 'center-block' },
-	              React.createElement(
-	                'span',
-	                { className: 'list-item' },
-	                ' We’ll use our unique accelerator approach in selected regions and focus areas to source, seed-fund, develop, and Series A-fund deals.'
-	              )
-	            )
+	            'div',
+	            { className: 'parallax__layer parallax__layer--base section-one-background' },
+	            contentArray.map(function (sectionObj, idx) {
+	              return React.createElement(ContentSection, { key: idx,
+	                propId: idx,
+	                sectionId: sectionObj.id,
+	                heading: sectionObj.heading,
+	                paragraph: sectionObj.paragraphs[0],
+	                handleEditText: that.handleEditText });
+	            })
 	          )
+	        ),
+	        React.createElement(
+	          'div',
+	          { id: 'group3', className: 'parallax__group' },
+	          React.createElement(
+	            'div',
+	            { className: 'parallax__layer parallax__layer--base' },
+	            React.createElement(
+	              'h2',
+	              null,
+	              'How We Innovate'
+	            ),
+	            React.createElement(
+	              'ul',
+	              { id: 'keyDifferentiators' },
+	              React.createElement(
+	                'li',
+	                null,
+	                React.createElement(
+	                  'div',
+	                  null,
+	                  React.createElement(
+	                    'span',
+	                    null,
+	                    ' We work with partners that have strategic objectives that can be pursued with equity investing and we’ll work with them to refine focus areas for the fund.'
+	                  )
+	                )
+	              ),
+	              React.createElement(
+	                'li',
+	                null,
+	                React.createElement(
+	                  'div',
+	                  null,
+	                  React.createElement(
+	                    'span',
+	                    null,
+	                    ' We engage medtech, biotech, diagnostic, and digital health industry luminaries from our network as venture partners, entrepreneurs-in-residence, and in executive chairman roles.'
+	                  )
+	                )
+	              ),
+	              React.createElement(
+	                'li',
+	                null,
+	                React.createElement(
+	                  'div',
+	                  null,
+	                  React.createElement(
+	                    'span',
+	                    null,
+	                    ' We’ll balance new technology investments for existing markets with investments that combine new market, new business model, and new technology elements.'
+	                  )
+	                )
+	              ),
+	              React.createElement(
+	                'li',
+	                null,
+	                React.createElement(
+	                  'div',
+	                  null,
+	                  React.createElement(
+	                    'span',
+	                    null,
+	                    ' We’ll use our unique accelerator approach in selected regions and focus areas to source, seed-fund, develop, and Series A-fund deals.'
+	                  )
+	                )
+	              )
+	            )
+	          ),
+	          React.createElement('div', { className: 'parallax__layer parallax__layer--back section-two-background' })
+	        ),
+	        React.createElement(
+	          'div',
+	          { id: 'group4', className: 'parallax__group' },
+	          React.createElement('div', { className: 'parallax__layer parallax__layer--base' })
 	        )
 	      )
 	    );
@@ -33231,6 +33259,8 @@
 	    this.userListener.remove();
 	  },
 	  render: function () {
+	    var classIfFirst = this.props.propId == 0 ? "first-section-heading" : "";
+	
 	    if (this.state.currentUser) {
 	      return React.createElement(ParagraphForm, { handleEditText: this.props.handleEditText,
 	        sectionId: this.props.sectionId,
@@ -33239,10 +33269,10 @@
 	    } else {
 	      return React.createElement(
 	        'div',
-	        { className: 'center-block block-80' },
+	        { className: 'center-block' },
 	        React.createElement(
 	          'h2',
-	          null,
+	          { className: classIfFirst },
 	          this.props.heading
 	        ),
 	        React.createElement(
@@ -33392,51 +33422,73 @@
 	      { id: "ourStory", className: "landing-background-container" },
 	      React.createElement(
 	        "div",
-	        { className: "our-story-container landing-background" },
+	        { className: "parallax" },
 	        React.createElement(
-	          "h2",
-	          { id: "ourStoryHeading" },
-	          "Our Story"
+	          "div",
+	          { id: "aboutGroup1", className: "parallax__group" },
+	          React.createElement(
+	            "div",
+	            { className: "parallax__layer parallax__layer--base heading-content" },
+	            React.createElement(
+	              "h1",
+	              null,
+	              "A",
+	              React.createElement(
+	                "span",
+	                null,
+	                "BOUT"
+	              )
+	            )
+	          ),
+	          React.createElement("div", { className: "parallax__layer parallax__layer--back heading-background" })
 	        ),
 	        React.createElement(
-	          "h3",
-	          null,
-	          "Balanced Deal Selection"
-	        ),
-	        React.createElement(
-	          "p",
-	          { className: "block-text" },
-	          "Strategic Healthcare Investment Partners will balance deal stage to be approximately 50% early stage with our unique accelerator models and approximately 50% later stage where we will invest with conventional venture funds. We will focus on medical devices, diagnostics, and digital health opportunities that facilitate the success of our medical device investments in an accountable care world."
-	        ),
-	        React.createElement(
-	          "h3",
-	          null,
-	          "Early Stage Methods"
-	        ),
-	        React.createElement(
-	          "p",
-	          { className: "block-text" },
-	          "We believe that collaboration among strategic players, development organizations, sources of innovation, and a focused accelerator organization can improve the path from sourcing, seed-funding, development, through the Series A-funding of deals with a higher success rate of getting to Series B funding."
-	        ),
-	        React.createElement(
-	          "h3",
-	          null,
-	          "Focus Areas"
-	        ),
-	        React.createElement(
-	          "p",
-	          { className: "block-text" },
-	          "We will support investment in new technologies that advance our individual strategic partner immediate interests in their existing markets with their current customers. We will also invest in new markets, technologies, and business models that are likely to be of future interest to all of our limited partners in the 3 to 5 year time frame. We will leverage our specific experiences and relationships in neuromodulation, next generation robotics, digital health, sensors and smart devices, active-implantables, and less invasive alternatives to today’s surgical devices."
-	        ),
-	        React.createElement(
-	          "h3",
-	          null,
-	          "The Fund"
-	        ),
-	        React.createElement(
-	          "p",
-	          { className: "block-text" },
-	          "Strategic Healthcare Investment Partners will raise $150 to 200MM with two founding general partners (Brad and Mudit) and one Founding Venture Partner (Ed). We are seeking a first close in Q3 2016."
+	          "div",
+	          { id: "aboutGroup2", className: "parallax__group" },
+	          React.createElement(
+	            "div",
+	            { className: "parallax__layer parallax__layer--base section-one-background" },
+	            React.createElement(
+	              "h3",
+	              { className: "first-section-heading" },
+	              "Balanced Deal Selection"
+	            ),
+	            React.createElement(
+	              "p",
+	              { className: "block-text" },
+	              "Strategic Healthcare Investment Partners will balance deal stage to be approximately 50% early stage with our unique accelerator models and approximately 50% later stage where we will invest with conventional venture funds. We will focus on medical devices, diagnostics, and digital health opportunities that facilitate the success of our medical device investments in an accountable care world."
+	            ),
+	            React.createElement(
+	              "h3",
+	              null,
+	              "Early Stage Methods"
+	            ),
+	            React.createElement(
+	              "p",
+	              { className: "block-text" },
+	              "We believe that collaboration among strategic players, development organizations, sources of innovation, and a focused accelerator organization can improve the path from sourcing, seed-funding, development, through the Series A-funding of deals with a higher success rate of getting to Series B funding."
+	            ),
+	            React.createElement(
+	              "h3",
+	              null,
+	              "Focus Areas"
+	            ),
+	            React.createElement(
+	              "p",
+	              { className: "block-text" },
+	              "We will support investment in new technologies that advance our individual strategic partner immediate interests in their existing markets with their current customers. We will also invest in new markets, technologies, and business models that are likely to be of future interest to all of our limited partners in the 3 to 5 year time frame. We will leverage our specific experiences and relationships in neuromodulation, next generation robotics, digital health, sensors and smart devices, active-implantables, and less invasive alternatives to today’s surgical devices."
+	            ),
+	            React.createElement(
+	              "h3",
+	              null,
+	              "The Fund"
+	            ),
+	            React.createElement(
+	              "p",
+	              { className: "block-text" },
+	              "Strategic Healthcare Investment Partners will raise $150 to 200MM with two founding general partners (Brad and Mudit) and one Founding Venture Partner (Ed). We are seeking a first close in Q3 2016."
+	            )
+	          )
 	        )
 	      )
 	    );
@@ -33468,195 +33520,210 @@
 	      { id: "team" },
 	      React.createElement(
 	        "div",
-	        { className: "row" },
-	        React.createElement(
-	          "h2",
-	          { id: "teamHeading" },
-	          "Team"
-	        ),
-	        React.createElement(
-	          "p",
-	          { className: "block-text" },
-	          "The Strategic Health Care Partners team has known each other and worked together on multiple healthcare investments over the last 20 years."
-	        ),
-	        React.createElement(
-	          "h4",
-	          { id: "collectiveExperienceTitle" },
-	          "Our Collective Experience Includes:"
-	        ),
-	        React.createElement(
-	          "ul",
-	          { id: "collectiveExperience" },
-	          React.createElement(
-	            "li",
-	            null,
-	            " Sourcing innovation"
-	          ),
-	          React.createElement(
-	            "li",
-	            null,
-	            " Leading and mentoring early stage companies"
-	          ),
-	          React.createElement(
-	            "li",
-	            null,
-	            " Taking companies public"
-	          ),
-	          React.createElement(
-	            "li",
-	            null,
-	            " Product development in both small and multinational corporations."
-	          )
-	        )
-	      ),
-	      React.createElement(
-	        "div",
-	        { className: "row" },
+	        { className: "parallax" },
 	        React.createElement(
 	          "div",
-	          { className: "profile" },
+	          { id: "teamGroup1", className: "parallax__group" },
 	          React.createElement(
 	            "div",
-	            { className: "profile-block col-xs-12 col-sm-5 col-md-4" },
+	            { className: "parallax__layer parallax__layer--base heading-content" },
+	            React.createElement(
+	              "h1",
+	              null,
+	              "G",
+	              React.createElement(
+	                "span",
+	                null,
+	                "LOBAL "
+	              ),
+	              "P",
+	              React.createElement(
+	                "span",
+	                null,
+	                "RESENCE"
+	              )
+	            )
+	          ),
+	          React.createElement("div", { className: "parallax__layer parallax__layer--back heading-background" })
+	        ),
+	        React.createElement(
+	          "div",
+	          { id: "teamGroup2", className: "parallax__group" },
+	          React.createElement(
+	            "div",
+	            { className: "parallax__layer parallax__layer--base section-one-background" },
+	            React.createElement(
+	              "h2",
+	              { id: "teamHeading" },
+	              "Team"
+	            ),
+	            React.createElement(
+	              "p",
+	              { className: "block-text" },
+	              "The Strategic Health Care Partners team has known each other and worked together on multiple healthcare investments over the last 20 years."
+	            ),
+	            React.createElement(
+	              "h3",
+	              null,
+	              "Our Collective Experience Includes:"
+	            ),
+	            React.createElement(
+	              "ul",
+	              { id: "collectiveExperience" },
+	              React.createElement(
+	                "li",
+	                null,
+	                " Sourcing innovation"
+	              ),
+	              React.createElement(
+	                "li",
+	                null,
+	                " Leading and mentoring early stage companies"
+	              ),
+	              React.createElement(
+	                "li",
+	                null,
+	                " Taking companies public"
+	              ),
+	              React.createElement(
+	                "li",
+	                null,
+	                " Product development in both small and multinational corporations."
+	              )
+	            )
+	          )
+	        ),
+	        React.createElement(
+	          "div",
+	          { id: "teamGroup3", className: "parallax__group" },
+	          React.createElement(
+	            "div",
+	            { className: "parallax__layer parallax__layer--base" },
 	            React.createElement(
 	              "div",
-	              { className: "image-container" },
-	              React.createElement("img", { onLoad: this.loadHighRes, id: "bradValeProfileImage", className: "pos-1", src: "/images/brad_vale_profile_sprite_low_res.jpg", alt: "Brad Vale Profile Image" })
+	              { className: "row" },
+	              React.createElement(
+	                "div",
+	                { className: "profile" },
+	                React.createElement(
+	                  "div",
+	                  { className: "profile-block" },
+	                  React.createElement(
+	                    "div",
+	                    { className: "image-container" },
+	                    React.createElement("img", { onLoad: this.loadHighRes, id: "bradValeProfileImage", className: "pos-1", src: "/images/brad_vale_profile_sprite_low_res.jpg", alt: "Brad Vale Profile Image" })
+	                  ),
+	                  React.createElement(
+	                    "div",
+	                    { className: "title-container" },
+	                    React.createElement(
+	                      "h3",
+	                      null,
+	                      "Brad Vale",
+	                      React.createElement("br", null),
+	                      "PhD, DVM",
+	                      React.createElement("br", null),
+	                      React.createElement(
+	                        "span",
+	                        null,
+	                        "Managing Partner"
+	                      )
+	                    ),
+	                    React.createElement(
+	                      "div",
+	                      { className: "linked-in-logo-container" },
+	                      React.createElement(
+	                        "a",
+	                        { href: "https://www.linkedin.com/in/brad-vale-phd-dvm-0611181", alt: "Brad Vale LinkedIn Profile", target: "_blank" },
+	                        React.createElement("div", { className: "linked-in-logo" })
+	                      )
+	                    )
+	                  )
+	                )
+	              )
 	            ),
 	            React.createElement(
 	              "div",
-	              { className: "title-container" },
-	              React.createElement(
-	                "h3",
-	                null,
-	                "Brad Vale",
-	                React.createElement("br", null),
-	                "PhD, DVM",
-	                React.createElement("br", null),
-	                React.createElement(
-	                  "span",
-	                  null,
-	                  "Managing Partner"
-	                )
-	              ),
+	              { className: "row" },
 	              React.createElement(
 	                "div",
-	                { className: "linked-in-logo-container" },
+	                { className: "profile" },
 	                React.createElement(
-	                  "a",
-	                  { href: "https://www.linkedin.com/in/brad-vale-phd-dvm-0611181", alt: "Brad Vale LinkedIn Profile", target: "_blank" },
-	                  React.createElement("div", { className: "linked-in-logo" })
+	                  "div",
+	                  { className: "profile-block" },
+	                  React.createElement(
+	                    "div",
+	                    { className: "image-container" },
+	                    React.createElement("img", { onLoad: this.loadHighRes, id: "muditJainProfileImage", className: "pos-1", src: "/images/mudit_jain_profile_sprite_low_res.jpg", alt: "Mudit Jain Profile Image" })
+	                  ),
+	                  React.createElement(
+	                    "div",
+	                    { className: "title-container" },
+	                    React.createElement(
+	                      "h3",
+	                      null,
+	                      "Mudit Jain",
+	                      React.createElement("br", null),
+	                      "PhD",
+	                      React.createElement("br", null),
+	                      React.createElement(
+	                        "span",
+	                        null,
+	                        "Managing Partner"
+	                      )
+	                    ),
+	                    React.createElement(
+	                      "div",
+	                      { className: "linked-in-logo-container" },
+	                      React.createElement(
+	                        "a",
+	                        { href: "https://www.linkedin.com/in/mudit-jain-phd-242637", alt: "Mudit Jain LinkedIn Profile", target: "_blank" },
+	                        React.createElement("div", { className: "linked-in-logo" })
+	                      )
+	                    )
+	                  )
+	                )
+	              )
+	            ),
+	            React.createElement(
+	              "div",
+	              { className: "row" },
+	              React.createElement(
+	                "div",
+	                { className: "profile" },
+	                React.createElement(
+	                  "div",
+	                  { className: "profile-block" },
+	                  React.createElement(
+	                    "div",
+	                    { className: "image-container" },
+	                    React.createElement("img", { onLoad: this.loadHighRes, id: "edBrennanProfileImage", className: "pos-1", src: "/images/ed_brennan_profile_sprite_low_res.jpg", alt: "Ed Brennan Profile Image" })
+	                  ),
+	                  React.createElement(
+	                    "div",
+	                    { className: "title-container" },
+	                    React.createElement(
+	                      "h3",
+	                      null,
+	                      "Ed Brennan",
+	                      React.createElement("br", null),
+	                      "PhD",
+	                      React.createElement("br", null),
+	                      React.createElement(
+	                        "span",
+	                        null,
+	                        "Founding Venture",
+	                        React.createElement("br", null),
+	                        "Partner"
+	                      )
+	                    ),
+	                    React.createElement("div", { className: "linked-in-logo-container" })
+	                  )
 	                )
 	              )
 	            )
 	          ),
-	          React.createElement(
-	            "div",
-	            { className: "profile-block-paragraph col-xs-12 col-sm-7 col-md-8" },
-	            React.createElement(
-	              "p",
-	              null,
-	              "Dr. Brad Vale has over thirty years of leadership experience in healthcare at Johnson & Johnson. He spent 22 years in JJDC, the oldest and largest corporate healthcare investment fund with over $1B in investments under management. Brad started out at JNJ at Ethicon, the leading company in wound closure, where he worked on surgical product development. He ran JJDC for the last 5 years and established JJDC offices globally, including Shanghai, London, Tel Aviv, Boston and Si-Valley. Brad completed a PhD in Biomedical Engineering at Iowa State University and his Doctor of Veterinary Medicine at Washington State University."
-	            )
-	          )
-	        )
-	      ),
-	      React.createElement(
-	        "div",
-	        { className: "row" },
-	        React.createElement(
-	          "div",
-	          { className: "profile" },
-	          React.createElement(
-	            "div",
-	            { className: "profile-block col-xs-12 col-sm-5 col-md-4" },
-	            React.createElement(
-	              "div",
-	              { className: "image-container" },
-	              React.createElement("img", { onLoad: this.loadHighRes, id: "muditJainProfileImage", className: "pos-1", src: "/images/mudit_jain_profile_sprite_low_res.jpg", alt: "Mudit Jain Profile Image" })
-	            ),
-	            React.createElement(
-	              "div",
-	              { className: "title-container" },
-	              React.createElement(
-	                "h3",
-	                null,
-	                "Mudit Jain",
-	                React.createElement("br", null),
-	                "PhD",
-	                React.createElement("br", null),
-	                React.createElement(
-	                  "span",
-	                  null,
-	                  "Managing Partner"
-	                )
-	              ),
-	              React.createElement(
-	                "div",
-	                { className: "linked-in-logo-container" },
-	                React.createElement(
-	                  "a",
-	                  { href: "https://www.linkedin.com/in/mudit-jain-phd-242637", alt: "Mudit Jain LinkedIn Profile", target: "_blank" },
-	                  React.createElement("div", { className: "linked-in-logo" })
-	                )
-	              )
-	            )
-	          ),
-	          React.createElement(
-	            "div",
-	            { className: "profile-block-paragraph col-xs-12 col-sm-7 col-md-8" },
-	            React.createElement(
-	              "p",
-	              null,
-	              "Dr. Mudit Jain has 18 years of operating, venture, and M&A experience at Guidant, Johnson & Johnson, and Synergy LifeScience Partners (A medical device and wearable medtech focused fund) . He has worked on projects in India, USA, and Ireland. Mudit has a PhD in Biomedical Engineering from Duke University, and a MBA in Healthcare from The Wharton School of Business."
-	            )
-	          )
-	        )
-	      ),
-	      React.createElement(
-	        "div",
-	        { className: "row" },
-	        React.createElement(
-	          "div",
-	          { className: "profile" },
-	          React.createElement(
-	            "div",
-	            { className: "profile-block col-xs-12 col-sm-5 col-md-4" },
-	            React.createElement(
-	              "div",
-	              { className: "image-container" },
-	              React.createElement("img", { onLoad: this.loadHighRes, id: "edBrennanProfileImage", className: "pos-1", src: "/images/ed_brennan_profile_sprite_low_res.jpg", alt: "Ed Brennan Profile Image" })
-	            ),
-	            React.createElement(
-	              "div",
-	              { className: "title-container" },
-	              React.createElement(
-	                "h3",
-	                null,
-	                "Ed Brennan",
-	                React.createElement("br", null),
-	                "PhD",
-	                React.createElement("br", null),
-	                React.createElement(
-	                  "span",
-	                  null,
-	                  "Founding Venture",
-	                  React.createElement("br", null),
-	                  "Partner"
-	                )
-	              ),
-	              React.createElement("div", { className: "linked-in-logo-container" })
-	            )
-	          ),
-	          React.createElement(
-	            "div",
-	            { className: "profile-block-paragraph col-xs-12 col-sm-7 col-md-8" },
-	            React.createElement(
-	              "p",
-	              null,
-	              "Dr. Ed Brennan is a serial medical device entrepreneur and investor. He has been the Co-Founder and CEO of multiple device and diagnostic companies, raising over $400MM for those companies. He led multiple IPOs and strategic exits on those companies. Ed completed his PhD in Microbiology at UC Santa Cruz."
-	            )
-	          )
+	          React.createElement("div", { className: "parallax__layer parallax__layer--back " })
 	        )
 	      )
 	    );

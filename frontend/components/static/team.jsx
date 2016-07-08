@@ -13,6 +13,7 @@ var Team = React.createClass({
       <section id="team">
       
         <div className="parallax">
+      
           <div id="teamGroup1" className="parallax__group">
           
             <div className="parallax__layer parallax__layer--base heading-content">
@@ -37,87 +38,73 @@ var Team = React.createClass({
                   <li>&nbsp;Taking companies public</li>
                   <li>&nbsp;Product development in both small and multinational corporations.</li>
                 </ul>
-        
+      
+                <div className="row">
+
+                  <div className="profile">
+                    <div className="profile-block">
+
+                      <div className="image-container">
+                        <img onLoad={this.loadHighRes} id="bradValeProfileImage" className="pos-1" src="/images/brad_vale_profile_sprite_low_res.jpg" alt="Brad Vale Profile Image"></img>
+                      </div>
+
+                      <div className="title-container">
+                        <h3>Brad Vale<br/>PhD, DVM<br/><span>Managing Partner</span></h3>
+                        <div className="linked-in-logo-container">
+                          <a href="https://www.linkedin.com/in/brad-vale-phd-dvm-0611181" alt="Brad Vale LinkedIn Profile" target="_blank">
+                            <div className="linked-in-logo"></div>
+                          </a>
+                        </div>
+                      </div>
+          
+                    </div>
+                  </div>
+                </div>
+                          
+                <div className="row">      
+                  <div className="profile">
+                    <div className="profile-block">
+
+                      <div className="image-container">
+                        <img onLoad={this.loadHighRes} id="muditJainProfileImage" className="pos-1" src="/images/mudit_jain_profile_sprite_low_res.jpg" alt="Mudit Jain Profile Image"></img>
+                      </div>
+
+                      <div className="title-container">
+                        <h3>Mudit Jain<br/>PhD<br/><span>Managing Partner</span></h3>
+                        <div className="linked-in-logo-container">
+                          <a href="https://www.linkedin.com/in/mudit-jain-phd-242637" alt="Mudit Jain LinkedIn Profile" target="_blank">
+                            <div className="linked-in-logo"></div>
+                          </a>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                          
+                <div className="row">         
+                  <div className="profile">
+                    <div className="profile-block">
+
+                      <div className="image-container">
+                        <img onLoad={this.loadHighRes} id="edBrennanProfileImage" className="pos-1" src="/images/ed_brennan_profile_sprite_low_res.jpg" alt="Ed Brennan Profile Image"></img>
+                      </div>
+
+                      <div className="title-container">
+                        <h3>Ed Brennan<br/>PhD<br/><span>Founding Venture<br/>Partner</span></h3>
+                        <div className="linked-in-logo-container">
+                        </div>
+                      </div>  
+
+                    </div>
+                  </div>        
+          
+                </div>     
+                    
             </div>
     
           </div>
       
-          <div id="teamGroup3" className="parallax__group">
-            <div className="parallax__layer parallax__layer--base">
-              <div className="row">
-      
-                <div className="profile">
-                  <div className="profile-block">
-
-                    <div className="image-container">
-                      <img onLoad={this.loadHighRes} id="bradValeProfileImage" className="pos-1" src="/images/brad_vale_profile_sprite_low_res.jpg" alt="Brad Vale Profile Image"></img>
-                    </div>
-
-                    <div className="title-container">
-                      <h3>Brad Vale<br/>PhD, DVM<br/><span>Managing Partner</span></h3>
-                      <div className="linked-in-logo-container">
-                        <a href="https://www.linkedin.com/in/brad-vale-phd-dvm-0611181" alt="Brad Vale LinkedIn Profile" target="_blank">
-                          <div className="linked-in-logo"></div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  
-                </div>
-              </div>
-
-
-              <div className="row">
-                <div className="profile">
-  
-                  <div className="profile-block">
-
-                    <div className="image-container">
-                      <img onLoad={this.loadHighRes} id="muditJainProfileImage" className="pos-1" src="/images/mudit_jain_profile_sprite_low_res.jpg" alt="Mudit Jain Profile Image"></img>
-                    </div>
-
-                    <div className="title-container">
-                      <h3>Mudit Jain<br/>PhD<br/><span>Managing Partner</span></h3>
-                      <div className="linked-in-logo-container">
-                        <a href="https://www.linkedin.com/in/mudit-jain-phd-242637" alt="Mudit Jain LinkedIn Profile" target="_blank">
-                          <div className="linked-in-logo"></div>
-                        </a>
-                      </div>
-                    </div>
-
-                  </div>
-
-                  
-
-                </div>
-              </div>
-
-
-              <div className="row">
-                <div className="profile">
-                  <div className="profile-block">
-
-                    <div className="image-container">
-                      <img onLoad={this.loadHighRes} id="edBrennanProfileImage" className="pos-1" src="/images/ed_brennan_profile_sprite_low_res.jpg" alt="Ed Brennan Profile Image"></img>
-                    </div>
-
-                    <div className="title-container">
-                      <h3>Ed Brennan<br/>PhD<br/><span>Founding Venture<br/>Partner</span></h3>
-                      <div className="linked-in-logo-container">
-                        
-                      </div>
-                    </div>  
-
-                  </div>
-
-                  
-
-                </div>
-              </div>
-            </div>
-            <div className="parallax__layer parallax__layer--back ">
-            </div>
-          </div>
 
 
         </div>

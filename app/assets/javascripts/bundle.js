@@ -33590,15 +33590,7 @@
 	                null,
 	                " Product development in both small and multinational corporations."
 	              )
-	            )
-	          )
-	        ),
-	        React.createElement(
-	          "div",
-	          { id: "teamGroup3", className: "parallax__group" },
-	          React.createElement(
-	            "div",
-	            { className: "parallax__layer parallax__layer--base" },
+	            ),
 	            React.createElement(
 	              "div",
 	              { className: "row" },
@@ -33722,8 +33714,7 @@
 	                )
 	              )
 	            )
-	          ),
-	          React.createElement("div", { className: "parallax__layer parallax__layer--back " })
+	          )
 	        )
 	      )
 	    );

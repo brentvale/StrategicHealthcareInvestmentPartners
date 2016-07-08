@@ -31,7 +31,7 @@ var Team = React.createClass({
                 <h2 id="teamHeading">Team</h2>
                 <p className="block-text">The Strategic Health Care Partners team has known each other and worked together on multiple healthcare investments over the last 20 years.</p>
 
-                <h3>Our Collective Experience Includes:</h3>
+                <h3 id="experienceHeading">Our Collective Experience Includes:</h3>
                 <ul id="collectiveExperience">
                   <li>&nbsp;Sourcing innovation</li>
                   <li>&nbsp;Leading and mentoring early stage companies</li>

@@ -8,6 +8,7 @@
 /.bundle
 /node_modules
 powerpoint.html.erb
+npm-debug.log
 
 # Ignore all logfiles and tempfiles.
 /log/*

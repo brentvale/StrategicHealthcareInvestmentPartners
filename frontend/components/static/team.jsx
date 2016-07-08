@@ -8,6 +8,7 @@ var Team = React.createClass({
     }
   },
   render: function(){
+                  
     return(
       <section id="team">
       

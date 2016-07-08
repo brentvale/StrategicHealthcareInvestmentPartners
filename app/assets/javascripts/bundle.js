@@ -32894,7 +32894,6 @@
 	      success: function (userObj) {
 	        //return message if no current user
 	        if (userObj.message) {
-	          console.log(userObj.message);
 	          ServerActions.receiveCurrentUser({ currentUser: false });
 	        } else {
 	          ServerActions.receiveCurrentUser({ currentUser: userObj.current_user });
@@ -33515,6 +33514,7 @@
 	    }
 	  },
 	  render: function () {
+	
 	    return React.createElement(
 	      "section",
 	      { id: "team" },

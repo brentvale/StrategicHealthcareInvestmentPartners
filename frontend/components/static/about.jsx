@@ -9,7 +9,7 @@ var About = React.createClass({
           <div id="aboutGroup1" className="parallax__group">
   
             <div className="parallax__layer parallax__layer--base heading-content">
-              <h1>A<span>BOUT</span></h1>
+              <h1>H<span>OW</span> I<span>NNOVATION</span><br/>W<span>ORKS</span></h1>
             </div>
             <div className="parallax__layer parallax__layer--back heading-background">
             </div>

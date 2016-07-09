@@ -33431,11 +33431,24 @@
 	            React.createElement(
 	              "h1",
 	              null,
-	              "A",
+	              "H",
 	              React.createElement(
 	                "span",
 	                null,
-	                "BOUT"
+	                "OW"
+	              ),
+	              " I",
+	              React.createElement(
+	                "span",
+	                null,
+	                "NNOVATION"
+	              ),
+	              React.createElement("br", null),
+	              "W",
+	              React.createElement(
+	                "span",
+	                null,
+	                "ORKS"
 	              )
 	            )
 	          ),

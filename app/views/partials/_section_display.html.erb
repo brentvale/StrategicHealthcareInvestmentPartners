@@ -1,0 +1,16 @@
+<% @sections.each do |section| %>
+  <h2><%= section.heading %></h2>
+  <% section.paragraphs.each do |paragraph| %>
+      <p class="center-block"><%= paragraph.body %></p>
+  <% end %>
+  <% section.lists.each do |list| %>
+      <% if list.list_name %>
+        <%= list.list_name %>
+      <% end %>
+      <ul class="center-block section-list">
+      <% list.list_items.each do |list_item| %>
+          <li><%= list_item.list_item_content %></li>
+      <% end %>
+      </ul>
+  <% end %>
+<% end %>    

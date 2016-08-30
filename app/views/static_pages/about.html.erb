@@ -1,20 +1,22 @@
 <section>
-  <div id="homeBgOne" class="bg-image">
-    <h1 id="homeHeading">Strategic Healthcare<br> Investment Partners</h1>
+  <div id="aboutBgOne" class="bg-image">
+    <h1 id="aboutHeading">Innovation At Work</h1>
   </div>
 </section>
 
 <section>
-  <div id="homeBgTwo">
+  <div id="aboutBgTwo">
     <%= render partial: "partials/section_display" %>
   </div>
 </section>
 
+
+
 <script>
   $(function(){
-    var $container = $("#homeBgOne");
+    var $container = $("#aboutBgOne");
     var downloadingImageBackground = new Image();
-    var backgroundImageUrl = "<%= asset_path('dna_helix_silver_high_res.jpg')%>";
+    var backgroundImageUrl = "<%= asset_path('biotech_abstract_visionary_background_high_res.jpg')%>";
 
     downloadingImageBackground.onload = function(){
       $container.css({backgroundImage: "url('" + backgroundImageUrl + "')"})

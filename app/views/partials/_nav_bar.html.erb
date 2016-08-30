@@ -1,0 +1,26 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" aria-expanded="false" data-target="#navigationMenuDropdown">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <% if params[:action] == 'home' %>
+        <%= link_to "SHIP", root_path, class: "navbar-brand navbar-logo logo-is-active", id: "navLogo" %>
+      <% else %>
+        <%= link_to "SHIP", root_path, class: "navbar-brand navbar-logo", id: "navLogo" %>
+      <% end %>
+      
+    </div>
+
+    <div class="collapse navbar-collapse" id="navigationMenuDropdown">
+      <ul class="nav navbar-nav navigation-list">
+        <li class="<%= 'is-active' if params[:action] == 'about' %>"><%= link_to "About", about_path, class: "sliding-u-l-r" %></li>
+        <li class="<%= 'is-active' if params[:action] == 'team' %>"><%= link_to "Team", team_path, class: "sliding-u-l-r" %></li>
+        <li class="right-list-item"><%= link_to "Sign In", new_user_session_path, class: "sliding-u-l-r" %></li>
+      </ul>
+    </div>
+
+</nav>

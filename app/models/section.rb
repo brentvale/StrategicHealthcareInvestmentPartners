@@ -13,4 +13,5 @@
 class Section < ActiveRecord::Base
   belongs_to :page
   has_many :paragraphs
+  has_many :lists
 end

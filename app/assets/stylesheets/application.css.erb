@@ -43,18 +43,28 @@ body{
 .container-fluid{
   padding:0;
 }
-nav.navbar{
-  margin-bottom: 0px;
-  padding-bottom: 10px;
-  padding-top:10px;
-}
 h1{
   margin-left:50px;
   font-size:5em;
-  color:var(--dark-blue);
   font-weight:400;
   border-radius:3px;
+}
+h1#homeHeading, h1#aboutHeading, h1#teamHeading{
+  position:absolute;
+  top: 250px;
+  top: 30vh;
+}
+h1#homeHeading{
+  color:var(--dark-blue);
   -webkit-text-stroke: 0.5px #00CAFF;
+}
+h1#aboutHeading{
+  color:var(--dark-blue);
+  -webkit-text-stroke: 0.5px yellow;
+}
+h1#teamHeading{
+  color:white;
+  -webkit-text-stroke: 0.5px black;
 }
 h2, h3{
   text-align:center;
@@ -63,8 +73,27 @@ h2, h3{
   margin-left:auto;
   margin-right:auto;
 }
-.block-80{
-  width:80%;
+p, ul{
+  font-size: 1.8em;
+  font-weight:100; 
+}
+p{
+  max-width: 800px;
+  padding: 30px;
+}
+footer{
+  background-color: var(--dark-blue);
+  width: 100%;
+}
+footer p{
+  color: var(--lightest-blue);
+  font-weight:400;
+  margin-bottom: 0;
+  text-align:center;
+  max-width:2000px;
+}
+ul.section-list{
+  max-width:800px;
 }
 .center-block{
   margin-left:auto;
@@ -78,611 +107,80 @@ h2, h3{
   margin-left:auto;
   margin-right:auto;
 }
-/* PARALLAX */
-.parallax {
-  height: 500px; /* fallback for older browsers */
-  height:100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
-  margin-top:-10px;
-  perspective-origin-x: 100%;
-  -webkit-perspective: 300px;
-  perspective: 100px;
-}
-.parallax__group {
-  position: relative;
-  height:100vh;
-  transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d;
-}
-.parallax__layer {
-/*  transform-origin-x: 100%;*/
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-.parallax__layer--base {
-  transform: translateZ(0);
-  z-index:4;
-}
-.parallax__layer--back {
-  transform: translateZ(-50px) scale(2);
-  z-index: 3;
-}
-#group2 .parallax__layer--back{
-  z-index: 5;
-}
-#group1{
-  z-index: 4;
-}
-#group2{
-  z-index: 5;
-}
-#group3{
-  z-index: 3;
-  height:500px;
-}
-#group4{
-  height:200px;
-}
-#group4 .parallax__layer--base{
-  background-color: var(--dark-blue);
-}
-/* HOME */
-.heading-background{
-  background-image: url("<%= asset_path('dna_helix_silver_high_res.jpg')%>");
+.bg-image{
   background-size: cover;
+  background-position: center right;
+  min-height: 500px;
+  height: 80vh;
 }
-.heading-content{
-  margin-top:200px;
-}
-.section-one-background{
-  background-color:white;
-  height:600px;
-  /*background-image: url("<%= asset_path('building_elevator_shaft_high_res.jpg')%>");
-  background-size: cover;*/
-}
-.section-two-background{
-  background-image: url("<%= asset_path('blue_molecules_high_res.jpg')%>");
-  background-size: cover;
-}
-
-.first-section-heading{
-  margin-top:50px;
-}
-#keyDifferentiators li{
-  display:inline-block;
-  margin: 3%;
-  text-align:center;
-  width:43%;
-}
-#keyDifferentiators li div{
-  background-color: rgba(255,255,255, 0.9);
-  border:1px solid;
-  border-radius: 3px;
-  display: inline-block;
-  height:200px;
-  max-width:400px;
-  position:relative;
-  vertical-align:top;
-  width:100%;
-}
-#keyDifferentiators span{
-  display:inline-block;
-  padding:20px;
-  position:relative;
-  font-size:1.5em;
-}
-
-/*DEVISE FORMS*/
-.devise-forms{
-  margin-left: 50px;
-}
-#error_explanation h2{
-  display:none;
-}
-#error_explanation ul{
-  font-size: 1.5em;
-  list-style-type:none;
-}
-#navLogo:hover{
-  color: #00CAFF;
-}
-
-/* FOOTER */
-footer{
-  background-color: var(--dark-blue);
-  bottom: 0;
-  display:block;
-  height:50px;
-  position:fixed;
-  width:100%;
-}
-footer p {
-  color: #00CAFF;
-  font-size: 1.4em;
-  line-height:1.5em;
-  margin-bottom: 0px;
-  text-align:center;
-}
-p{
-  text-align:center;
-  font-size:1.5em;
-  line-height:1.5em;
-  padding-top: 15px;
-}
-
-/*FORMS*/
-#editParagraph, #saveParagraph{
-  width:100px;
-  height:50px;
-  border-radius: 10px;
-}
-#editParagraph{
-  background-color:red;
-}
-#saveParagraph{
-  background-color:green;
-}
-textarea{
-  width:100%;
-  min-height:300px;
-}
-
-/* ABOUT */
-#aboutGroup1 .heading-background{
-  background-image: url("<%= asset_path('biotech_abstract_visionary_background_high_res.jpg')%>");
-  background-size: cover;
-  background-position: center center;
-  height:100vh;
-}
-#aboutGroup1 h1{
-  margin-left:50px;
-}
-#aboutGroup2 .section-one-background{
-  height:1000px;
-}
-
-/* TEAM */
-#team h3#experienceHeading{
-  text-align:center;
-}
-#teamGroup1 .heading-background{
-  background-image: url("<%= asset_path('golden_gate_high_res.jpg')%>");
-  background-size: cover;
-  background-position: center center;
-  height:100vh;
-}
-#teamGroup2 .section-one-background{
-  /*background-color: rgba(255,255,255,0.0);*/
-  background-color: white;
-  /*background-image: url("<%= asset_path('clouds_blue_white_background.png')%>");
-  background-size: cover;*/
-  height:1100px;
-  margin-bottom:300px;
-}
-#teamGroup1 h1{
-/*  #003340 is var(--dark-blue)*/
-  -webkit-text-stroke: 0.5px #003340;
-  border-radius:3px;
-  /*color:var(--lightest-blue);*/
-  color:white;
-  display:inline-block;
-  font-size:7em;
-  font-weight:400;
-  margin-left:50px;
-  text-align:left;
-  width:50%;
-}
-#team .row:nth-child(4){
-  padding-bottom: 200px;
-}
-#team p, #team ul{
-  background-color:white;
-  padding:10px;
-  border-radius:4px;
-}
-#team h3{
-  text-align:center;
-}
-#teamGroup2 h3{
-  text-align:left;
-}
-#team ul{
-  text-align:center;
-  font-size:1.5em;
-}
-#teamGroup1{
-  z-index: 4;
-}
-#teamGroup2{
-  z-index: 5;
-}
-#teamGroup3{
-  z-index: 3;
-}
-.image-display-none{
-  display:none;
-}
-.profile{
-  width:100%;
-  margin-top:100px;
-}
-.profile h3{
-  margin-top:0px;
-  margin-left:0px;
-  display:inline-block;
-  vertical-align:top;
-}
-.profile h3 span{
-  font-size:.8em;
-}
-.profile-block{
-  text-align:center;
-}
-.profile-block-paragraph{
-  padding-right:100px;
-}
-.profile .linked-in-logo-container{
-  height: 20px;
-  width: 60px;
-  display:block;
-}
-.profile .linked-in-logo-container a{
-  display:block;
-}
-.profile .title-container{
-  background-color:white;
-  border-radius: 3px;
-  padding:15px;
-  width: 160px;
-  vertical-align:top;
-  margin:0px 0px 0px 30px;
-  display:inline-block;
-  text-align:left;
-}
-.profile div div a div.linked-in-logo{
-  background-image: url("<%= asset_path('linked_in_logo_sprite.gif') %>");
-  background-size: 100% 200%;
-  background-position: 0 100%;
-  padding-top:0px;
-  border-radius: 2px;
-  display:inline-block;
-  height:20px;
-  width:60px;
-}
-.profile div div a div.linked-in-logo:hover{
- background-position: 0 0;
- cursor:hand;
- cursor:pointer;
-}
-.image-container{
-  position: relative;
-  height: 208px; /*200px for image width + 8px for border*/
-  width: 141px; /*133px for image width + 8px for border*/
-  border: 4px solid white;
-  border-radius:2px;
-  display:inline-block;
-}
-.image-container img {
-  height: 200px;
-  width:266px;
-  position:absolute;
-  top: 0;
-  left: 0;
-}
-.pos-1{
-  clip:rect(0 133px 200px 0);
-}
-.profile:hover div div img{
-  clip: rect(0px 266px 200px 133px);
-  left: -133px;
-  opacity: 0.80;
-  -webkit-animation: fade-in-eighty .2s forwards; /* Safari 4+ */
-  -moz-animation:    fade-in-eighty .2s forwards; /* Fx 5+ */
-  -o-animation:      fade-in-eighty .2s forwards; /* Opera 12+ */
-  animation:         fade-in-eighty .2s forwards;
-}
-@-webkit-keyframes fade-in-eighty {
-  0%   { opacity: 0.80; }
-  100% { opacity: 1.0; }
-}
-@-moz-keyframes fade-in-eighty {
-  0%   { opacity: 0.80; }
-  100% { opacity: 1.0; }
-}
-@-o-keyframes fade-in-eighty {
-  0%   { opacity: 0.80; }
-  100% { opacity: 1.0; }
-}
-@keyframes fade-in-eighty {
-  0%   { opacity: 0.80; }
-  100% { opacity: 1.0; }
-}
-.profile:hover div div.image-container{
-  -webkit-animation: border-show .2s forwards; /* Safari 4+ */
-  -moz-animation:    border-show .2s forwards; /* Fx 5+ */
-  -o-animation:      border-show .2s forwards; /* Opera 12+ */
-  animation:         border-show .2s forwards;
-}
-/* --headings-color: #009bbf */
-@-webkit-keyframes border-show {
-  0%   { border: 4px solid white; }
-  100% { border: 4px solid #009bbf; }
-}
-@-moz-keyframes border-show {
-  0%   { border: 4px solid white; }
-  100% { border: 4px solid #009bbf; }
-}
-@-o-keyframes border-show {
-  0%   { border: 4px solid white; }
-  100% { border: 4px solid #009bbf; }
-}
-@keyframes border-show {
-  0%   { border: 4px solid white; }
-  100% { border: 4px solid #009bbf; }
-}
-
 /* NAVIGATION */
-nav.navbar-default li a.sliding-u-l-r{
-  color:var(--headings-color);
-  font-size: 1.3em;
+#navLogo:hover{
+  color: var(--dark-blue);
 }
-nav ul li:hover{
-  color:var(--dark-blue);
+nav.navbar{
+  margin-bottom: 0px;
+  padding-bottom: 10px;
+  padding-top:10px;
 }
-.navbar-brand.navbar-logo:hover{
-  color:var(--dark-blue);
+nav.navbar.navbar-default.navbar-fixed-top{
+  display:block;
+  position:relative;
+}
+.navbar-default .navbar-nav>li>a{
+  color: var(--headings-color);
+}
+.navbar-header .navbar-brand.navbar-logo{
+  color: var(--headings-color);
+}
+ul.navigation-list{
+  font-size: 1.5em;
+  width: 90%;
+}
+.navbar-nav > li.right-list-item{
+  float:right;
+}
+.navbar-default .navbar-nav > li.is-active > a{
+  color: var(--dark-blue);
+}
+.navbar-header .navbar-brand.navbar-logo.logo-is-active{
+  color: var(--dark-blue);
 }
 .sliding-u-l-r {
   display: inline-block;
-  cursor:pointer;
 }
 .sliding-u-l-r:after {
   content: '';
   display: block;
-  height: 1px;
+  height: 2px;
   width: 0;
   background: transparent;
-  transition: width .25s ease, background-color .25s ease;
+  transition: width .5s ease, background-color .5s ease;
 }
 .sliding-u-l-r:hover:after {
+  width: 100%;
   background: var(--dark-blue);
-  width:100%;
 }
-svg{
-  height:100%;
-  display:inline;
-  margin-left:30px;
+/* HOME */
+#homeBgOne{
+  background-image: url("<%= asset_path('dna_helix_silver_low_res.jpg')%>");
 }
-
-@media screen and (max-width: 768px){
-  .sliding-u-l-r:after {
-    display: none;
+/* ABOUT */
+#aboutBgOne{
+  background-image: url("<%= asset_path('biotech_abstract_visionary_background_low_res.jpg')%>");
+}
+/* TEAM */
+#teamBgOne{
+  background-image: url("<%= asset_path('golden_gate_low_res.jpg')%>");
+  background-position: center center;
+}
+@media screen and (max-width: 691px){
+  .sliding-u-l-r:hover:after {
+    width: 20%;
   }
-  h1{
-    font-size:4.5em;
-    text-align:center;
-    background-color:rgba(255,255,255,0.6);
-    margin-left: 15%;
-    margin-right:15%;
+  ul.navigation-list{
+    width: 100%;
   }
-  .heading-background{
-    background-position: top right;
-  }
-  .heading-content{
-    margin-top:100px;
-  }
-  footer{
-    height:75px;
-  }
-  .block-text{
-    margin-left: 5%;
-    max-width:700px;
-    width: 90%;
-  }
-  .parallax__group {
-    height: 500px; /* fallback for older browsers */
-    height:100vh;
-  }
-  .section-one-background{
-    height:550px;
-  }
-  .section-two-background{
-    height:1000px;
-  }
-  #group3 h2{
-    margin-top:0px;
-  }
-  #teamGroup1 h1{
-    font-size:4em;
-    width:40%;
-  }
-  #teamGroup1 .heading-background{
-    height:500px;
-  }
-  #keyDifferentiators li{
-    display:inline-block;
-    margin: 10%;
-    text-align:center;
-    width:80%;
-  }
-  #aboutGroup1 h1{
-    width:30%;
-    margin-left:50px;
+  .navbar-nav > li.right-list-item{
+    float:none;
   }
 }
-@media screen and (max-width: 700px){
-  #aboutGroup2 .section-one-background{
-    height:950px;
-  }
-}
-@media screen and (max-width: 650px){
-  #aboutGroup2 .section-one-background{
-    height:1000px;
-  }
-}
-@media screen and (max-width: 580px){
-  h1{
-    font-size:3.5em;
-  }
-  .parallax__group {
-    height: 500px; /* fallback for older browsers */
-    height:100vh;
-  }
-  .section-one-background{
-    height:600px;
-  }
-  .block-text{
-    width:90%;
-    margin-left:5%;
-  }
-  #teamGroup1 h1{
-    width:60%;
-  }
-  #teamGroup1 .heading-background{
-    height:400px;
-  }
-  #aboutGroup2 .section-one-background{
-    height:1100px;
-  }
-}
-@media screen and (max-width: 480px){
-  h1{
-    font-size:3.5em;
-    margin-left:auto;
-    margin-right:auto;
-  }
-  #teamGroup1 h1{
-    width:60%;
-  }
-  .parallax__group {
-    height: 500px; /* fallback for older browsers */
-    height:100vh;
-  }
-  .section-one-background{
-    height:730px;
-  }
-  .block-text{
-    width:90%;
-    margin-left:5%;
-  }
-  #aboutGroup2 .section-one-background{
-    height:1200px;
-  }
-  #aboutGroup1 h1{
-    width:40%;
-    margin-left:50px;
-  }
-  #teamGroup1 .heading-background{
-    height:400px;
-  }
-  #teamGroup2 .section-one-background{
-    height:1300px;
-    margin-bottom:200px;
-  }
-}
-
-
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5){
-  .profile div div.image-container{
-    border: 4px solid var(--headings-color);
-  }
-  .profile div div img{
-    clip: rect(0px 266px 200px 133px);
-    left: -133px;
-  }
-  ul#keyDifferentiators, ul#collectiveExperience{
-    width:90%;
-  }
-  .heading-background{
-    background-position: center right;
-  }
-  .section-one-background{
-    height:760px;
-  }
-  .section-two-background{
-    height:900px;
-  }
-}
-  
-/* iPad in portrait and Landscape */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px)  { 
-  .parallax__group {
-    height: 500px; /* fallback for older browsers */
-    height:50vh;
-  }
-  .section-one-background{
-    height:550px;
-  }
-  #group3 h2{
-    margin-top:75px;
-  }
-  .block-text{
-    width:70%;
-    margin-left:15%;
-  }
-}
-/* iPhone 5 & 5S in portrait & landscape */
-@media only screen and (min-device-width : 320px) and (max-device-width : 568px) { 
-  .parallax__group {
-    height: 600px; /* fallback for older browsers */
-    height:110vh;
-  }
-  .section-one-background{
-    height:670px;
-  }
-  p {
-    font-size: 1.3em;
-  }
-  h1{
-    font-size:3.0em;
-  }
-  h2{
-    font-size:2em;
-  }
-  #group3 h2{
-    margin-top:75px;
-  }
-}
-/* iPhone 6 in portrait & landscape */
-@media only screen and (min-device-width : 375px) and (max-device-width : 667px) {
-  .parallax__group {
-    height: 550px; /* fallback for older browsers */
-    height:100vh;
-  }
-  .section-one-background{
-    height:620px;
-  }
-  h1{
-    font-size:3.0em;
-  }
-  h2{
-    font-size:2em;
-  }
-  #group3 h2{
-    margin-top:0px;
-  }
-}
-/* iPhone 6 PLUS in portrait & landscape */
-@media only screen and (min-device-width : 414px) and (max-device-width : 736px) { 
-  .parallax__group {
-    height: 650px; /* fallback for older browsers */
-    height:100vh;
-  }
-  .section-one-background{
-    height:580px;
-  }
-  h1{
-    font-size:4.0em;
-  }
-  h2{
-    font-size:2.5em;
-  }
-  #group3 h2{
-    margin-top:0px;
-  }
-}
-  

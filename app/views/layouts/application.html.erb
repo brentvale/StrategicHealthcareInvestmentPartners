@@ -13,11 +13,13 @@
 </head>
 <body>
   <div class="container-fluid">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <%= render partial: "partials/nav_bar" %>
+    <!-- <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p> -->
     <div>
       <%= yield %>
     </div>
+    <%= render partial: "partials/footer" %>
   </div>
 
 </body>

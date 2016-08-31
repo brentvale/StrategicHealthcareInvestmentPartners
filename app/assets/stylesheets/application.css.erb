@@ -44,12 +44,10 @@ body{
   padding:0;
 }
 h1{
-  margin-left:50px;
-  font-size:5em;
-  font-weight:400;
   border-radius:3px;
-}
-h1#homeHeading, h1#aboutHeading, h1#teamHeading{
+  font-size:6em;
+  font-weight:400;
+  margin-left:50px;
   position:absolute;
   top: 250px;
   top: 30vh;
@@ -74,10 +72,11 @@ h2, h3{
   margin-right:auto;
 }
 p, ul{
-  font-size: 1.8em;
+  font-size: 2.0em;
   font-weight:100; 
 }
 p{
+  line-height: 1.8em;
   max-width: 800px;
   padding: 30px;
 }
@@ -100,12 +99,6 @@ ul.section-list{
   margin-right:auto;
   left:0;
   right:0;
-}
-.block-text{
-  max-width:500px;
-  width:70%;
-  margin-left:auto;
-  margin-right:auto;
 }
 .bg-image{
   background-size: cover;
@@ -160,6 +153,12 @@ ul.navigation-list{
   width: 100%;
   background: var(--dark-blue);
 }
+/* FORMS */
+.devise-forms{
+  height:600px;
+  height: 80vh;
+  margin-left: 50px;
+}
 /* HOME */
 #homeBgOne{
   background-image: url("<%= asset_path('dna_helix_silver_low_res.jpg')%>");
@@ -173,6 +172,131 @@ ul.navigation-list{
   background-image: url("<%= asset_path('golden_gate_low_res.jpg')%>");
   background-position: center center;
 }
+.profile-container{
+  max-width:800px;
+  padding:30px;
+  width:80%;
+}
+.profile-container .heading-sect, .profile-container .body-sect{
+  width:100%;
+}
+.profile-container .heading-sect{
+  text-align:center;
+}
+p.bio-text{
+  padding: 0;
+}
+.image-container{
+  border: 6px solid white;
+  display:inline-block;
+  height: 212px; /*200px for image width + 12px for border*/
+  width: 145px; /*133px for image width + 12px for border*/
+  position: relative;
+}
+.image-container img{
+  clip:rect(0px 133px 200px 0px);
+  height: 200px;
+  width:266px;
+  position:absolute;
+  top: 0;
+  left: 0;
+}
+.title-container{
+  display:inline-block;
+  text-align:left;
+  vertical-align:top;
+}
+.title-container h3{
+  text-align:left;
+}
+.title-container h3 span{
+  font-size:.8em;
+}
+.linked-in-logo{
+  background-image: url("<%= asset_path('linked_in_logo_sprite.gif') %>");
+  background-size: 100% 200%;
+  background-position: 0 100%;
+  padding-top:0px;
+  border-radius: 2px;
+  display:inline-block;
+  height:20px;
+  width:60px;
+}
+.linked-in-logo:hover{
+ background-position: 0 0;
+ cursor:hand;
+ cursor:pointer;
+}
+.heading-sect:hover .image-container img{
+  clip:rect(0px 266px 200px 133px);
+  left:-133px;
+  -webkit-animation: fade-in-eighty .2s forwards; /* Safari 4+ */
+  -moz-animation:    fade-in-eighty .2s forwards; /* Fx 5+ */
+  -o-animation:      fade-in-eighty .2s forwards; /* Opera 12+ */
+  animation:         fade-in-eighty .2s forwards;
+}
+.heading-sect:hover .image-container{
+  -webkit-animation: border-show    .2s forwards; 
+  -moz-animation:    border-show    .2s forwards;
+  -o-animation:      border-show    .2s forwards;
+  animation:         border-show    .2s forwards;
+}
+@-webkit-keyframes fade-in-eighty {
+  0%   { opacity: 0.80; }
+  100% { opacity: 1.0; }
+}
+@-moz-keyframes fade-in-eighty {
+  0%   { opacity: 0.80; }
+  100% { opacity: 1.0; }
+}
+@-o-keyframes fade-in-eighty {
+  0%   { opacity: 0.80; }
+  100% { opacity: 1.0; }
+}
+@keyframes fade-in-eighty {
+  0%   { opacity: 0.80; }
+  100% { opacity: 1.0; }
+}
+/* --headings-color: #009bbf */
+@-webkit-keyframes border-show {
+  0%   { border: 6px solid white; }
+  100% { border: 6px solid #009bbf; }
+}
+@-moz-keyframes border-show {
+  0%   { border: 6px solid white; }
+  100% { border: 6px solid #009bbf; }
+}
+@-o-keyframes border-show {
+  0%   { border: 6px solid white; }
+  100% { border: 6px solid #009bbf; }
+}
+@keyframes border-show {
+  0%   { border: 6px solid white; }
+  100% { border: 6px solid #009bbf; }
+}
+@media screen and (min-width: 1100px){
+  .image-container{
+    height: 412px;
+    width: 278px;
+  }
+  .image-container img{
+    clip:rect(0px 266px 400px 0px);
+    height: 400px;
+    width:532px;
+  }
+  .title-container h3{
+    font-size:3.5em;
+  }
+  .linked-in-logo{
+    border-radius: 4px;
+    height:30px;
+    width:90px;
+  }
+  .heading-sect:hover .image-container img{
+    clip:rect(0px 532px 400px 266px);
+    left:-266px;
+  }
+}
 @media screen and (max-width: 691px){
   .sliding-u-l-r:hover:after {
     width: 20%;
@@ -182,5 +306,8 @@ ul.navigation-list{
   }
   .navbar-nav > li.right-list-item{
     float:none;
+  }
+  .profile-container{
+    width:100%;
   }
 }

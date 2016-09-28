@@ -8,14 +8,19 @@
   <%= csrf_meta_tags %>
   <%= favicon_link_tag 'favicon.ico' %>
   <link href='https://fonts.googleapis.com/css?family=Roboto:100,400,500' rel='stylesheet' type='text/css'>
+  <% if Rails.env == "production"  %>
+    <%= render partial: "partials/google_analytics" %>
+  <% end %>
   
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
 </head>
 <body>
   <div class="container-fluid">
     <%= render partial: "partials/nav_bar" %>
-    <!-- <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p> -->
+    <% if notice || alert %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    <% end %>
     <div>
       <%= yield %>
     </div>

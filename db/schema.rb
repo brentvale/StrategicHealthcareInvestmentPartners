@@ -28,9 +28,9 @@ ActiveRecord::Schema.define(version: 20160830180641) do
   create_table "lists", force: :cascade do |t|
     t.string   "list_name"
     t.integer  "section_id", null: false
-    t.integer  "page_order", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "page_order"
   end
 
   add_index "lists", ["section_id"], name: "index_lists_on_section_id", using: :btree

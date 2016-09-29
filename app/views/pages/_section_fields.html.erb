@@ -1,0 +1,17 @@
+<fieldset class="section-fieldset">
+  <%= f.label :heading, "Section" %><br />
+  <%= f.text_area :heading, class: "heading-text" %><br />
+  <%= f.check_box :_destroy %>
+  <%= f.label :_destroy, "Remove Section" %>
+  
+  <%= f.fields_for :paragraphs do |builder| %>
+    <%= render 'paragraph_fields', f: builder %>
+  <% end %>
+  <%= link_to_add_fields "Add Paragraph", f, :paragraphs %>
+  
+  <%= f.fields_for :lists do |builder| %>
+    <%= render 'list_fields', f: builder %>
+  <% end %>
+  <%= link_to_add_fields "Add List", f, :lists %>
+  
+</fieldset>

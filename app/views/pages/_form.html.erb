@@ -1,0 +1,27 @@
+<%= form_for @page, method: :patch do |f| %>
+  <% if @page.errors.any? %>
+    <div class="error_messages">
+      <h2><%= pluralize(@page.errors.count, "error") %> prohibited this survey from being saved:</h2>
+      <ul>
+      <% @page.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= @page.name %>
+  </div>
+  
+  <%= f.fields_for :sections do |builder| %>
+    <%= render 'section_fields', f: builder %>
+  <% end %>
+  
+  <%= link_to_add_fields "Add Section", f, :sections %>
+
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

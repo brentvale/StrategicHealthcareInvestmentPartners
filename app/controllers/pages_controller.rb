@@ -2,7 +2,6 @@ class PagesController < ApplicationController
   before_action :authenticate_user!
   
   def edit
-    # @page = Page.where(:name => params[:page_name]).first
     @page = Page.find(params[:id])
   end
   
@@ -10,7 +9,13 @@ class PagesController < ApplicationController
     @page = Page.find(params[:id])
     
     if @page.update_attributes(page_params)
-      render json: @page
+      if @page.name == "home"
+        redirect_to root_path
+      elsif @page.name == "about"
+        redirect_to about_path
+      elsif @page.name == "team"
+        redirect_to team_path
+      end
     else
       render json: "unable to update pages"
     end
@@ -20,12 +25,14 @@ class PagesController < ApplicationController
   
   def page_params
     params.require(:page).permit(:name, 
-                                  sections_attributes: [:id,
+                                  sections_attributes: [:_destroy,
+                                                        :id,
                                                         :heading, 
                                                         :page_id,
-                                                        paragraphs_attributes: [:id, :body, :section_id], 
-                                                        lists_attributes: [:id, :list_name, :section_id, :page_order, 
-                                                                          list_items_attributes: [:id, 
+                                                        paragraphs_attributes: [:_destroy,:id, :body, :section_id], 
+                                                        lists_attributes: [:_destroy,:id, :list_name, :section_id, :page_order, 
+                                                                          list_items_attributes: [:_destroy,
+                                                                                                  :id, 
                                                                                                   :list_item_content,
                                                                                                   :list_id]
                                                                           ]

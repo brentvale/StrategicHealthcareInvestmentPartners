@@ -11,17 +11,38 @@
   <% end %>
 
   <div class="field">
-    <%= @page.name %>
+    <p>You are now editing the <span><%= @page.name.upcase %></span> page.  When you are done editing, you must click the <span>Update</span> button at the bottom of the page otherwise the new info will NOT be saved.</p>
   </div>
   
-  <%= f.fields_for :sections do |builder| %>
+  <%= f.fields_for :sections, f.object.sections.sort_by(&:page_order) do |builder| %>
     <%= render 'section_fields', f: builder %>
   <% end %>
   
-  <%= link_to_add_fields "Add Section", f, :sections %>
+  
 
   
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions section-fieldset">
+    <%= link_to_add_fields "Add Section", f, :sections %></br>
+    <div>
+      <%= f.submit "UPDATE", :class => "big-button" %>
+    </div>
   </div>
 <% end %>
+
+<script>
+$(function(){
+  $('form .remove_fields').on('click', function(event){
+    $(this).prev('input[type=hidden]').val('1');
+    $(this).closest('fieldset').hide();
+    event.preventDefault();
+  });
+  $('form .add_fields').on('click', function(event){
+    var time = new Date().getTime();
+    var regexp = new RegExp($(this).data('id'), 'g');
+    $(this).before($(this).data('fields').replace(regexp, time))
+    event.preventDefault()
+  });
+  
+})
+  
+</script>

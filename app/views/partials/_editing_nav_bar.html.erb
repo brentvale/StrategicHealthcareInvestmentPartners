@@ -1,0 +1,22 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" aria-expanded="false" data-target="#navigationMenuDropdown">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+    </div>
+
+    <div class="collapse navbar-collapse" id="navigationMenuDropdown">
+      <ul class="nav navbar-nav navigation-list">
+        <li><%= link_to "Edit Home", edit_page_path(1), class: "sliding-u-l-r" %></li>
+        <li><%= link_to "Edit About", edit_page_path(2), class: "sliding-u-l-r" %></li>
+        <li><%= link_to "Edit Team", edit_page_path(3), class: "sliding-u-l-r" %></li>
+        
+      </ul>
+    </div>
+
+</nav>

@@ -29,3 +29,11 @@
     </div>
 
 </nav>
+
+<script>
+  $(function(){
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+      $(".sliding-u-l-r").removeClass("sliding-u-l-r");
+    }
+  })
+</script>

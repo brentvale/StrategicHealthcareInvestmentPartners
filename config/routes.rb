@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: "static_pages#home"
   get '/about', :to => 'static_pages#about', as: :about
   get '/team', :to => 'static_pages#team', as: :team
+  get '/fund', :to => 'static_pages#fund', as: :fund
   
   # get '/pages/:page_name/edit', :to => 'pages#edit'
   resources :pages

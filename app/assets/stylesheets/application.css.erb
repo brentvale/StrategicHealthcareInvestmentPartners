@@ -346,6 +346,268 @@ p.bio-text{
   0%   { border: 6px solid white; }
   100% { border: 6px solid #009bbf; }
 }
+/*FUND*/
+#fund h1{
+  border-radius:0px;
+  font-size:2em;
+  font-weight:200;
+  margin-left:0px;
+  position:relative;
+  top: 0;
+}
+#sect0{
+  position:relative;
+}
+#fund h1#mainHeading{
+  font-size: 3em;
+  font-weight:200;
+}
+#fund h2{
+  font-size:2em;
+  font-weight:200;
+  margin-left:0;
+  margin-right:auto;
+  max-width:none;
+  text-align:left;
+}
+#fund{
+  height:800px;
+  height:80vh;
+  width:1200px;
+  width: 100vw;
+}
+#fund section{
+  font-size:10px;
+  visibility:hidden;
+  position:absolute;
+  top: 15%;
+}
+#beginButton{
+  border-radius: 40px;
+  border: 1px dotted black;
+  height:80px;
+  margin-left:auto;
+  margin-right:auto;
+  padding-top: 25px;
+  left:0;
+  right:0;
+  text-align:center;
+  width:80px;
+}
+#sect0{
+  left:25%;
+}
+#sect0.end{
+  left:85%;
+  top:-10%;
+}
+#sect1,#sect2,#sect3,#sect4,#sect5,#sect6,#sect7,#sect8,#sect9,#sect10,#sect11{
+  background-color:white;
+  left: 35%;
+}
+/*SECTION-1*/
+#sect1.end{
+  left:-2%;
+  top:15%;
+  transform: scale(0.7);
+}
+#sect1.end:hover{
+  left:5%;
+  transform: scale(1.0);
+}
+/*SECTION-2*/
+#sect2.end{
+  left:0;
+  top:35%;
+  transform: scale(0.7);
+}
+#sect2.end:hover{
+  left:5%;
+  transform: scale(1.0);
+}
+/*SECTION-3*/
+#sect3{
+  transform: scale(0.7);
+}
+#sect3.end{
+  left:20%;
+  top:15%;
+  transform: scale(0.5);
+}
+#sect3.end:hover{
+  transform: scale(0.7);
+}
+/*SECTION-4*/
+#sect4.end{
+  left:40%;
+  top:40%;
+  transform: scale(0.5);
+}
+#sect4.end:hover{
+  transform: scale(0.7);
+}
+/*SECTION-5*/
+#sect5.end{
+  left:30%;
+  top:10%;
+  transform: scale(0.7);
+}
+#sect5.end:hover{
+  transform: scale(1.0);
+}
+/*SECTION-6*/
+#sect6.end{
+  left:40%;
+  top:8%;
+  transform: scale(0.7);
+}
+#sect6.end:hover{
+  transform: scale(1.0);
+}
+/*SECTION-7*/
+#sect7.end{
+  left:55%;
+  top:10%;
+  transform: scale(0.7);
+}
+#sect7.end:hover{
+  transform: scale(1.0);
+}
+/*SECTION-8*/
+#sect8.end{
+  left:0;
+  top:55%;
+  transform: scale(0.7);
+}
+#sect8.end:hover{
+  left:5%;
+  transform: scale(1.0);
+}
+/*SECTION-9*/
+#sect9.end{
+  left:70%;
+  top: 40%;
+  transform: scale(0.7);
+}
+#sect9.end:hover{
+  transform: scale(1.0);
+}
+/*SECTION-10*/
+#sect10.end{
+  left:70%;
+  top: 20%;
+  transform: scale(0.7);
+}
+#sect10.end:hover{
+  transform: scale(1.0);
+}
+/*SECTION-11*/
+#sect11.end{
+  left:70%;
+  top: 55%;
+  transform: scale(0.7);
+}
+#sect11.end:hover{
+  transform: scale(1.0);
+}
+#fund section > ul, #fund section > div, #fund section > p{
+  font-size:1.4em;
+}
+#fund section > p{
+  padding:0;
+}
+#fund section > ul{
+  display:inline-block;
+  width:300px;
+}
+#fund section ul.nested{
+  font-size:1em;
+}
+#innovationBox{
+  height:500px;
+  position:relative; 
+  width: 500px;
+}
+.graph{
+  font-size: 1.4em;
+  font-weight:200;
+}
+.graph-vertical-text{
+  -ms-transform:rotate(270deg); /* IE 9 */
+  -moz-transform:rotate(270deg); /* Firefox */
+  -webkit-transform:rotate(270deg); /* Safari and Chrome */
+  -o-transform:rotate(270deg); /* Opera */
+  float:left;
+  left:-60px;
+  position:relative;
+  top: 180px;
+}
+.graph-horizontal-text{
+  text-align:center;
+  bottom:0;
+  position:absolute;
+  width:100%;
+}
+.quadrant-container{
+  display:inline-block; 
+  height:448px;
+  position:absolute;
+  right:0;
+  width: 448px;
+}
+.quads{
+  display:inline-block;
+  float:left;
+  height:220px;
+  position:relative;
+  text-align:center;
+  width: 220px;
+}
+.quads p{
+  font-size:2em;
+  font-weight:200;
+  line-height:220px;
+  padding:0;
+}
+#quad1, #quad2{
+  border-top:1px solid black;
+}
+#quad1, #quad3{
+  border-right:1px solid black;
+}
+#quad3{
+  background-color: #daedff;
+}
+#quad2{
+  background-color: #64d4ff;
+}
+#quad1{
+  background-color: #319cff;
+}
+#quad4 p{
+  font-weight:400;
+  -webkit-animation: number-animate  infinite  1s; 
+  -moz-animation:    number-animate  infinite  1s;
+  -o-animation:      number-animate  infinite  1s;
+  animation:         number-animate  infinite  1s;
+}
+@-webkit-keyframes number-animate {
+  33%  { color: #64d4ff; }
+  66%  { color: #319cff; }
+}
+@-moz-keyframes number-animate {
+  33%  { color: #64d4ff; }
+  66%  { color: #319cff; }
+}
+@-o-keyframes number-animate {
+  33%  { color: #64d4ff; }
+  66%  { color: #319cff; }
+}
+@keyframes number-animate {
+  33%  { color: #64d4ff; }
+  66%  { color: #319cff; }
+}
+/*MEDIA QUERIES*/
 @media screen and (min-width: 1100px){
   .image-container{
     height: 412px;

@@ -1,0 +1,163 @@
+<div id="fund">
+  <section id="sect0">
+    <h1 id="mainHeading">Strategic Healthcare Investment Partners</h1>
+    <div id="beginButton">Begin</div>
+  </section>
+  <section id="sect1" data-end-pos-x="-200" data-end-pos-y="0">
+    <h1>Strategic Healthcare Investment Partners</h1>
+    <ul style="width:200px">
+      <li>$150MM</li>
+      <li>2 GPs</li>
+      <li>1 VPLead</li>
+      <li>1 CFO</li>
+      <li>Support TBD</li>
+    </ul>
+    <ul style="vertical-align:top">
+      <li>Medtech</li>
+      <li>RelatedIT</li>
+      <li>OPPORTUNISTIC</li>
+    </ul>
+  </section>
+
+  <section id="sect2">
+    <h2>Luminary Relationships</h2>
+    <ul>
+      <li>Venture Partners</li>
+      <li>EIRs (Entrepreneurs In Residence)</li>
+      <li>Ex Charman and BOD members</li>
+      <li>Sources of Opportunities from network</li>
+    </ul>
+  </section>
+
+  <section id="sect3">
+    <div id="innovationBox">
+      <div class="graph graph-vertical-text"> New Technology</div>
+      <div class="quadrant-container">
+        <div id="quad3" class="quads"><p>3</p></div>
+        <div id="quad4" class="quads"><p>4</p></div>
+        <div id="quad1" class="quads"><p>1</p></div>
+        <div id="quad2" class="quads"><p>2</p></div>
+      </div>
+      
+      <div class="graph graph-horizontal-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;New Market</div>
+    
+    </div>
+  </section>
+  
+  <section id="sect4">
+    <h2>TALK ABOUT HOW GRAPH CHANGES</h2>
+  </section>
+
+  <section id="sect5">
+    <h2>Strategic Limited<br> Partners</h2>
+    <ul>
+      <li>Medtech</li>
+      <li>Service/IT</li>
+      <li>Diagnostic</li>
+    </ul>
+  </section>
+  
+  <section id="sect6">
+    <h2>Regional/Collaborative<br> Limited Partners</h2>
+    <ul>
+      <li>Government Regional Development</li>
+      <li>Academic/Medical Centers</li>
+      <li>Incubators/Accelerator Collaborators</li>
+    </ul>
+  </section>
+  
+  <section id="sect7">
+    <h2>Financial Limited<br> Partners</h2>
+    <p>..including family offices with themes</p>
+  </section>
+  
+  <section id="sect8">
+    <h2>Sources</h2>
+    <ul>
+      <li>GP, VP, Luminary Networks</li>
+      <li>Specific Innovation Organizations</li>
+      <li>Innovation Organizations that could include Funding Relationships</li>
+    </ul>
+  </section>
+  
+  <section id="sect9">
+    <h2>Coinvestment</h2>
+    <ul>
+      <li>Early stage/laterstage med tech</li>
+      <li>Direct from strategics, regional, financial limited partners</li>
+    </ul>
+  </section>
+  
+  <section id="sect10">
+    <h2>Advisory Committee</h2>
+    <ul>
+      <li>Strategic</li>
+      <li>Regional</li>
+      <li>Policy</li>
+      <li style="list-style-type:none">
+        <ul class="nested">
+          <li>Investment Banks</li>
+          <li>Private Equity</li>
+          <li>Biotechnology</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+  
+  <section id="sect11">
+    <h2>10-12 Investments</h2>
+    <ul>
+      <li>4-5 Newtech for strategic existing customers and markets</li>
+      <li>4-5 Box 4 oriented</li>
+      <li>1-2 Opportunisitc, emerging, created</li>
+      <li style="list-style-type:none">
+        <ul class="nested">
+          <li>Agile, Lean</li>
+          <li>Benefit from strategic engagement</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+</div>
+
+<script>
+  $(function(){
+    var setWindowWidth = function(){
+     return $(window).width();
+    };
+    
+    var handleMove = function(num){
+      if(num === 0){
+        var $sect0 = $("#sect0");
+        $sect0.find("h1").css({visibility:"hidden"});
+        $sect0.find("#beginButton").html("Next");
+        $sect0.addClass("end");
+      } else if(num === 12){
+        $("#beginButton").html("Done");
+      } else {
+        var $targetElement = $("#sect" + num);
+        $targetElement.addClass("end");
+      }
+    };
+    
+    var nextSectionVisible = function(){
+      $("#sect" + CURRENT_SECTION_NUMBER).css({visibility:"visible"})
+    };
+    
+    var WINDOW_WIDTH = setWindowWidth();
+    var CURRENT_SECTION_NUMBER = 0;
+    
+    
+    $("#sect0").css({visibility:"visible"});
+    
+    $("#beginButton").on("click", function(e){
+      e.preventDefault();
+      handleMove(CURRENT_SECTION_NUMBER);
+      setTimeout(function(){
+        nextSectionVisible();
+      }, 500);
+      CURRENT_SECTION_NUMBER += 1;
+    });
+    
+  })
+</script>

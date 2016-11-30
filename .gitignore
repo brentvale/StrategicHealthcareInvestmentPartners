@@ -10,6 +10,8 @@
 powerpoint.html.erb
 npm-debug.log
 
+.DS_Store
+
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep

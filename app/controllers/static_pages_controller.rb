@@ -13,4 +13,9 @@ class StaticPagesController < ApplicationController
     @page = Page.where(name: "team").first
     @sections = @page.sections.order(:page_order)
   end
+  
+  def fund
+    
+  end
+  
 end

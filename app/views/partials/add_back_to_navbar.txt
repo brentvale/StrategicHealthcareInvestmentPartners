@@ -1,0 +1,1 @@
+<li class="<%= 'is-active' if params[:action] == 'fund' %>"><%= link_to "Fund", fund_path, class: "sliding-u-l-r" %></li>
